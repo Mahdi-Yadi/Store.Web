@@ -1,0 +1,2464 @@
+﻿<!DOCTYPE html>
+<html class="no-js" lang="fa" dir="rtl">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>قالب Junko</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Favicon -->
+	<link rel="shortcut icon" type="image/x-icon" href="~/site/img/favicon.ico">
+
+	<!-- CSS
+	========================= -->
+	<!-- Plugins CSS -->
+	<link rel="stylesheet" href="~/site/css/plugins.css">
+
+	<!-- Main Style CSS -->
+	<link rel="stylesheet" href="~/site/css/style.css">
+
+</head>
+
+<body>
+	@RenderBody()
+	<!--header area start-->
+	<!--Offcanvas menu area start-->
+	<div class="off_canvars_overlay">
+	</div>
+	<div class="Offcanvas_menu">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="canvas_open">
+						<a href="javascript:void(0)"><i class="ion-navicon"></i></a>
+					</div>
+					<div class="Offcanvas_menu_wrapper">
+						<div class="canvas_close">
+							<a href="javascript:void(0)"><i class="ion-android-close"></i></a>
+						</div>
+						<div class="support_info">
+							<p>تلفن تماس: <a class="ltr-text" href="tel:+989123456789">+(98) 123 456 789</a></p>
+						</div>
+						<div class="top_right text-right">
+							<ul>
+								<li><a href="my-account.html"> حساب کاربری </a></li>
+								<li><a href="checkout.html"> پرداخت </a></li>
+							</ul>
+						</div>
+						<div class="search_container">
+							<form action="#">
+								<div class="hover_category">
+									<select class="select_option" name="select" id="categori">
+										<option selected value="1">همه دسته ها</option>
+										<option value="2">لوازم جانبی</option>
+										<option value="3">سایر لوازم جانبی</option>
+										<option value="4">قطعات کامپیوتر</option>
+										<option value="5">دوربین و ویدیو </option>
+										<option value="6">صفحه نمایش</option>
+										<option value="7">تبلت ها</option>
+										<option value="8">لپ تاپ ها</option>
+										<option value="9">کیف دستی</option>
+										<option value="10">هدفون و اسپیکر</option>
+										<option value="11">گیاهان دارویی</option>
+										<option value="12">سبزیجات</option>
+										<option value="13">فروشگاه</option>
+										<option value="14">لپ تاپ و کامپیوتر</option>
+										<option value="15">ساعت ها</option>
+										<option value="16">لوازم الکترونیکی</option>
+									</select>
+								</div>
+								<div class="search_box">
+									<input placeholder="جستجوی محصول ..." type="text">
+									<button type="submit">جستجو</button>
+								</div>
+							</form>
+						</div>
+
+						<div class="middel_right_info">
+							<div class="header_wishlist">
+								<a href="wishlist.html"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+								<span class="wishlist_quantity">3</span>
+							</div>
+							<div class="mini_cart_wrapper">
+								<a href="javascript:void(0)"><i class="fa fa-shopping-bag" aria-hidden="true"></i> <i class="fa fa-angle-down"></i></a>
+								<span class="cart_quantity">2</span>
+								<!--mini cart-->
+								<div class="mini_cart">
+									<div class="cart_items_container">
+										<div class="cart_item">
+											<div class="cart_img">
+												<a href="#"><img src="~/site/img/s-product/product.jpg" alt=""></a>
+											</div>
+											<div class="cart_info">
+												<a href="#">لورم ایپسوم متن ساختگی با تولید سادگی</a>
+												<p>تعداد: 1 × <span> 60,000 تومان </span></p>
+											</div>
+											<div class="cart_remove">
+												<a href="#"><i class="ion-android-close"></i></a>
+											</div>
+										</div>
+										<div class="cart_item">
+											<div class="cart_img">
+												<a href="#"><img src="~/site/img/s-product/product2.jpg" alt=""></a>
+											</div>
+											<div class="cart_info">
+												<a href="#">لورم ایپسوم متن ساختگی با تولید سادگی</a>
+												<p>تعداد: 1 × <span> 60,000 تومان </span></p>
+											</div>
+											<div class="cart_remove">
+												<a href="#"><i class="ion-android-close"></i></a>
+											</div>
+										</div>
+									</div>
+									<div class="mini_cart_table">
+										<div class="cart_total">
+											<span>جمع اجزا:</span>
+											<span class="price">138,000 تومان </span>
+										</div>
+										<div class="cart_total mt-10">
+											<span>جمع کل:</span>
+											<span class="price">138,000 تومان </span>
+										</div>
+									</div>
+
+									<div class="mini_cart_footer">
+										<div class="cart_button">
+											<a href="cart.html">مشاهده سبد</a>
+										</div>
+										<div class="cart_button">
+											<a href="checkout.html">پرداخت</a>
+										</div>
+
+									</div>
+
+								</div>
+								<!--mini cart end-->
+							</div>
+						</div>
+						<div id="menu" class="text-left ">
+							<ul class="offcanvas_main_menu">
+								<li class="menu-item-has-children active">
+									<a href="#">خانه</a>
+									<ul class="sub-menu">
+										<li><a href="index.html">خانه 1</a></li>
+										<li><a href="index-2.html">خانه 2</a></li>
+										<li><a href="index-3.html">خانه 3</a></li>
+										<li><a href="index-4.html">خانه 4</a></li>
+										<li><a href="index-5.html">خانه 5</a></li>
+									</ul>
+								</li>
+								<li class="menu-item-has-children">
+									<a href="#">فروشگاه</a>
+									<ul class="sub-menu">
+										<li class="menu-item-has-children">
+											<a href="#">طرح های فروشگاه</a>
+											<ul class="sub-menu">
+												<li><a href="shop.html">فروشگاه</a></li>
+												<li><a href="shop-fullwidth.html">تمام عرض</a></li>
+												<li><a href="shop-fullwidth-list.html">تمام عرض لیست</a></li>
+												<li><a href="shop-left-sidebar.html">نوار کناری چپ </a></li>
+												<li><a href="shop-left-sidebar-list.html"> نوار کناری چپ لیست</a></li>
+												<li><a href="shop-list.html">نمایش لیست</a></li>
+											</ul>
+										</li>
+										<li class="menu-item-has-children">
+											<a href="#">سایر صفحات</a>
+											<ul class="sub-menu">
+												<li><a href="cart.html">سبد خرید</a></li>
+												<li><a href="wishlist.html">لیست علاقه‌مندی‌ها</a></li>
+												<li><a href="checkout.html">پرداخت</a></li>
+												<li><a href="my-account.html">حساب کاربری</a></li>
+												<li><a href="404.html">خطای 404</a></li>
+											</ul>
+										</li>
+										<li class="menu-item-has-children">
+											<a href="#">انواع محصول</a>
+											<ul class="sub-menu">
+												<li><a href="product-details.html">جزئیات محصول</a></li>
+												<li><a href="product-sidebar.html">محصول با نوار کناری</a></li>
+												<li><a href="product-grouped.html">محصول گروهبندی شده</a></li>
+												<li><a href="variable-product.html">محصول متغیر</a></li>
+												<li><a href="product-countdown.html">محصول شمارنده</a></li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+								<li class="menu-item-has-children">
+									<a href="#">بلاگ</a>
+									<ul class="sub-menu">
+										<li><a href="blog.html">بلاگ</a></li>
+										<li><a href="blog-details.html">جزئیات مطلب بلاگ</a></li>
+										<li><a href="blog-fullwidth.html">بلاگ تمام عرض</a></li>
+										<li><a href="blog-sidebar.html">بلاگ نوار کناری راست</a></li>
+										<li><a href="blog-no-sidebar.html">بلاگ بدون نوار کناری</a></li>
+									</ul>
+
+								</li>
+								<li class="menu-item-has-children">
+									<a href="#">صفحات </a>
+									<ul class="sub-menu">
+										<li><a href="about.html">درباره ما</a></li>
+										<li><a href="services.html">خدمات</a></li>
+										<li><a href="privacy-policy.html">سیاست حریم خصوصی</a></li>
+										<li><a href="faq.html">سوالات متداول</a></li>
+										<li><a href="contact.html">تماس</a></li>
+										<li><a href="login.html">ورود</a></li>
+										<li><a href="404.html">خطای 404</a></li>
+									</ul>
+								</li>
+								<li class="menu-item-has-children">
+									<a href="my-account.html">حساب کاربری</a>
+								</li>
+								<li class="menu-item-has-children">
+									<a href="about.html">درباره ما</a>
+								</li>
+								<li class="menu-item-has-children">
+									<a href="contact.html"> تماس با ما</a>
+								</li>
+							</ul>
+						</div>
+
+						<div class="Offcanvas_footer">
+							<span><a href="#"><i class="fa fa-envelope-o"></i> info@yourdomain.com</a></span>
+							<ul>
+								<li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+								<li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+								<li class="pinterest"><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
+								<li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+								<li class="telegram"><a href="#"><i class="fa fa-telegram"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--Offcanvas menu area end-->
+
+	<header>
+		<div class="main_header">
+			<!--header top start-->
+			<div class="header_top">
+				<div class="container">
+					<div class="row align-items-center">
+						<div class="col-lg-6 col-md-6">
+							<div class="support_info">
+								<p>تلفن تماس: <a class="ltr-text" href="tel:+989123456789">+(98) 123 456 789</a></p>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-6">
+							<div class="top_right text-right">
+								<ul>
+									<li><a href="my-account.html"> حساب کاربری </a></li>
+									<li><a href="checkout.html"> پرداخت </a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--header top start-->
+			<!--header middel start-->
+			<div class="header_middle">
+				<div class="container">
+					<div class="row align-items-center">
+						<div class="col-lg-3 col-md-6">
+							<div class="logo">
+								<a href="index.html"><img src="~/site/img/logo/logo.png" alt=""></a>
+							</div>
+						</div>
+						<div class="col-lg-9 col-md-6">
+							<div class="middel_right">
+								<div class="search_container">
+									<form action="#">
+										<div class="hover_category">
+											<select class="select_option" name="select" id="categori1">
+												<option selected value="1">همه دسته ها</option>
+												<option value="2">لوازم جانبی</option>
+												<option value="3">سایر لوازم جانبی</option>
+												<option value="4">قطعات کامپیوتر</option>
+												<option value="5">دوربین و ویدیو </option>
+												<option value="6">صفحه نمایش</option>
+												<option value="7">تبلت ها</option>
+												<option value="8">لپ تاپ ها</option>
+												<option value="9">کیف دستی</option>
+												<option value="10">هدفون و اسپیکر</option>
+												<option value="11">گیاهان دارویی</option>
+												<option value="12">سبزیجات</option>
+												<option value="13">فروشگاه</option>
+												<option value="14">لپ تاپ و کامپیوتر</option>
+												<option value="15">ساعت ها</option>
+												<option value="16">لوازم الکترونیکی</option>
+											</select>
+										</div>
+										<div class="search_box">
+											<input placeholder="جستجوی محصول ..." type="text">
+											<button type="submit">جستجو</button>
+										</div>
+									</form>
+								</div>
+								<div class="middel_right_info">
+									<div class="header_wishlist">
+										<a href="wishlist.html"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+										<span class="wishlist_quantity">3</span>
+									</div>
+									<div class="mini_cart_wrapper">
+										<a href="javascript:void(0)"><i class="fa fa-shopping-bag" aria-hidden="true"></i> <i class="fa fa-angle-down"></i></a>
+										<span class="cart_quantity">2</span>
+										<!--mini cart-->
+										<div class="mini_cart">
+											<div class="cart_items_container">
+												<div class="cart_item">
+													<div class="cart_img">
+														<a href="#"><img src="~/site/img/s-product/product.jpg" alt=""></a>
+													</div>
+													<div class="cart_info">
+														<a href="#">لورم ایپسوم متن ساختگی با تولید سادگی</a>
+														<p>تعداد: 1 × <span> 60,000 تومان </span></p>
+													</div>
+													<div class="cart_remove">
+														<a href="#"><i class="ion-android-close"></i></a>
+													</div>
+												</div>
+												<div class="cart_item">
+													<div class="cart_img">
+														<a href="#"><img src="~/site/img/s-product/product2.jpg" alt=""></a>
+													</div>
+													<div class="cart_info">
+														<a href="#">لورم ایپسوم متن ساختگی با تولید سادگی</a>
+														<p>تعداد: 1 × <span> 60,000 تومان </span></p>
+													</div>
+													<div class="cart_remove">
+														<a href="#"><i class="ion-android-close"></i></a>
+													</div>
+												</div>
+											</div>
+											<div class="mini_cart_table">
+												<div class="cart_total">
+													<span>جمع اجزا:</span>
+													<span class="price">138,000 تومان </span>
+												</div>
+												<div class="cart_total mt-10">
+													<span>جمع کل:</span>
+													<span class="price">138,000 تومان </span>
+												</div>
+											</div>
+
+											<div class="mini_cart_footer">
+												<div class="cart_button">
+													<a href="cart.html">مشاهده سبد</a>
+												</div>
+												<div class="cart_button">
+													<a href="checkout.html">پرداخت</a>
+												</div>
+
+											</div>
+
+										</div>
+										<!--mini cart end-->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--header middel end-->
+			<!--header bottom satrt-->
+			<div class="main_menu_area">
+				<div class="container">
+					<div class="row align-items-center">
+						<div class="col-lg-3 col-md-12">
+							<div class="categories_menu">
+								<div class="categories_title">
+									<h2 class="categori_toggle">دسته‌بندی ها</h2>
+								</div>
+								<div class="categories_menu_toggle">
+									<ul>
+										<li class="menu_item_children">
+											<a href="#">لباس و پوشاک <i class="fa fa-angle-left"></i></a>
+											<ul class="categories_mega_menu">
+												<li class="menu_item_children">
+													<a href="#">لباس ها</a>
+													<ul class="categorie_sub_menu">
+														<li><a href="">زیر پیراهن</a></li>
+														<li><a href="">عصرانه</a></li>
+														<li><a href="">روزانه</a></li>
+														<li><a href="">ورزشی</a></li>
+													</ul>
+												</li>
+												<li class="menu_item_children">
+													<a href="#">کیف دستی</a>
+													<ul class="categorie_sub_menu">
+														<li><a href="">رودوشی</a></li>
+														<li><a href="">کیف مدرسه</a></li>
+														<li><a href="">کودکانه</a></li>
+														<li><a href="">کت ها</a></li>
+													</ul>
+												</li>
+												<li class="menu_item_children">
+													<a href="#">کفش ها</a>
+													<ul class="categorie_sub_menu">
+														<li><a href="">چکمه های مچ پا</a></li>
+														<li><a href="">صندل ها قفل دار </a></li>
+														<li><a href="">مخصوص دویدن</a></li>
+														<li><a href="">کتاب ها</a></li>
+													</ul>
+												</li>
+												<li class="menu_item_children">
+													<a href="#">پوشاک</a>
+													<ul class="categorie_sub_menu">
+														<li><a href="">کت و ژاکت </a></li>
+														<li><a href="">بارانی ها</a></li>
+														<li><a href="">ژاکت ها</a></li>
+														<li><a href="">تیشرت ها</a></li>
+													</ul>
+												</li>
+											</ul>
+										</li>
+										<li class="menu_item_children">
+											<a href="#"> دکور و مبلمان ها  <i class="fa fa-angle-left"></i></a>
+											<ul class="categories_mega_menu column_3">
+												<li class="menu_item_children">
+													<a href="#">صندلی</a>
+													<ul class="categorie_sub_menu">
+														<li><a href="">ناهارخوری</a></li>
+														<li><a href="">اتاق خواب</a></li>
+														<li><a href=""> خانه و اداره</a></li>
+														<li><a href="">اتاق نشیمن</a></li>
+													</ul>
+												</li>
+												<li class="menu_item_children">
+													<a href="#">نورپردازی</a>
+													<ul class="categorie_sub_menu">
+														<li><a href="">نورپردازی سقفی</a></li>
+														<li><a href="">نورپردازی دیواری</a></li>
+														<li><a href="">نورپردازی بیرون خانه</a></li>
+														<li><a href="">نورپردازی هوشمند</a></li>
+													</ul>
+												</li>
+												<li class="menu_item_children">
+													<a href="#">مبل</a>
+													<ul class="categorie_sub_menu">
+														<li><a href="">مبل های پارچه ای</a></li>
+														<li><a href="">مبل های چرمی</a></li>
+														<li><a href="">مبل های گوشه ای</a></li>
+														<li><a href="">مبل های تخت خوابی</a></li>
+													</ul>
+												</li>
+											</ul>
+										</li>
+										<li class="menu_item_children">
+											<a href="#"> قطعات خودرو <i class="fa fa-angle-left"></i></a>
+											<ul class="categories_mega_menu column_2">
+												<li class="menu_item_children">
+													<a href="#">ابزار ترمز</a>
+													<ul class="categorie_sub_menu">
+														<li><a href="">میل لنگ</a></li>
+														<li><a href="">قرقره</a></li>
+														<li><a href="">دیزل </a></li>
+														<li><a href="">بنزین</a></li>
+													</ul>
+												</li>
+												<li class="menu_item_children">
+													<a href="#">ترمز اضطراری</a>
+													<ul class="categorie_sub_menu">
+														<li><a href="">عروسک های دخترانه</a></li>
+														<li><a href="">ابزار آموزشی دخترانه</a></li>
+														<li><a href="">هنر های کودکان</a></li>
+														<li><a href="">بازی های ویدئویی بچگانه</a></li>
+													</ul>
+												</li>
+											</ul>
+										</li>
+										<li class="menu_item_children">
+											<a href="#"> کامپیوتر و لپ تاپ <i class="fa fa-angle-left"></i></a>
+											<ul class="categories_mega_menu column_2">
+												<li class="menu_item_children">
+													<a href="#">شلوار جین</a>
+													<ul class="categorie_sub_menu">
+														<li><a href="">ساختمان</a></li>
+														<li><a href="">لوازم الکترونیکی</a></li>
+														<li><a href="">اکشن فیگور </a></li>
+														<li><a href="">اسباب بازی های مخصوص</a></li>
+													</ul>
+												</li>
+												<li class="menu_item_children">
+													<a href="#">ماسین حساب ها</a>
+													<ul class="categorie_sub_menu">
+														<li><a href="">عروسک های دخترانه</a></li>
+														<li><a href="">ابزار آموزشی دخترانه</a></li>
+														<li><a href="">هنر های کودکان</a></li>
+														<li><a href="">بازی های ویدئویی بچگانه</a></li>
+													</ul>
+												</li>
+											</ul>
+										</li>
+										<li><a href="#"> نورپردازی</a></li>
+										<li><a href="#"> لوازم جانبی</a></li>
+										<li><a href="#">قطعات بدنه</a></li>
+										<li><a href="#">لوازم خودرو</a></li>
+										<li><a href="#"> قطعات موتور</a></li>
+										<li id="cat_toggle" class="has-sub">
+											<a href="#"> دسته های بیشتر</a>
+											<ul class="categorie_sub">
+												<li><a href="#">دسته پنهان</a></li>
+											</ul>
+
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-9 col-md-12">
+							<div class="main_menu menu_position">
+								<nav>
+									<ul>
+										<li>
+											<a class="active" href="index.html">خانه<i class="fa fa-angle-down"></i></a>
+											<ul class="sub_menu">
+												<li><a href="index.html">خانه فروشگاه 1</a></li>
+												<li><a href="index-2.html">خانه فروشگاه 2</a></li>
+												<li><a href="index-3.html">خانه فروشگاه 3</a></li>
+												<li><a href="index-4.html">خانه فروشگاه 4</a></li>
+												<li><a href="index-5.html">خانه فروشگاه 5</a></li>
+											</ul>
+										</li>
+										<li class="mega_items">
+											<a href="shop.html">فروشگاه<i class="fa fa-angle-down"></i></a>
+											<div class="mega_menu">
+												<ul class="mega_menu_inner">
+													<li>
+														<a href="#">طرح های فروشگاه</a>
+														<ul>
+															<li><a href="shop-fullwidth.html">تمام عرض</a></li>
+															<li><a href="shop-fullwidth-list.html">تمام عرض لیست</a></li>
+															<li><a href="shop-left-sidebar.html">نوار کناری چپ </a></li>
+															<li><a href="shop-left-sidebar-list.html"> نوار کناری چپ لیست</a></li>
+															<li><a href="shop-list.html">نمایش لیست</a></li>
+														</ul>
+													</li>
+													<li>
+														<a href="#">سایر صفحات</a>
+														<ul>
+															<li><a href="cart.html">سبد خرید</a></li>
+															<li><a href="wishlist.html">لیست علاقه‌مندی‌ها</a></li>
+															<li><a href="checkout.html">پرداخت</a></li>
+															<li><a href="my-account.html">حساب کاربری</a></li>
+															<li><a href="404.html">خطای 404</a></li>
+														</ul>
+													</li>
+													<li>
+														<a href="#">انواع محصول</a>
+														<ul>
+															<li><a href="product-details.html">جزئیات محصول</a></li>
+															<li><a href="product-sidebar.html">محصول با نوار کناری</a></li>
+															<li><a href="product-grouped.html">محصول گروهبندی شده</a></li>
+															<li><a href="variable-product.html">محصول متغیر</a></li>
+															<li><a href="product-countdown.html">محصول شمارنده</a></li>
+
+														</ul>
+													</li>
+													<li>
+														<a href="#">ابزارهای کامپیوتر</a>
+														<ul>
+															<li><a href="shop.html">کابل و اتصال دهنده ها</a></li>
+															<li><a href="shop-list.html">تبلت های گرافیکی</a></li>
+															<li><a href="shop-fullwidth.html">پرینتر ها، جوهر و تونر</a></li>
+															<li><a href="shop-fullwidth-list.html">تبلت های دست دوم</a></li>
+															<li><a href="shop-left-sidebar.html">درایو های نوری</a></li>
+
+														</ul>
+													</li>
+												</ul>
+											</div>
+										</li>
+										<li>
+											<a href="blog.html">بلاگ<i class="fa fa-angle-down"></i></a>
+											<ul class="sub_menu pages">
+												<li><a href="blog-details.html">جزئیات مطلب بلاگ</a></li>
+												<li><a href="blog-fullwidth.html">بلاگ تمام عرض</a></li>
+												<li><a href="blog-sidebar.html">بلاگ نوار کناری راست</a></li>
+												<li><a href="blog-no-sidebar.html">بلاگ بدون نوار کناری</a></li>
+											</ul>
+										</li>
+										<li>
+											<a href="#">صفحات <i class="fa fa-angle-down"></i></a>
+											<ul class="sub_menu pages">
+												<li><a href="about.html">درباره ما</a></li>
+												<li><a href="services.html">خدمات</a></li>
+												<li><a href="privacy-policy.html">سیاست حریم خصوصی</a></li>
+												<li><a href="faq.html">سوالات متداول</a></li>
+												<li><a href="contact.html">تماس</a></li>
+												<li><a href="login.html">ورود</a></li>
+												<li><a href="404.html">خطای 404</a></li>
+											</ul>
+										</li>
+
+										<li><a href="about.html">درباره ما</a></li>
+										<li><a href="contact.html"> تماس با ما</a></li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--header bottom end-->
+		</div>
+	</header>
+	<!--header area end-->
+	<!--sticky header area start-->
+	<div class="sticky_header_area sticky-header">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-3">
+					<div class="logo">
+						<a href="index.html"><img src="~/site/img/logo/logo.png" alt=""></a>
+					</div>
+				</div>
+				<div class="col-lg-9">
+					<div class="sticky_header_right menu_position">
+						<div class="main_menu">
+							<nav>
+								<ul>
+									<li>
+										<a class="active" href="index.html">خانه<i class="fa fa-angle-down"></i></a>
+										<ul class="sub_menu">
+											<li><a href="index.html">خانه فروشگاه 1</a></li>
+											<li><a href="index-2.html">خانه فروشگاه 2</a></li>
+											<li><a href="index-3.html">خانه فروشگاه 3</a></li>
+											<li><a href="index-4.html">خانه فروشگاه 4</a></li>
+											<li><a href="index-5.html">خانه فروشگاه 5</a></li>
+										</ul>
+									</li>
+									<li class="mega_items">
+										<a href="shop.html">فروشگاه<i class="fa fa-angle-down"></i></a>
+										<div class="mega_menu">
+											<ul class="mega_menu_inner">
+												<li>
+													<a href="#">طرح های فروشگاه</a>
+													<ul>
+														<li><a href="shop-fullwidth.html">تمام عرض</a></li>
+														<li><a href="shop-fullwidth-list.html">تمام عرض لیست</a></li>
+														<li><a href="shop-left-sidebar.html">نوار کناری چپ </a></li>
+														<li><a href="shop-left-sidebar-list.html"> نوار کناری چپ لیست</a></li>
+														<li><a href="shop-list.html">نمایش لیست</a></li>
+													</ul>
+												</li>
+												<li>
+													<a href="#">سایر صفحات</a>
+													<ul>
+														<li><a href="cart.html">سبد خرید</a></li>
+														<li><a href="wishlist.html">لیست علاقه‌مندی‌ها</a></li>
+														<li><a href="checkout.html">پرداخت</a></li>
+														<li><a href="my-account.html">حساب کاربری</a></li>
+														<li><a href="404.html">خطای 404</a></li>
+													</ul>
+												</li>
+												<li>
+													<a href="#">انواع محصول</a>
+													<ul>
+														<li><a href="product-details.html">جزئیات محصول</a></li>
+														<li><a href="product-sidebar.html">محصول با نوار کناری</a></li>
+														<li><a href="product-grouped.html">محصول گروهبندی شده</a></li>
+														<li><a href="variable-product.html">محصول متغیر</a></li>
+														<li><a href="product-countdown.html">محصول شمارنده</a></li>
+
+													</ul>
+												</li>
+												<li>
+													<a href="#">ابزارهای کامپیوتر</a>
+													<ul>
+														<li><a href="shop.html">کابل و اتصال دهنده ها</a></li>
+														<li><a href="shop-list.html">تبلت های گرافیکی</a></li>
+														<li><a href="shop-fullwidth.html">پرینتر ها، جوهر و تونر</a></li>
+														<li><a href="shop-fullwidth-list.html">تبلت های دست دوم</a></li>
+														<li><a href="shop-left-sidebar.html">درایو های نوری</a></li>
+
+													</ul>
+												</li>
+											</ul>
+										</div>
+									</li>
+									<li>
+										<a href="blog.html">بلاگ<i class="fa fa-angle-down"></i></a>
+										<ul class="sub_menu pages">
+											<li><a href="blog-details.html">جزئیات مطلب بلاگ</a></li>
+											<li><a href="blog-fullwidth.html">بلاگ تمام عرض</a></li>
+											<li><a href="blog-sidebar.html">بلاگ نوار کناری راست</a></li>
+											<li><a href="blog-no-sidebar.html">بلاگ بدون نوار کناری</a></li>
+										</ul>
+									</li>
+									<li>
+										<a href="#">صفحات <i class="fa fa-angle-down"></i></a>
+										<ul class="sub_menu pages">
+											<li><a href="about.html">درباره ما</a></li>
+											<li><a href="services.html">خدمات</a></li>
+											<li><a href="privacy-policy.html">سیاست حریم خصوصی</a></li>
+											<li><a href="faq.html">سوالات متداول</a></li>
+											<li><a href="contact.html">تماس</a></li>
+											<li><a href="login.html">ورود</a></li>
+											<li><a href="404.html">خطای 404</a></li>
+										</ul>
+									</li>
+
+									<li><a href="about.html">درباره ما</a></li>
+									<li><a href="contact.html"> تماس با ما</a></li>
+								</ul>
+							</nav>
+						</div>
+						<div class="middel_right_info">
+							<div class="header_wishlist">
+								<a href="wishlist.html"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+								<span class="wishlist_quantity">3</span>
+							</div>
+							<div class="mini_cart_wrapper">
+								<a href="javascript:void(0)"><i class="fa fa-shopping-bag" aria-hidden="true"></i> <i class="fa fa-angle-down"></i></a>
+								<span class="cart_quantity">2</span>
+								<!--mini cart-->
+								<div class="mini_cart">
+									<div class="cart_items_container">
+										<div class="cart_item">
+											<div class="cart_img">
+												<a href="#"><img src="~/site/img/s-product/product.jpg" alt=""></a>
+											</div>
+											<div class="cart_info">
+												<a href="#">لورم ایپسوم متن ساختگی با تولید سادگی</a>
+												<p>تعداد: 1 × <span> 60,000 تومان </span></p>
+											</div>
+											<div class="cart_remove">
+												<a href="#"><i class="ion-android-close"></i></a>
+											</div>
+										</div>
+										<div class="cart_item">
+											<div class="cart_img">
+												<a href="#"><img src="~/site/img/s-product/product2.jpg" alt=""></a>
+											</div>
+											<div class="cart_info">
+												<a href="#">لورم ایپسوم متن ساختگی با تولید سادگی</a>
+												<p>تعداد: 1 × <span> 60,000 تومان </span></p>
+											</div>
+											<div class="cart_remove">
+												<a href="#"><i class="ion-android-close"></i></a>
+											</div>
+										</div>
+									</div>
+									<div class="mini_cart_table">
+										<div class="cart_total">
+											<span>جمع اجزا:</span>
+											<span class="price">138,000 تومان </span>
+										</div>
+										<div class="cart_total mt-10">
+											<span>جمع کل:</span>
+											<span class="price">138,000 تومان </span>
+										</div>
+									</div>
+
+									<div class="mini_cart_footer">
+										<div class="cart_button">
+											<a href="cart.html">مشاهده سبد</a>
+										</div>
+										<div class="cart_button">
+											<a href="checkout.html">پرداخت</a>
+										</div>
+
+									</div>
+
+								</div>
+								<!--mini cart end-->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--sticky header area end-->
+	<!--slider area start-->
+	<section class="slider_section mb-70">
+		<div class="slider_area owl-carousel">
+			<div class="single_slider d-flex align-items-center" data-bgimg="~/site/img/slider/slider1.jpg">
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+							<div class="slider_content">
+								<h1> طراحی زیبا</h1>
+								<h2>تلویزیون 85 اینچ</h2>
+								<p>پیشنهاد ویژه <span> 20% تخفیف </span> این هفته</p>
+								<a class="button" href="shop.html">اکنون بخرید</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="single_slider d-flex align-items-center" data-bgimg="~/site/img/slider/slider2.jpg">
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+							<div class="slider_content">
+								<h1>دوربین دوگانه</h1>
+								<h2>کیفیت 20MP</h2>
+								<p>پیشنهاد ویژه <span> 20% تخفیف </span> این هفته</p>
+								<a class="button" href="shop.html">اکنون بخرید</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="single_slider d-flex align-items-center" data-bgimg="~/site/img/slider/slider3.jpg">
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+							<div class="slider_content">
+								<h1>عجله کنید!</h1>
+								<h2>محصولات برتر سال</h2>
+								<p>پیشنهاد ویژه <span> 20% تخفیف </span> این هفته</p>
+								<a class="button" href="shop.html">اکنون بخرید</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--slider area end-->
+	<!--shipping area start-->
+	<section class="shipping_area mb-70">
+		<div class="container">
+			<div class=" row">
+				<div class="col-lg-3 col-md-6">
+					<div class="single_shipping">
+						<div class="shipping_icone">
+							<img src="~/site/img/about/shipping1.png" alt="">
+						</div>
+						<div class="shipping_content">
+							<h2>ارسال رایگان</h2>
+							<p>ارسال رایگان به تمام نقاط کشور</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<div class="single_shipping">
+						<div class="shipping_icone">
+							<img src="~/site/img/about/shipping2.png" alt="">
+						</div>
+						<div class="shipping_content">
+							<h2>پشتیبانی 24 ساعته</h2>
+							<p>هر ساعت از شبانه روز تماس بگیرید</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<div class="single_shipping">
+						<div class="shipping_icone">
+							<img src="~/site/img/about/shipping3.png" alt="">
+						</div>
+						<div class="shipping_content">
+							<h2>100% بازگشت وجه</h2>
+							<p>30 روز مهلت بازگشت وجه</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<div class="single_shipping">
+						<div class="shipping_icone">
+							<img src="~/site/img/about/shipping4.png" alt="">
+						</div>
+						<div class="shipping_content">
+							<h2>پرداخت ایمن</h2>
+							<p>امنیت پرداخت تضمین شده</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--shipping area end-->
+	<!--banner area start-->
+	<div class="banner_area mb-40">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3 col-md-3">
+					<div class="single_banner mb-30">
+						<div class="banner_thumb">
+							<a href="shop.html"><img src="~/site/img/bg/banner1.jpg" alt=""></a>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6">
+					<div class="single_banner mb-30">
+						<div class="banner_thumb">
+							<a href="shop.html"><img src="~/site/img/bg/banner2.jpg" alt=""></a>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-3">
+					<div class="single_banner mb-30">
+						<div class="banner_thumb">
+							<a href="shop.html"><img src="~/site/img/bg/banner3.jpg" alt=""></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--banner area end-->
+	<!--product area start-->
+	<section class="product_area mb-46">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="section_title">
+						<h2>پیشنهاد های ویژه</h2>
+					</div>
+				</div>
+			</div>
+			<div class="product_carousel product_column5 owl-carousel">
+				<article class="single_product">
+					<figure>
+						<div class="product_thumb">
+							<a class="primary_img" href="product-countdown.html"><img src="~/site/img/product/product1.jpg" alt=""></a>
+							<a class="secondary_img" href="product-countdown.html"><img src="~/site/img/product/product2.jpg" alt=""></a>
+							<div class="label_product">
+								<span class="label_sale">فروش</span>
+							</div>
+							<div class="action_links">
+								<ul>
+									<li class="wishlist"><a href="wishlist.html" title="افزودن به علاقه‌مندی‌ها"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+									<li class="compare"><a href="#" title="مقایسه"><span class="ion-levels"></span></a></li>
+									<li class="quick_button">
+										<a href="#" data-toggle="modal" data-target="#modal_box" title="مشاهده سریع"> <span class="ion-ios-search-strong"></span></a>
+									</li>
+								</ul>
+							</div>
+							<div class="add_to_cart">
+								<a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
+							</div>
+							<div class="product_timing">
+								<div data-countdown="2043/12/15"></div>
+							</div>
+						</div>
+						<figcaption class="product_content">
+							<div class="price_box">
+								<span class="old_price">86,000 تومان</span>
+								<span class="current_price">79,000 تومان</span>
+							</div>
+							<h3 class="product_name"><a href="product-countdown.html">گوشی موبایل شیائومی مدل MI 9 Lite</a></h3>
+						</figcaption>
+					</figure>
+				</article>
+				<article class="single_product">
+					<figure>
+						<div class="product_thumb">
+							<a class="primary_img" href="product-countdown.html"><img src="~/site/img/product/product3.jpg" alt=""></a>
+							<a class="secondary_img" href="product-countdown.html"><img src="~/site/img/product/product4.jpg" alt=""></a>
+							<div class="label_product">
+								<span class="label_sale">فروش</span>
+							</div>
+							<div class="action_links">
+								<ul>
+									<li class="wishlist"><a href="wishlist.html" title="افزودن به علاقه‌مندی‌ها"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+									<li class="compare"><a href="#" title="مقایسه"><span class="ion-levels"></span></a></li>
+									<li class="quick_button">
+										<a href="#" data-toggle="modal" data-target="#modal_box" title="مشاهده سریع"> <span class="ion-ios-search-strong"></span></a>
+									</li>
+								</ul>
+							</div>
+							<div class="add_to_cart">
+								<a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
+							</div>
+							<div class="product_timing">
+								<div data-countdown="2043/12/15"></div>
+							</div>
+						</div>
+						<figcaption class="product_content">
+							<div class="price_box">
+								<span class="old_price">86,000 تومان</span>
+								<span class="current_price">79,000 تومان</span>
+							</div>
+							<h3 class="product_name"><a href="product-countdown.html">هندزفری بی سیم شیائومی مدل 2019</a></h3>
+						</figcaption>
+					</figure>
+				</article>
+				<article class="single_product">
+					<figure>
+						<div class="product_thumb">
+							<a class="primary_img" href="product-countdown.html"><img src="~/site/img/product/product5.jpg" alt=""></a>
+							<a class="secondary_img" href="product-countdown.html"><img src="~/site/img/product/product6.jpg" alt=""></a>
+							<div class="label_product">
+								<span class="label_sale">فروش</span>
+							</div>
+							<div class="action_links">
+								<ul>
+									<li class="wishlist"><a href="wishlist.html" title="افزودن به علاقه‌مندی‌ها"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+									<li class="compare"><a href="#" title="مقایسه"><span class="ion-levels"></span></a></li>
+									<li class="quick_button">
+										<a href="#" data-toggle="modal" data-target="#modal_box" title="مشاهده سریع"> <span class="ion-ios-search-strong"></span></a>
+									</li>
+								</ul>
+							</div>
+							<div class="add_to_cart">
+								<a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
+							</div>
+							<div class="product_timing">
+								<div data-countdown="2043/12/15"></div>
+							</div>
+						</div>
+						<figcaption class="product_content">
+							<div class="price_box">
+								<span class="old_price">86,000 تومان</span>
+								<span class="current_price">79,000 تومان</span>
+							</div>
+							<h3 class="product_name"><a href="product-countdown.html">هدفون گیمینگ حرفه ای سونی SM5000</a></h3>
+						</figcaption>
+					</figure>
+				</article>
+				<article class="single_product">
+					<figure>
+						<div class="product_thumb">
+							<a class="primary_img" href="product-countdown.html"><img src="~/site/img/product/product7.jpg" alt=""></a>
+							<a class="secondary_img" href="product-countdown.html"><img src="~/site/img/product/product8.jpg" alt=""></a>
+							<div class="label_product">
+								<span class="label_sale">فروش</span>
+							</div>
+							<div class="action_links">
+								<ul>
+									<li class="wishlist"><a href="wishlist.html" title="افزودن به علاقه‌مندی‌ها"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+									<li class="compare"><a href="#" title="مقایسه"><span class="ion-levels"></span></a></li>
+									<li class="quick_button">
+										<a href="#" data-toggle="modal" data-target="#modal_box" title="مشاهده سریع"> <span class="ion-ios-search-strong"></span></a>
+									</li>
+								</ul>
+							</div>
+							<div class="add_to_cart">
+								<a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
+							</div>
+							<div class="product_timing">
+								<div data-countdown="2043/12/15"></div>
+							</div>
+						</div>
+						<figcaption class="product_content">
+							<div class="price_box">
+								<span class="old_price">86,000 تومان</span>
+								<span class="current_price">79,000 تومان</span>
+							</div>
+							<h3 class="product_name"><a href="product-countdown.html">دوربین فیلم برداری 360 درجه سامسونگ</a></h3>
+						</figcaption>
+					</figure>
+				</article>
+				<article class="single_product">
+					<figure>
+						<div class="product_thumb">
+							<a class="primary_img" href="product-countdown.html"><img src="~/site/img/product/product9.jpg" alt=""></a>
+							<a class="secondary_img" href="product-countdown.html"><img src="~/site/img/product/product10.jpg" alt=""></a>
+							<div class="label_product">
+								<span class="label_sale">فروش</span>
+							</div>
+							<div class="action_links">
+								<ul>
+									<li class="wishlist"><a href="wishlist.html" title="افزودن به علاقه‌مندی‌ها"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+									<li class="compare"><a href="#" title="مقایسه"><span class="ion-levels"></span></a></li>
+									<li class="quick_button">
+										<a href="#" data-toggle="modal" data-target="#modal_box" title="مشاهده سریع"> <span class="ion-ios-search-strong"></span></a>
+									</li>
+								</ul>
+							</div>
+							<div class="add_to_cart">
+								<a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
+							</div>
+							<div class="product_timing">
+								<div data-countdown="2043/12/15"></div>
+							</div>
+						</div>
+						<figcaption class="product_content">
+							<div class="price_box">
+								<span class="old_price">86,000 تومان</span>
+								<span class="current_price">79,000 تومان</span>
+							</div>
+							<h3 class="product_name"><a href="product-countdown.html">تلویزیون هوشمند 85 اینچ ال جی سری 8</a></h3>
+						</figcaption>
+					</figure>
+				</article>
+				<article class="single_product">
+					<figure>
+						<div class="product_thumb">
+							<a class="primary_img" href="product-countdown.html"><img src="~/site/img/product/product11.jpg" alt=""></a>
+							<a class="secondary_img" href="product-countdown.html"><img src="~/site/img/product/product12.jpg" alt=""></a>
+							<div class="label_product">
+								<span class="label_sale">فروش</span>
+							</div>
+							<div class="action_links">
+								<ul>
+									<li class="wishlist"><a href="wishlist.html" title="افزودن به علاقه‌مندی‌ها"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+									<li class="compare"><a href="#" title="مقایسه"><span class="ion-levels"></span></a></li>
+									<li class="quick_button">
+										<a href="#" data-toggle="modal" data-target="#modal_box" title="مشاهده سریع"> <span class="ion-ios-search-strong"></span></a>
+									</li>
+								</ul>
+							</div>
+							<div class="add_to_cart">
+								<a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
+							</div>
+							<div class="product_timing">
+								<div data-countdown="2043/12/15"></div>
+							</div>
+						</div>
+						<figcaption class="product_content">
+							<div class="price_box">
+								<span class="old_price">86,000 تومان</span>
+								<span class="current_price">79,000 تومان</span>
+							</div>
+							<h3 class="product_name"><a href="product-countdown.html">دسته بازی کنسول PS4 Gaming Controller</a></h3>
+						</figcaption>
+					</figure>
+				</article>
+				<article class="single_product">
+					<figure>
+						<div class="product_thumb">
+							<a class="primary_img" href="product-countdown.html"><img src="~/site/img/product/product4.jpg" alt=""></a>
+							<a class="secondary_img" href="product-countdown.html"><img src="~/site/img/product/product5.jpg" alt=""></a>
+							<div class="label_product">
+								<span class="label_sale">فروش</span>
+							</div>
+							<div class="action_links">
+								<ul>
+									<li class="wishlist"><a href="wishlist.html" title="افزودن به علاقه‌مندی‌ها"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+									<li class="compare"><a href="#" title="مقایسه"><span class="ion-levels"></span></a></li>
+									<li class="quick_button">
+										<a href="#" data-toggle="modal" data-target="#modal_box" title="مشاهده سریع"> <span class="ion-ios-search-strong"></span></a>
+									</li>
+								</ul>
+							</div>
+							<div class="add_to_cart">
+								<a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
+							</div>
+							<div class="product_timing">
+								<div data-countdown="2043/12/15"></div>
+							</div>
+						</div>
+						<figcaption class="product_content">
+							<div class="price_box">
+								<span class="old_price">86,000 تومان</span>
+								<span class="current_price">79,000 تومان</span>
+							</div>
+							<h3 class="product_name"><a href="product-countdown.html">گوشی موبایل شیائومی مدل MI 9 Lite</a></h3>
+						</figcaption>
+					</figure>
+				</article>
+			</div>
+		</div>
+	</section>
+	<!--product area end-->
+	<!--banner area start-->
+	<div class="banner_area mb-40">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-md-6">
+					<div class="single_banner mb-30">
+						<div class="banner_thumb">
+							<a href="shop.html"><img src="~/site/img/bg/banner4.jpg" alt=""></a>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6">
+					<div class="single_banner mb-30">
+						<div class="banner_thumb">
+							<a href="shop.html"><img src="~/site/img/bg/banner5.jpg" alt=""></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--banner area end-->
+	<!--top- category area start-->
+	<section class="top_category_product mb-70">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-2 col-md-3">
+					<div class="top_category_header">
+						<h3>محبوب ترین دسته های این هفته</h3>
+						<p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</p>
+						<a href="shop.html">نمایش همه دسته ها</a>
+					</div>
+				</div>
+				<div class="col-lg-10 col-md-9">
+					<div class="top_category_container category_column5 owl-carousel">
+						<div class="col-lg-2">
+							<article class="single_category">
+								<figure>
+									<div class="category_thumb">
+										<a href="shop.html"><img src="~/site/img/s-product/category1.jpg" alt=""></a>
+									</div>
+									<figcaption class="category_name">
+										<h3><a href="shop.html">بازی و کنسول </a></h3>
+									</figcaption>
+								</figure>
+							</article>
+						</div>
+						<div class="col-lg-2">
+							<article class="single_category">
+								<figure>
+									<div class="category_thumb">
+										<a href="shop.html"><img src="~/site/img/s-product/category2.jpg" alt=""></a>
+									</div>
+									<figcaption class="category_name">
+										<h3><a href="shop.html">لوازم خانگی</a></h3>
+									</figcaption>
+								</figure>
+							</article>
+						</div>
+						<div class="col-lg-2">
+							<article class="single_category">
+								<figure>
+									<div class="category_thumb">
+										<a href="shop.html"><img src="~/site/img/s-product/category3.jpg" alt=""></a>
+									</div>
+									<figcaption class="category_name">
+										<h3><a href="shop.html">صوتی و تصویری</a></h3>
+									</figcaption>
+								</figure>
+							</article>
+						</div>
+						<div class="col-lg-2">
+							<article class="single_category">
+								<figure>
+									<div class="category_thumb">
+										<a href="shop.html"><img src="~/site/img/s-product/category4.jpg" alt=""></a>
+									</div>
+									<figcaption class="category_name">
+										<h3><a href="shop.html">بازی و کنسول </a></h3>
+									</figcaption>
+								</figure>
+							</article>
+						</div>
+						<div class="col-lg-2">
+							<article class="single_category">
+								<figure>
+									<div class="category_thumb">
+										<a href="shop.html"><img src="~/site/img/s-product/category5.jpg" alt=""></a>
+									</div>
+									<figcaption class="category_name">
+										<h3><a href="shop.html">لپ تاپ و تبلت </a></h3>
+									</figcaption>
+								</figure>
+							</article>
+						</div>
+						<div class="col-lg-2">
+							<article class="single_category">
+								<figure>
+									<div class="category_thumb">
+										<a href="shop.html"><img src="~/site/img/s-product/category2.jpg" alt=""></a>
+									</div>
+									<figcaption class="category_name">
+										<h3><a href="shop.html">لوازم خانگی</a></h3>
+									</figcaption>
+								</figure>
+							</article>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--top- category area end-->
+	<!--featured product area start-->
+	<section class="featured_product_area mb-70">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="section_title">
+						<h2>محصولات ویژه</h2>
+					</div>
+				</div>
+			</div>
+			<div class="row featured_container featured_column3">
+				<div class="col-lg-4">
+					<article class="single_product">
+						<figure>
+							<div class="product_thumb">
+								<a class="primary_img" href="product-details.html"><img src="~/site/img/product/product13.jpg" alt=""></a>
+								<a class="secondary_img" href="product-details.html"><img src="~/site/img/product/product14.jpg" alt=""></a>
+								<div class="label_product">
+									<span class="label_sale">فروش</span>
+								</div>
+							</div>
+							<figcaption class="product_content">
+								<div class="price_box">
+									<span class="old_price">86,000 تومان</span>
+									<span class="current_price">79,000 تومان</span>
+								</div>
+								<h3 class="product_name"><a href="product-details.html">ساعت هوشمند سامسونگ Gear</a></h3>
+								<div class="add_to_cart">
+									<a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
+								</div>
+							</figcaption>
+						</figure>
+					</article>
+				</div>
+				<div class="col-lg-4">
+					<article class="single_product">
+						<figure>
+							<div class="product_thumb">
+								<a class="primary_img" href="product-details.html"><img src="~/site/img/product/product15.jpg" alt=""></a>
+								<a class="secondary_img" href="product-details.html"><img src="~/site/img/product/product16.jpg" alt=""></a>
+							</div>
+							<figcaption class="product_content">
+								<div class="price_box">
+									<span class="old_price">86,000 تومان</span>
+									<span class="current_price">79,000 تومان</span>
+								</div>
+								<h3 class="product_name"><a href="product-details.html">هدفون بلوتوثی حرفه ای گیمینگ Sony</a></h3>
+								<div class="add_to_cart">
+									<a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
+								</div>
+							</figcaption>
+						</figure>
+					</article>
+				</div>
+				<div class="col-lg-4">
+					<article class="single_product">
+						<figure>
+							<div class="product_thumb">
+								<a class="primary_img" href="product-details.html"><img src="~/site/img/product/product17.jpg" alt=""></a>
+								<a class="secondary_img" href="product-details.html"><img src="~/site/img/product/product18.jpg" alt=""></a>
+								<div class="label_product">
+									<span class="label_sale">فروش</span>
+								</div>
+							</div>
+							<figcaption class="product_content">
+								<div class="price_box">
+									<span class="old_price">86,000 تومان</span>
+									<span class="current_price">79,000 تومان</span>
+								</div>
+								<h3 class="product_name"><a href="product-details.html">ساعت هوشمند شیائومی Mi band 4</a></h3>
+								<div class="add_to_cart">
+									<a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
+								</div>
+							</figcaption>
+						</figure>
+					</article>
+				</div>
+				<div class="col-lg-4">
+					<article class="single_product">
+						<figure>
+							<div class="product_thumb">
+								<a class="primary_img" href="product-details.html"><img src="~/site/img/product/product19.jpg" alt=""></a>
+								<a class="secondary_img" href="product-details.html"><img src="~/site/img/product/product20.jpg" alt=""></a>
+								<div class="label_product">
+									<span class="label_sale">فروش</span>
+								</div>
+							</div>
+							<figcaption class="product_content">
+								<div class="price_box">
+									<span class="old_price">86,000 تومان</span>
+									<span class="current_price">79,000 تومان</span>
+								</div>
+								<h3 class="product_name"><a href="product-details.html">اسپیکر بلوتوثی قابل حمل Anker</a></h3>
+								<div class="add_to_cart">
+									<a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
+								</div>
+							</figcaption>
+						</figure>
+					</article>
+				</div>
+				<div class="col-lg-4">
+					<article class="single_product">
+						<figure>
+							<div class="product_thumb">
+								<a class="primary_img" href="product-details.html"><img src="~/site/img/product/product21.jpg" alt=""></a>
+								<a class="secondary_img" href="product-details.html"><img src="~/site/img/product/product22.jpg" alt=""></a>
+							</div>
+							<figcaption class="product_content">
+								<div class="price_box">
+									<span class="old_price">86,000 تومان</span>
+									<span class="current_price">79,000 تومان</span>
+								</div>
+								<h3 class="product_name"><a href="product-details.html">مانیتور گیمینگ 27 اینچ asus مدل MG27UQ</a></h3>
+								<div class="add_to_cart">
+									<a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
+								</div>
+							</figcaption>
+						</figure>
+					</article>
+				</div>
+				<div class="col-lg-4">
+					<article class="single_product">
+						<figure>
+							<div class="product_thumb">
+								<a class="primary_img" href="product-details.html"><img src="~/site/img/product/product23.jpg" alt=""></a>
+								<a class="secondary_img" href="product-details.html"><img src="~/site/img/product/product24.jpg" alt=""></a>
+							</div>
+							<figcaption class="product_content">
+								<div class="price_box">
+									<span class="old_price">86,000 تومان</span>
+									<span class="current_price">79,000 تومان</span>
+								</div>
+								<h3 class="product_name"><a href="product-details.html">گوشی آیفون iPhone XS Max Plus</a></h3>
+								<div class="add_to_cart">
+									<a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
+								</div>
+							</figcaption>
+						</figure>
+					</article>
+				</div>
+				<div class="col-lg-4">
+					<article class="single_product">
+						<figure>
+							<div class="product_thumb">
+								<a class="primary_img" href="product-details.html"><img src="~/site/img/product/product15.jpg" alt=""></a>
+								<a class="secondary_img" href="product-details.html"><img src="~/site/img/product/product16.jpg" alt=""></a>
+							</div>
+							<figcaption class="product_content">
+								<div class="price_box">
+									<span class="old_price">86,000 تومان</span>
+									<span class="current_price">79,000 تومان</span>
+								</div>
+								<h3 class="product_name"><a href="product-details.html">گوشی موبایل شیائومی مدل MI 9 Lite</a></h3>
+								<div class="add_to_cart">
+									<a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
+								</div>
+							</figcaption>
+						</figure>
+					</article>
+				</div>
+				<div class="col-lg-4">
+					<article class="single_product">
+						<figure>
+							<div class="product_thumb">
+								<a class="primary_img" href="product-details.html"><img src="~/site/img/product/product17.jpg" alt=""></a>
+								<a class="secondary_img" href="product-details.html"><img src="~/site/img/product/product18.jpg" alt=""></a>
+								<div class="label_product">
+									<span class="label_sale">فروش</span>
+								</div>
+							</div>
+							<figcaption class="product_content">
+								<div class="price_box">
+									<span class="old_price">86,000 تومان</span>
+									<span class="current_price">79,000 تومان</span>
+								</div>
+								<h3 class="product_name"><a href="product-details.html">اسپیکر بلوتوثی قابل حمل Anker</a></h3>
+								<div class="add_to_cart">
+									<a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
+								</div>
+							</figcaption>
+						</figure>
+					</article>
+				</div>
+				<div class="col-lg-4">
+					<article class="single_product">
+						<figure>
+							<div class="product_thumb">
+								<a class="primary_img" href="product-details.html"><img src="~/site/img/product/product13.jpg" alt=""></a>
+								<a class="secondary_img" href="product-details.html"><img src="~/site/img/product/product14.jpg" alt=""></a>
+								<div class="label_product">
+									<span class="label_sale">فروش</span>
+								</div>
+							</div>
+							<figcaption class="product_content">
+								<div class="price_box">
+									<span class="old_price">86,000 تومان</span>
+									<span class="current_price">79,000 تومان</span>
+								</div>
+								<h3 class="product_name"><a href="product-details.html">ساعت هوشمند سامسونگ Gear</a></h3>
+								<div class="add_to_cart">
+									<a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
+								</div>
+							</figcaption>
+						</figure>
+					</article>
+				</div>
+				<div class="col-lg-4">
+					<article class="single_product">
+						<figure>
+							<div class="product_thumb">
+								<a class="primary_img" href="product-details.html"><img src="~/site/img/product/product15.jpg" alt=""></a>
+								<a class="secondary_img" href="product-details.html"><img src="~/site/img/product/product16.jpg" alt=""></a>
+							</div>
+							<figcaption class="product_content">
+								<div class="price_box">
+									<span class="old_price">86,000 تومان</span>
+									<span class="current_price">79,000 تومان</span>
+								</div>
+								<h3 class="product_name"><a href="product-details.html">هدفون بلوتوثی حرفه ای گیمینگ Sony</a></h3>
+								<div class="add_to_cart">
+									<a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
+								</div>
+							</figcaption>
+						</figure>
+					</article>
+				</div>
+				<div class="col-lg-4">
+					<article class="single_product">
+						<figure>
+							<div class="product_thumb">
+								<a class="primary_img" href="product-details.html"><img src="~/site/img/product/product17.jpg" alt=""></a>
+								<a class="secondary_img" href="product-details.html"><img src="~/site/img/product/product18.jpg" alt=""></a>
+								<div class="label_product">
+									<span class="label_sale">فروش</span>
+								</div>
+							</div>
+							<figcaption class="product_content">
+								<div class="price_box">
+									<span class="old_price">86,000 تومان</span>
+									<span class="current_price">79,000 تومان</span>
+								</div>
+								<h3 class="product_name"><a href="product-details.html">ساعت هوشمند شیائومی Mi band 4</a></h3>
+								<div class="add_to_cart">
+									<a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
+								</div>
+							</figcaption>
+						</figure>
+					</article>
+				</div>
+				<div class="col-lg-4">
+					<article class="single_product">
+						<figure>
+							<div class="product_thumb">
+								<a class="primary_img" href="product-details.html"><img src="~/site/img/product/product19.jpg" alt=""></a>
+								<a class="secondary_img" href="product-details.html"><img src="~/site/img/product/product20.jpg" alt=""></a>
+								<div class="label_product">
+									<span class="label_sale">فروش</span>
+								</div>
+							</div>
+							<figcaption class="product_content">
+								<div class="price_box">
+									<span class="old_price">86,000 تومان</span>
+									<span class="current_price">79,000 تومان</span>
+								</div>
+								<h3 class="product_name"><a href="product-details.html">اسپیکر بلوتوثی قابل حمل Anker</a></h3>
+								<div class="add_to_cart">
+									<a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
+								</div>
+							</figcaption>
+						</figure>
+					</article>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--featured product area end-->
+	<!--product area start-->
+	<section class="product_area mb-46">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="section_title">
+						<h2>کامپیوتر و لپ تاپ</h2>
+					</div>
+				</div>
+			</div>
+			<div class="product_carousel product_column5 owl-carousel">
+				<article class="single_product">
+					<figure>
+						<div class="product_thumb">
+							<a class="primary_img" href="product-details.html"><img src="~/site/img/product/product1.jpg" alt=""></a>
+							<a class="secondary_img" href="product-details.html"><img src="~/site/img/product/product2.jpg" alt=""></a>
+							<div class="label_product">
+								<span class="label_sale">فروش</span>
+							</div>
+							<div class="action_links">
+								<ul>
+									<li class="wishlist"><a href="wishlist.html" title="افزودن به علاقه‌مندی‌ها"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+									<li class="compare"><a href="#" title="مقایسه"><span class="ion-levels"></span></a></li>
+									<li class="quick_button">
+										<a href="#" data-toggle="modal" data-target="#modal_box" title="مشاهده سریع"> <span class="ion-ios-search-strong"></span></a>
+									</li>
+								</ul>
+							</div>
+							<div class="add_to_cart">
+								<a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
+							</div>
+						</div>
+						<figcaption class="product_content">
+							<div class="price_box">
+								<span class="old_price">86,000 تومان</span>
+								<span class="current_price">79,000 تومان</span>
+							</div>
+							<h3 class="product_name"><a href="product-details.html">گوشی موبایل شیائومی مدل MI 9 Lite</a></h3>
+						</figcaption>
+					</figure>
+				</article>
+				<article class="single_product">
+					<figure>
+						<div class="product_thumb">
+							<a class="primary_img" href="product-details.html"><img src="~/site/img/product/product3.jpg" alt=""></a>
+							<a class="secondary_img" href="product-details.html"><img src="~/site/img/product/product4.jpg" alt=""></a>
+							<div class="label_product">
+								<span class="label_sale">فروش</span>
+							</div>
+							<div class="action_links">
+								<ul>
+									<li class="wishlist"><a href="wishlist.html" title="افزودن به علاقه‌مندی‌ها"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+									<li class="compare"><a href="#" title="مقایسه"><span class="ion-levels"></span></a></li>
+									<li class="quick_button">
+										<a href="#" data-toggle="modal" data-target="#modal_box" title="مشاهده سریع"> <span class="ion-ios-search-strong"></span></a>
+									</li>
+								</ul>
+							</div>
+							<div class="add_to_cart">
+								<a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
+							</div>
+						</div>
+						<figcaption class="product_content">
+							<div class="price_box">
+								<span class="old_price">86,000 تومان</span>
+								<span class="current_price">79,000 تومان</span>
+							</div>
+							<h3 class="product_name"><a href="product-details.html">هندزفری بی سیم شیائومی مدل 2019</a></h3>
+						</figcaption>
+					</figure>
+				</article>
+				<article class="single_product">
+					<figure>
+						<div class="product_thumb">
+							<a class="primary_img" href="product-details.html"><img src="~/site/img/product/product5.jpg" alt=""></a>
+							<a class="secondary_img" href="product-details.html"><img src="~/site/img/product/product6.jpg" alt=""></a>
+							<div class="label_product">
+								<span class="label_sale">فروش</span>
+							</div>
+							<div class="action_links">
+								<ul>
+									<li class="wishlist"><a href="wishlist.html" title="افزودن به علاقه‌مندی‌ها"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+									<li class="compare"><a href="#" title="مقایسه"><span class="ion-levels"></span></a></li>
+									<li class="quick_button">
+										<a href="#" data-toggle="modal" data-target="#modal_box" title="مشاهده سریع"> <span class="ion-ios-search-strong"></span></a>
+									</li>
+								</ul>
+							</div>
+							<div class="add_to_cart">
+								<a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
+							</div>
+						</div>
+						<figcaption class="product_content">
+							<div class="price_box">
+								<span class="old_price">86,000 تومان</span>
+								<span class="current_price">79,000 تومان</span>
+							</div>
+							<h3 class="product_name"><a href="product-details.html">هدفون گیمینگ حرفه ای سونی SM5000</a></h3>
+						</figcaption>
+					</figure>
+				</article>
+				<article class="single_product">
+					<figure>
+						<div class="product_thumb">
+							<a class="primary_img" href="product-details.html"><img src="~/site/img/product/product7.jpg" alt=""></a>
+							<a class="secondary_img" href="product-details.html"><img src="~/site/img/product/product8.jpg" alt=""></a>
+							<div class="label_product">
+								<span class="label_sale">فروش</span>
+							</div>
+							<div class="action_links">
+								<ul>
+									<li class="wishlist"><a href="wishlist.html" title="افزودن به علاقه‌مندی‌ها"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+									<li class="compare"><a href="#" title="مقایسه"><span class="ion-levels"></span></a></li>
+									<li class="quick_button">
+										<a href="#" data-toggle="modal" data-target="#modal_box" title="مشاهده سریع"> <span class="ion-ios-search-strong"></span></a>
+									</li>
+								</ul>
+							</div>
+							<div class="add_to_cart">
+								<a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
+							</div>
+						</div>
+						<figcaption class="product_content">
+							<div class="price_box">
+								<span class="old_price">86,000 تومان</span>
+								<span class="current_price">79,000 تومان</span>
+							</div>
+							<h3 class="product_name"><a href="product-details.html">دوربین فیلم برداری 360 درجه سامسونگ</a></h3>
+						</figcaption>
+					</figure>
+				</article>
+				<article class="single_product">
+					<figure>
+						<div class="product_thumb">
+							<a class="primary_img" href="product-details.html"><img src="~/site/img/product/product9.jpg" alt=""></a>
+							<a class="secondary_img" href="product-details.html"><img src="~/site/img/product/product10.jpg" alt=""></a>
+							<div class="label_product">
+								<span class="label_sale">فروش</span>
+							</div>
+							<div class="action_links">
+								<ul>
+									<li class="wishlist"><a href="wishlist.html" title="افزودن به علاقه‌مندی‌ها"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+									<li class="compare"><a href="#" title="مقایسه"><span class="ion-levels"></span></a></li>
+									<li class="quick_button">
+										<a href="#" data-toggle="modal" data-target="#modal_box" title="مشاهده سریع"> <span class="ion-ios-search-strong"></span></a>
+									</li>
+								</ul>
+							</div>
+							<div class="add_to_cart">
+								<a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
+							</div>
+						</div>
+						<figcaption class="product_content">
+							<div class="price_box">
+								<span class="old_price">86,000 تومان</span>
+								<span class="current_price">79,000 تومان</span>
+							</div>
+							<h3 class="product_name"><a href="product-details.html">تلویزیون هوشمند 85 اینچ ال جی سری 8</a></h3>
+						</figcaption>
+					</figure>
+				</article>
+				<article class="single_product">
+					<figure>
+						<div class="product_thumb">
+							<a class="primary_img" href="product-details.html"><img src="~/site/img/product/product11.jpg" alt=""></a>
+							<a class="secondary_img" href="product-details.html"><img src="~/site/img/product/product12.jpg" alt=""></a>
+							<div class="label_product">
+								<span class="label_sale">فروش</span>
+							</div>
+							<div class="action_links">
+								<ul>
+									<li class="wishlist"><a href="wishlist.html" title="افزودن به علاقه‌مندی‌ها"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+									<li class="compare"><a href="#" title="مقایسه"><span class="ion-levels"></span></a></li>
+									<li class="quick_button">
+										<a href="#" data-toggle="modal" data-target="#modal_box" title="مشاهده سریع"> <span class="ion-ios-search-strong"></span></a>
+									</li>
+								</ul>
+							</div>
+							<div class="add_to_cart">
+								<a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
+							</div>
+						</div>
+						<figcaption class="product_content">
+							<div class="price_box">
+								<span class="old_price">86,000 تومان</span>
+								<span class="current_price">79,000 تومان</span>
+							</div>
+							<h3 class="product_name"><a href="product-details.html">دسته بازی کنسول PS4 Gaming Controller</a></h3>
+						</figcaption>
+					</figure>
+				</article>
+				<article class="single_product">
+					<figure>
+						<div class="product_thumb">
+							<a class="primary_img" href="product-details.html"><img src="~/site/img/product/product4.jpg" alt=""></a>
+							<a class="secondary_img" href="product-details.html"><img src="~/site/img/product/product5.jpg" alt=""></a>
+							<div class="label_product">
+								<span class="label_sale">فروش</span>
+							</div>
+							<div class="action_links">
+								<ul>
+									<li class="wishlist"><a href="wishlist.html" title="افزودن به علاقه‌مندی‌ها"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+									<li class="compare"><a href="#" title="مقایسه"><span class="ion-levels"></span></a></li>
+									<li class="quick_button">
+										<a href="#" data-toggle="modal" data-target="#modal_box" title="مشاهده سریع"> <span class="ion-ios-search-strong"></span></a>
+									</li>
+								</ul>
+							</div>
+							<div class="add_to_cart">
+								<a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
+							</div>
+						</div>
+						<figcaption class="product_content">
+							<div class="price_box">
+								<span class="old_price">86,000 تومان</span>
+								<span class="current_price">79,000 تومان</span>
+							</div>
+							<h3 class="product_name"><a href="product-details.html">گوشی موبایل شیائومی مدل MI 9 Lite</a></h3>
+						</figcaption>
+					</figure>
+				</article>
+			</div>
+		</div>
+	</section>
+	<!--product area end-->
+	<!--banner area start-->
+	<div class="banner_area mb-40">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-9 col-md-9">
+					<div class="single_banner mb-30">
+						<div class="banner_thumb">
+							<a href="shop.html"><img src="~/site/img/bg/banner6.jpg" alt=""></a>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-3">
+					<div class="single_banner mb-30">
+						<div class="banner_thumb">
+							<a href="shop.html"><img src="~/site/img/bg/banner7.jpg" alt=""></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--banner area end-->
+	<!--product area start-->
+	<section class="product_area mb-46">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-9 col-md-12">
+					<div class="product_left_area">
+						<div class="section_title">
+							<h2>موبایل و تبلت</h2>
+						</div>
+						<div class="product_carousel product_column4 owl-carousel">
+							<article class="single_product">
+								<figure>
+									<div class="product_thumb">
+										<a class="primary_img" href="product-details.html"><img src="~/site/img/product/product1.jpg" alt=""></a>
+										<a class="secondary_img" href="product-details.html"><img src="~/site/img/product/product2.jpg" alt=""></a>
+										<div class="label_product">
+											<span class="label_sale">فروش</span>
+										</div>
+										<div class="action_links">
+											<ul>
+												<li class="wishlist"><a href="wishlist.html" title="افزودن به علاقه‌مندی‌ها"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+												<li class="compare"><a href="#" title="مقایسه"><span class="ion-levels"></span></a></li>
+												<li class="quick_button">
+													<a href="#" data-toggle="modal" data-target="#modal_box" title="مشاهده سریع"> <span class="ion-ios-search-strong"></span></a>
+												</li>
+											</ul>
+										</div>
+										<div class="add_to_cart">
+											<a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
+										</div>
+									</div>
+									<figcaption class="product_content">
+										<div class="price_box">
+											<span class="old_price">86,000 تومان</span>
+											<span class="current_price">79,000 تومان</span>
+										</div>
+										<h3 class="product_name"><a href="product-details.html">گوشی موبایل شیائومی مدل MI 9 Lite</a></h3>
+									</figcaption>
+								</figure>
+							</article>
+							<article class="single_product">
+								<figure>
+									<div class="product_thumb">
+										<a class="primary_img" href="product-details.html"><img src="~/site/img/product/product3.jpg" alt=""></a>
+										<a class="secondary_img" href="product-details.html"><img src="~/site/img/product/product4.jpg" alt=""></a>
+										<div class="label_product">
+											<span class="label_sale">فروش</span>
+										</div>
+										<div class="action_links">
+											<ul>
+												<li class="wishlist"><a href="wishlist.html" title="افزودن به علاقه‌مندی‌ها"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+												<li class="compare"><a href="#" title="مقایسه"><span class="ion-levels"></span></a></li>
+												<li class="quick_button">
+													<a href="#" data-toggle="modal" data-target="#modal_box" title="مشاهده سریع"> <span class="ion-ios-search-strong"></span></a>
+												</li>
+											</ul>
+										</div>
+										<div class="add_to_cart">
+											<a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
+										</div>
+									</div>
+									<figcaption class="product_content">
+										<div class="price_box">
+											<span class="old_price">86,000 تومان</span>
+											<span class="current_price">79,000 تومان</span>
+										</div>
+										<h3 class="product_name"><a href="product-details.html">هندزفری بی سیم شیائومی مدل 2019</a></h3>
+									</figcaption>
+								</figure>
+							</article>
+							<article class="single_product">
+								<figure>
+									<div class="product_thumb">
+										<a class="primary_img" href="product-details.html"><img src="~/site/img/product/product5.jpg" alt=""></a>
+										<a class="secondary_img" href="product-details.html"><img src="~/site/img/product/product6.jpg" alt=""></a>
+										<div class="label_product">
+											<span class="label_sale">فروش</span>
+										</div>
+										<div class="action_links">
+											<ul>
+												<li class="wishlist"><a href="wishlist.html" title="افزودن به علاقه‌مندی‌ها"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+												<li class="compare"><a href="#" title="مقایسه"><span class="ion-levels"></span></a></li>
+												<li class="quick_button">
+													<a href="#" data-toggle="modal" data-target="#modal_box" title="مشاهده سریع"> <span class="ion-ios-search-strong"></span></a>
+												</li>
+											</ul>
+										</div>
+										<div class="add_to_cart">
+											<a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
+										</div>
+									</div>
+									<figcaption class="product_content">
+										<div class="price_box">
+											<span class="old_price">86,000 تومان</span>
+											<span class="current_price">79,000 تومان</span>
+										</div>
+										<h3 class="product_name"><a href="product-details.html">هدفون گیمینگ حرفه ای سونی SM5000</a></h3>
+									</figcaption>
+								</figure>
+							</article>
+							<article class="single_product">
+								<figure>
+									<div class="product_thumb">
+										<a class="primary_img" href="product-details.html"><img src="~/site/img/product/product7.jpg" alt=""></a>
+										<a class="secondary_img" href="product-details.html"><img src="~/site/img/product/product8.jpg" alt=""></a>
+										<div class="label_product">
+											<span class="label_sale">فروش</span>
+										</div>
+										<div class="action_links">
+											<ul>
+												<li class="wishlist"><a href="wishlist.html" title="افزودن به علاقه‌مندی‌ها"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+												<li class="compare"><a href="#" title="مقایسه"><span class="ion-levels"></span></a></li>
+												<li class="quick_button">
+													<a href="#" data-toggle="modal" data-target="#modal_box" title="مشاهده سریع"> <span class="ion-ios-search-strong"></span></a>
+												</li>
+											</ul>
+										</div>
+										<div class="add_to_cart">
+											<a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
+										</div>
+									</div>
+									<figcaption class="product_content">
+										<div class="price_box">
+											<span class="old_price">86,000 تومان</span>
+											<span class="current_price">79,000 تومان</span>
+										</div>
+										<h3 class="product_name"><a href="product-details.html">دوربین فیلم برداری 360 درجه سامسونگ</a></h3>
+									</figcaption>
+								</figure>
+							</article>
+							<article class="single_product">
+								<figure>
+									<div class="product_thumb">
+										<a class="primary_img" href="product-details.html"><img src="~/site/img/product/product9.jpg" alt=""></a>
+										<a class="secondary_img" href="product-details.html"><img src="~/site/img/product/product10.jpg" alt=""></a>
+										<div class="label_product">
+											<span class="label_sale">فروش</span>
+										</div>
+										<div class="action_links">
+											<ul>
+												<li class="wishlist"><a href="wishlist.html" title="افزودن به علاقه‌مندی‌ها"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+												<li class="compare"><a href="#" title="مقایسه"><span class="ion-levels"></span></a></li>
+												<li class="quick_button">
+													<a href="#" data-toggle="modal" data-target="#modal_box" title="مشاهده سریع"> <span class="ion-ios-search-strong"></span></a>
+												</li>
+											</ul>
+										</div>
+										<div class="add_to_cart">
+											<a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
+										</div>
+									</div>
+									<figcaption class="product_content">
+										<div class="price_box">
+											<span class="old_price">86,000 تومان</span>
+											<span class="current_price">79,000 تومان</span>
+										</div>
+										<h3 class="product_name"><a href="product-details.html">تلویزیون هوشمند 85 اینچ ال جی سری 8</a></h3>
+									</figcaption>
+								</figure>
+							</article>
+							<article class="single_product">
+								<figure>
+									<div class="product_thumb">
+										<a class="primary_img" href="product-details.html"><img src="~/site/img/product/product11.jpg" alt=""></a>
+										<a class="secondary_img" href="product-details.html"><img src="~/site/img/product/product12.jpg" alt=""></a>
+										<div class="label_product">
+											<span class="label_sale">فروش</span>
+										</div>
+										<div class="action_links">
+											<ul>
+												<li class="wishlist"><a href="wishlist.html" title="افزودن به علاقه‌مندی‌ها"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+												<li class="compare"><a href="#" title="مقایسه"><span class="ion-levels"></span></a></li>
+												<li class="quick_button">
+													<a href="#" data-toggle="modal" data-target="#modal_box" title="مشاهده سریع"> <span class="ion-ios-search-strong"></span></a>
+												</li>
+											</ul>
+										</div>
+										<div class="add_to_cart">
+											<a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
+										</div>
+									</div>
+									<figcaption class="product_content">
+										<div class="price_box">
+											<span class="old_price">86,000 تومان</span>
+											<span class="current_price">79,000 تومان</span>
+										</div>
+										<h3 class="product_name"><a href="product-details.html">دسته بازی کنسول PS4 Gaming Controller</a></h3>
+									</figcaption>
+								</figure>
+							</article>
+							<article class="single_product">
+								<figure>
+									<div class="product_thumb">
+										<a class="primary_img" href="product-details.html"><img src="~/site/img/product/product4.jpg" alt=""></a>
+										<a class="secondary_img" href="product-details.html"><img src="~/site/img/product/product5.jpg" alt=""></a>
+										<div class="label_product">
+											<span class="label_sale">فروش</span>
+										</div>
+										<div class="action_links">
+											<ul>
+												<li class="wishlist"><a href="wishlist.html" title="افزودن به علاقه‌مندی‌ها"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+												<li class="compare"><a href="#" title="مقایسه"><span class="ion-levels"></span></a></li>
+												<li class="quick_button">
+													<a href="#" data-toggle="modal" data-target="#modal_box" title="مشاهده سریع"> <span class="ion-ios-search-strong"></span></a>
+												</li>
+											</ul>
+										</div>
+										<div class="add_to_cart">
+											<a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
+										</div>
+									</div>
+									<figcaption class="product_content">
+										<div class="price_box">
+											<span class="old_price">86,000 تومان</span>
+											<span class="current_price">79,000 تومان</span>
+										</div>
+										<h3 class="product_name"><a href="product-details.html">گوشی موبایل شیائومی مدل MI 9 Lite</a></h3>
+									</figcaption>
+								</figure>
+							</article>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-12">
+					<!--testimonials section start-->
+					<div class="testimonial_are">
+						<div class="section_title">
+							<h2>دیدگاه مشتریان</h2>
+						</div>
+						<div class="testimonial_active owl-carousel">
+							<article class="single_testimonial">
+								<figure>
+									<div class="testimonial_thumb">
+										<a href="#"><img src="~/site/img/about/testimonial1.jpg" alt=""></a>
+									</div>
+									<figcaption class="testimonial_content">
+										<p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم</p>
+										<h3><a href="#">بیل گیتس</a><span> - بنیان گذار مایکروسافت</span></h3>
+									</figcaption>
+
+								</figure>
+							</article>
+							<article class="single_testimonial">
+								<figure>
+									<div class="testimonial_thumb">
+										<a href="#"><img src="~/site/img/about/testimonial2.jpg" alt=""></a>
+									</div>
+									<figcaption class="testimonial_content">
+										<p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه</p>
+										<h3><a href="#">جان اسنو</a><span> - مشتری</span></h3>
+									</figcaption>
+
+								</figure>
+							</article>
+							<article class="single_testimonial">
+								<figure>
+									<div class="testimonial_thumb">
+										<a href="#"><img src="~/site/img/about/testimonial3.jpg" alt=""></a>
+									</div>
+									<figcaption class="testimonial_content">
+										<p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
+										<h3><a href="#">استیو جابز</a><span> - رئیس شرکت اپل</span></h3>
+									</figcaption>
+
+								</figure>
+							</article>
+						</div>
+					</div>
+					<!--testimonials section end-->
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--product area end-->
+	<!--blog area start-->
+	<section class="blog_section mb-70">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="section_title">
+						<h2>بلاگ</h2>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="blog_carousel blog_column4 owl-carousel">
+					<div class="col-lg-3">
+						<article class="single_blog">
+							<figure>
+								<div class="blog_thumb">
+									<a href="blog-details.html"><img src="~/site/img/blog/blog1.jpg" alt=""></a>
+								</div>
+								<figcaption class="blog_content">
+									<p class="post_author">توسط <a href="#">مدیر</a> 6 آذر 1398</p>
+									<h3 class="post_title"><a href="blog-details.html">مطلب بلاگ تصویری</a></h3>
+								</figcaption>
+							</figure>
+						</article>
+					</div>
+					<div class="col-lg-3">
+						<article class="single_blog">
+							<figure>
+								<div class="blog_thumb">
+									<a href="blog-details.html"><img src="~/site/img/blog/blog2.jpg" alt=""></a>
+								</div>
+								<figcaption class="blog_content">
+									<p class="post_author">توسط <a href="#">مدیر</a> 6 آذر 1398</p>
+									<h3 class="post_title"><a href="blog-details.html">مطلب دارای گالری</a></h3>
+								</figcaption>
+							</figure>
+						</article>
+					</div>
+					<div class="col-lg-3">
+						<article class="single_blog">
+							<figure>
+								<div class="blog_thumb">
+									<a href="blog-details.html"><img src="~/site/img/blog/blog3.jpg" alt=""></a>
+								</div>
+								<figcaption class="blog_content">
+									<p class="post_author">توسط <a href="#">مدیر</a> 6 آذر 1398</p>
+									<h3 class="post_title"><a href="blog-details.html">مطلب بلاگ صوتی</a></h3>
+								</figcaption>
+							</figure>
+						</article>
+					</div>
+					<div class="col-lg-3">
+						<article class="single_blog">
+							<figure>
+								<div class="blog_thumb">
+									<a href="blog-details.html"><img src="~/site/img/blog/blog4.jpg" alt=""></a>
+								</div>
+								<figcaption class="blog_content">
+									<p class="post_author">توسط <a href="#">مدیر</a> 6 آذر 1398</p>
+									<h3 class="post_title"><a href="blog-details.html">مطلب بلاگ ویدیویی</a></h3>
+								</figcaption>
+							</figure>
+						</article>
+					</div>
+					<div class="col-lg-3">
+						<article class="single_blog">
+							<figure>
+								<div class="blog_thumb">
+									<a href="blog-details.html"><img src="~/site/img/blog/blog5.jpg" alt=""></a>
+								</div>
+								<figcaption class="blog_content">
+									<p class="post_author">توسط <a href="#">مدیر</a> 6 آذر 1398</p>
+									<h3 class="post_title"><a href="blog-details.html">لورم ایپسوم متن ساختگی</a></h3>
+								</figcaption>
+							</figure>
+						</article>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--blog area end-->
+	<!--brand area start-->
+	<div class="brand_area mb-70">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="brand_container owl-carousel">
+						<div class="brand_items">
+							<div class="single_brand">
+								<a href="#"><img src="~/site/img/brand/brand1.jpg" alt=""></a>
+							</div>
+							<div class="single_brand">
+								<a href="#"><img src="~/site/img/brand/brand2.jpg" alt=""></a>
+							</div>
+						</div>
+						<div class="brand_items">
+							<div class="single_brand">
+								<a href="#"><img src="~/site/img/brand/brand3.jpg" alt=""></a>
+							</div>
+							<div class="single_brand">
+								<a href="#"><img src="~/site/img/brand/brand4.jpg" alt=""></a>
+							</div>
+						</div>
+						<div class="brand_items">
+							<div class="single_brand">
+								<a href="#"><img src="~/site/img/brand/brand5.jpg" alt=""></a>
+							</div>
+							<div class="single_brand">
+								<a href="#"><img src="~/site/img/brand/brand6.jpg" alt=""></a>
+							</div>
+						</div>
+						<div class="brand_items">
+							<div class="single_brand">
+								<a href="#"><img src="~/site/img/brand/brand7.jpg" alt=""></a>
+							</div>
+							<div class="single_brand">
+								<a href="#"><img src="~/site/img/brand/brand8.jpg" alt=""></a>
+							</div>
+						</div>
+						<div class="brand_items">
+							<div class="single_brand">
+								<a href="#"><img src="~/site/img/brand/brand9.jpg" alt=""></a>
+							</div>
+							<div class="single_brand">
+								<a href="#"><img src="~/site/img/brand/brand10.jpg" alt=""></a>
+							</div>
+						</div>
+						<div class="brand_items">
+							<div class="single_brand">
+								<a href="#"><img src="~/site/img/brand/brand2.jpg" alt=""></a>
+							</div>
+							<div class="single_brand">
+								<a href="#"><img src="~/site/img/brand/brand3.jpg" alt=""></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--brand area end-->
+	<!--footer area start-->
+	<footer class="footer_widgets">
+		<div class="footer_top">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-4 col-md-6">
+						<div class="widgets_container contact_us">
+							<div class="footer_logo">
+								<a href="#"><img src="~/site/img/logo/logo.png" alt=""></a>
+							</div>
+							<div class="footer_contact">
+								<p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
+								<p><span>آدرس: </span> تبریز، چهارراه آبرسان، فلکه دانشگاه، برج بلور، طبقه 678، واحد 85</p>
+								<p><span>موبایل: </span><a class="ltr-text" href="tel:+989123456789">+(98) 123 456 789</a> ، <a class="ltr-text" href="tel:+989123456789">+(98) 123 456 789</a> </p>
+								<p><span>پشتیبانی: </span><a target="_blank" href="#">support@sample.com</a></p>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-6 col-sm-6">
+						<div class="widgets_container widget_menu">
+							<h3>اطلاعات</h3>
+							<div class="footer_menu">
+								<ul>
+									<li><a href="about.html">درباره ما</a></li>
+									<li><a href="blog.html">نحوه ارسال</a></li>
+									<li><a href="contact.html">سیاست حریم خصوصی</a></li>
+									<li><a href="services.html">قوانین و مقررات</a></li>
+									<li><a href="#">مرجوعی ها</a></li>
+									<li><a href="#">کارت های هدیه</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-6 col-sm-6">
+						<div class="widgets_container widget_menu">
+							<h3>حساب کاربری</h3>
+							<div class="footer_menu">
+								<ul>
+									<li><a href="#">حساب کاربری</a></li>
+									<li><a href="#">سابقه خرید</a></li>
+									<li><a href="wishlist.html">علاقه‌مندی‌ها</a></li>
+									<li><a href="#">خبرنامه</a></li>
+									<li><a href="#">نمایندگی ها</a></li>
+									<li><a href="faq.html">سفارشات بین المللی</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6">
+						<div class="widgets_container newsletter">
+							<h3>ما را دنبال کنید</h3>
+							<div class="footer_social_link">
+								<ul>
+									<li><a class="facebook" href="#" title="فیسبوک"><i class="fa fa-facebook"></i></a></li>
+									<li><a class="twitter" href="#" title="توییتر"><i class="fa fa-twitter"></i></a></li>
+									<li><a class="instagram" href="#" title="اینستاگرام"><i class="fa fa-instagram"></i></a></li>
+									<li><a class="telegram" href="#" title="تلگرام"><i class="fa fa-telegram"></i></a></li>
+									<li><a class="rss" href="#" title="RSS"><i class="fa fa-rss"></i></a></li>
+								</ul>
+							</div>
+							<div class="subscribe_form">
+								<h3>هم اکنون عضو خبرنامه ما شوید</h3>
+								<form id="mc-form" class="mc-form footer-newsletter" method="post">
+									<input id="mc-email" type="email" autocomplete="off" placeholder="... آدرس ایمیل شما" dir="ltr">
+									<button id="mc-submit">اشتراک!</button>
+								</form>
+								<!-- mailchimp-alerts Start -->
+								<div class="mailchimp-alerts text-centre">
+									<div class="mailchimp-submitting"></div>
+									<!-- mailchimp-submitting end -->
+									<div class="mailchimp-success"></div>
+									<!-- mailchimp-success end -->
+									<div class="mailchimp-error"></div>
+									<!-- mailchimp-error end -->
+								</div>
+								<!-- mailchimp-alerts end -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer_bottom">
+			<div class="container">
+				<div class="row align-items-center">
+					<div class="col-lg-6 col-md-6">
+						<div class="copyright_area">
+							<p>toplearn</p>
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-6">
+						<div class="footer_payment text-right">
+							<a href="#"><img src="~/site/img/icon/payment.png" alt=""></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!--footer area end-->
+	<!-- modal area start-->
+	<div class="modal fade" id="modal_box" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+				<div class="modal_body">
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-5 col-md-5 col-sm-12">
+								<div class="modal_tab">
+									<div class="tab-content product-details-large">
+										<div class="tab-pane fade show active" id="tab1" role="tabpanel">
+											<div class="modal_tab_img">
+												<a href="#"><img src="~/site/img/product/product1.jpg" alt=""></a>
+											</div>
+										</div>
+										<div class="tab-pane fade" id="tab2" role="tabpanel">
+											<div class="modal_tab_img">
+												<a href="#"><img src="~/site/img/product/product2.jpg" alt=""></a>
+											</div>
+										</div>
+										<div class="tab-pane fade" id="tab3" role="tabpanel">
+											<div class="modal_tab_img">
+												<a href="#"><img src="~/site/img/product/product3.jpg" alt=""></a>
+											</div>
+										</div>
+										<div class="tab-pane fade" id="tab4" role="tabpanel">
+											<div class="modal_tab_img">
+												<a href="#"><img src="~/site/img/product/product5.jpg" alt=""></a>
+											</div>
+										</div>
+									</div>
+									<div class="modal_tab_button">
+										<ul class="nav product_navactive owl-carousel" role="tablist">
+											<li>
+												<a class="nav-link active" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="false"><img src="~/site/img/product/product1.jpg" alt=""></a>
+											</li>
+											<li>
+												<a class="nav-link" data-toggle="tab" href="#tab2" role="tab" aria-controls="tab2" aria-selected="false"><img src="~/site/img/product/product2.jpg" alt=""></a>
+											</li>
+											<li>
+												<a class="nav-link" data-toggle="tab" href="#tab3" role="tab" aria-controls="tab3" aria-selected="false"><img src="~/site/img/product/product3.jpg" alt=""></a>
+											</li>
+											<li>
+												<a class="nav-link" data-toggle="tab" href="#tab4" role="tab" aria-controls="tab4" aria-selected="false"><img src="~/site/img/product/product5.jpg" alt=""></a>
+											</li>
+
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-7 col-md-7 col-sm-12">
+								<div class="modal_right">
+									<div class="modal_title mb-10">
+										<h2>گوشی موبایل Xiaomi Mi 9 Lite</h2>
+									</div>
+									<div class="modal_price mb-10">
+										<span class="new_price">6,400,000 تومان</span>
+										<span class="old_price">7,800,000 تومان</span>
+									</div>
+									<div class="modal_description mb-15">
+										<p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای </p>
+									</div>
+									<div class="variants_selects">
+										<div class="variants_size">
+											<h2>اندازه</h2>
+											<select class="select_option">
+												<option selected value="1">کوچک</option>
+												<option value="1">متوسط</option>
+												<option value="1">بزرگ</option>
+											</select>
+										</div>
+										<div class="variants_color">
+											<h2>رنگ</h2>
+											<select class="select_option">
+												<option selected value="1">بنفش</option>
+												<option value="1">قرمز</option>
+												<option value="1">مشکی</option>
+												<option value="1">صورتی</option>
+												<option value="1">نارنجی</option>
+											</select>
+										</div>
+										<div class="modal_add_to_cart">
+											<form action="#">
+												<input min="0" max="100" step="2" value="1" type="number">
+												<button type="submit">افزودن به سبد</button>
+											</form>
+										</div>
+									</div>
+									<div class="modal_social">
+										<h2>اشتراک گذاری این محصول</h2>
+										<ul>
+											<li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+											<li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+											<li class="pinterest"><a href="#"><i class="fa fa-pinterest"></i></a></li>
+											<li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+											<li class="telegram"><a href="#"><i class="fa fa-telegram"></i></a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- modal area end-->
+	<!--news letter popup start (uncomment lines 763-788 in main.js to show this)-->
+	<div class="newletter-popup">
+		<div id="boxes" class="newletter-container">
+			<div id="dialog" class="window">
+				<div id="popup2">
+					<span class="b-close"><span>بستن</span></span>
+				</div>
+				<div class="box">
+					<div class="newletter-title">
+						<h2>خبرنامه</h2>
+					</div>
+					<div class="box-content newleter-content">
+						<label class="newletter-label">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</label>
+						<div id="frm_subscribe">
+							<form name="subscribe" id="subscribe_popup">
+								<input type="text" value="" name="subscribe_pemail" id="subscribe_pemail" placeholder="آدرس ایمیل خود را وارد کنید ...">
+								<input type="hidden" value="" name="subscribe_pname" id="subscribe_pname">
+								<div id="notification"></div>
+								<a class="theme-btn-outlined" onclick="email_subscribepopup()"><span>اشتراک</span></a>
+							</form>
+							<div class="subscribe-bottom">
+								<input type="checkbox" id="newsletter_popup_dont_show_again">
+								<label for="newsletter_popup_dont_show_again">دیگر این پاپ آپ را نشان نده</label>
+							</div>
+						</div>
+						<!-- /#frm_subscribe -->
+					</div>
+					<!-- /.box-content -->
+				</div>
+			</div>
+
+		</div>
+		<!-- /.box -->
+	</div>
+	<!--news letter popup start-->
+	<!-- JS
+	============================================ -->
+	<!-- Plugins JS -->
+	<script src="~/site/js/plugins.js"></script>
+
+	<!-- Main JS -->
+	<script src="~/site/js/main.js"></script>
+
+
+
+</body>
+
+</html>
