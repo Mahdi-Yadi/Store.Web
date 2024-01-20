@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Domain.Account.RegisterDTO
+@{
 	ViewData["Title"] = "ثبت نام";
 }
 
@@ -10,14 +11,21 @@
 			<div class="col-lg-12 col-md-12">
 				<div class="account_form register">
 					<h2>ثبت نام</h2>
-					<form action="#">
+					<form method="post" asp-controller="Account" asp-action="Register" >
 						<p>
 							<label>آدرس ایمیل <span>*</span></label>
-							<input type="text">
+							<input type="email" asp-for="Email">
+							<span asp-validation-for="Email"></span>
 						</p>
 						<p>
 							<label>رمز عبور <span>*</span></label>
-							<input type="password">
+							<input type="password" asp-for="Password">
+							<span asp-validation-for="Password"></span>
+						</p>
+						<p>
+							<label> تکرار رمز عبور <span>*</span></label>
+							<input type="password" asp-for="RePassword">
+							<span asp-validation-for="RePassword"></span>
 						</p>
 						<div class="login_submit">
 							<button type="submit">ثبت نام</button>

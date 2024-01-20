@@ -14,8 +14,23 @@
 					</div>
 					<div class="top_right text-right">
 						<ul>
-							<li><a href="my-account.html"> حساب کاربری </a></li>
-							<li><a href="checkout.html"> پرداخت </a></li>
+						@if(User.Identity.IsAuthenticated)
+						{
+								<li>
+									<a asp-area="UserPanel" asp-controller="Account" asp-action="Register"> حساب کاربری </a></li>
+								<li>
+									<a asp-controller="Account" asp-action="Logout"> خروج </a>
+								</li>
+						}
+						else
+						{
+								<li>
+									<a asp-controller="Account" asp-action="Register"> ثبت نام </a>
+								</li>
+								<li>
+									<a asp-controller="Account" asp-action="Login"> ورود </a>
+								</li>
+							}
 						</ul>
 					</div>
 					<div class="search_container">
@@ -222,8 +237,24 @@
 					<div class="col-lg-6 col-md-6">
 						<div class="top_right text-right">
 							<ul>
-								<li><a href="my-account.html"> حساب کاربری </a></li>
-								<li><a href="checkout.html"> پرداخت </a></li>
+								@if (User.Identity.IsAuthenticated)
+								{
+									<li>
+										<a asp-area="UserPanel" asp-controller="Account" asp-action="Register"> حساب کاربری </a>
+									</li>
+									<li>
+										<a asp-controller="Account" asp-action="Logout"> خروج </a>
+									</li>
+								}
+								else
+								{
+									<li>
+										<a asp-controller="Account" asp-action="Register"> ثبت نام </a>
+									</li>
+									<li>
+										<a asp-controller="Account" asp-action="Login"> ورود </a>
+									</li>
+								}
 							</ul>
 						</div>
 					</div>

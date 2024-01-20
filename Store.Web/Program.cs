@@ -1,8 +1,21 @@
 
+using Application.Services.Account;
+using DataLayer.Contexts;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllersWithViews();
+IConfiguration configuration = new ConfigurationBuilder()
+	.AddJsonFile("appsettings.json")
+	.Build();
 
+builder.Services.AddControllersWithViews();
+builder.Services.AddTransient<IUserService, UserService>();
+
+builder.Services.AddDbContext<DBContext>(options =>
+{
+	options.UseSqlServer(configuration.GetConnectionString("DBConnectionStrings"));
+});
 
 var app = builder.Build();
 
