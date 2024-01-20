@@ -1,4 +1,5 @@
-﻿using Domain.Account;
+﻿using DataLayer.Entities.Account;
+using Domain.Account;
 namespace Application.Services.Account;
 public interface IUserService
 {
@@ -6,6 +7,10 @@ public interface IUserService
     #region Account
 
     bool CreateUser(RegisterDTO register);
+
+    bool IsEmailExist(string email);
+
+    User LoginUser(LoginDTO login);
 
     #endregion
 

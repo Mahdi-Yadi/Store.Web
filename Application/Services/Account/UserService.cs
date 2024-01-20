@@ -22,7 +22,7 @@ public class UserService : IUserService
     {
         var user = new User();
 
-        user.Email = register.Email;
+        user.Email = TextFixed.FixEmail(register.Email);
         user.CreateDate = DateTime.Now;
         user.Password = Hashing.EncodePasswordMd5(register.Password);
 
@@ -32,6 +32,18 @@ public class UserService : IUserService
         return true;
     }
 
-    #endregion
+    public bool IsEmailExist(string email)
+    {
+        return _db.Users.Any(u => u.Email == email);
+    }
+
+    public User LoginUser(LoginDTO login)
+    {
+        string email = TextFixed.FixEmail(login.Email);
+        string pass = Hashing.EncodePasswordMd5(login.Password);
+		return _db.Users.SingleOrDefault(u => u.Email == email && u.Password == pass);
+    }
+
+	#endregion
 
 }

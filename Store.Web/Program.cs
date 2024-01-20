@@ -1,6 +1,7 @@
 
 using Application.Services.Account;
 using DataLayer.Contexts;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +12,17 @@ IConfiguration configuration = new ConfigurationBuilder()
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<IUserService, UserService>();
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+	.AddCookie(options =>
+	{
+		options.Cookie.HttpOnly = true;
+		options.ExpireTimeSpan = TimeSpan.FromDays(30);
+		options.SlidingExpiration = true;
+		options.LoginPath = "/Login";
+		options.LogoutPath = "/Logout";
+		options.AccessDeniedPath = "/AccessDenied";
+	});
 
 builder.Services.AddDbContext<DBContext>(options =>
 {
