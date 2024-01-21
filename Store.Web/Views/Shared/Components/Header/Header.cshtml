@@ -17,7 +17,7 @@
 						@if(User.Identity.IsAuthenticated)
 						{
 								<li>
-									<a asp-area="UserPanel" asp-controller="Account" asp-action="Register"> حساب کاربری </a></li>
+									<a asp-area="UserPanel" asp-controller="Home" asp-action="Index"> حساب کاربری </a></li>
 								<li>
 									<a asp-controller="Account" asp-action="Logout"> خروج </a>
 								</li>
@@ -240,7 +240,7 @@
 								@if (User.Identity.IsAuthenticated)
 								{
 									<li>
-										<a asp-area="UserPanel" asp-controller="Account" asp-action="Register"> حساب کاربری </a>
+										<a asp-area="UserPanel" asp-controller="Home" asp-action="Index"> حساب کاربری </a>
 									</li>
 									<li>
 										<a asp-controller="Account" asp-action="Logout"> خروج </a>

@@ -24,6 +24,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 		options.AccessDeniedPath = "/AccessDenied";
 	});
 
+
 builder.Services.AddDbContext<DBContext>(options =>
 {
 	options.UseSqlServer(configuration.GetConnectionString("DBConnectionStrings"));
@@ -32,10 +33,18 @@ builder.Services.AddDbContext<DBContext>(options =>
 var app = builder.Build();
 
 app.UseHttpsRedirection();
-app.UseRouting();
+
 app.UseStaticFiles();
+app.UseRouting();
+
+app.UseAuthentication();
+app.UseAuthorization();
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
+app.MapControllerRoute(
+    name: "areas",
+    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+    );
 app.Run();
