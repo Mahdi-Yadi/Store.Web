@@ -12,6 +12,10 @@ public interface IUserService
 
     User LoginUser(LoginDTO login);
 
+    EditProdileDTO GetUserInfo(int id);
+
+    bool EditUserProfile(EditProdileDTO editProdile);
+
     #endregion
 
 }

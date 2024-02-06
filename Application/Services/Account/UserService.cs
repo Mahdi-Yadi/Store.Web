@@ -2,6 +2,7 @@
 using DataLayer.Contexts;
 using DataLayer.Entities.Account;
 using Domain.Account;
+using Microsoft.Win32;
 namespace Application.Services.Account;
 public class UserService : IUserService
 {
@@ -42,6 +43,37 @@ public class UserService : IUserService
         string email = TextFixed.FixEmail(login.Email);
         string pass = Hashing.EncodePasswordMd5(login.Password);
 		return _db.Users.SingleOrDefault(u => u.Email == email && u.Password == pass);
+    }
+
+    public EditProdileDTO GetUserInfo(int id)
+    {
+        var user = _db.Users.SingleOrDefault(u => u.Id == id);
+        EditProdileDTO editProdile = new EditProdileDTO();
+        editProdile.Id = user.Id;
+        editProdile.UserName = user.UserName;
+        editProdile.Email = user.Email;
+        editProdile.Address = user.Address;
+        editProdile.AddressCode = user.AddressCode;
+        editProdile.PhoneNumber = user.PhoneNumber;
+        return editProdile;
+	}
+
+	public bool EditUserProfile(EditProdileDTO editProdile)
+    {
+        var user = _db.Users.FirstOrDefault(u => u.Id == editProdile.Id);
+        if (user == null)
+            return false;
+
+        user.UserName = editProdile.UserName;
+        user.Email = TextFixed.FixEmail(editProdile.Email);
+		user.Address = editProdile.Address;
+        user.AddressCode = editProdile.AddressCode;
+        user.PhoneNumber = editProdile.PhoneNumber;
+
+		_db.Update(user);
+        _db.SaveChanges();
+
+		return true;
     }
 
 	#endregion

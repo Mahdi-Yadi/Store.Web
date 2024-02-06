@@ -15,5 +15,17 @@ public class User
     [Required]
     [DataType(DataType.Password)]
     public string Password { get; set; }
+    [MaxLength(500)]
+    [MinLength(5)]
+    [DataType(DataType.Text)]
+    public string Address { get; set; }
+	[MaxLength(100)]
+	[MinLength(3)]
+	[DataType(DataType.Text)]
+	public string AddressCode { get; set; }
+	[MaxLength(40)]
+	[MinLength(3)]
+	[DataType(DataType.PhoneNumber)]
+	public string PhoneNumber { get; set; }
 	public DateTime CreateDate { get; set; }
 }

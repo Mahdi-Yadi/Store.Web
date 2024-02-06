@@ -1,0 +1,54 @@
+﻿@model Domain.Account.EditProdileDTO
+@{
+    ViewData["Title"] = "ویرایش اطلاعات";
+}
+<section class="main_content_area">
+	<div class="container">
+		<div class="account_dashboard">
+			<div class="row">
+				@await Component.InvokeAsync("Menu")
+				<div class="col-sm-12 col-md-9 col-lg-9">
+					<div class="tab-content dashboard_content">
+						<div class="tab-pane fade active show" id="account-details">
+							@if (ViewBag.isSuccess != null)
+							{
+								<div class="alert alert-success">
+									اطلاعات کاربری شما با موفقیت ثبت شد
+								</div>
+							}
+							<h3>جزئیات حساب </h3>
+							<div class="login">
+								<div class="login_form_container">
+									<div class="account_login_form">
+										<form asp-area="UserPanel" asp-controller="Profile" asp-action="EditProfile" method="post">
+											<input type="hidden" asp-for="Id" />
+											<br>
+											<label>نام و نام خانوادگی</label>
+											<input type="text" asp-for="UserName">
+											<span asp-validation-for="UserName"></span>
+											<label>ایمیل</label>
+											<input type="email" asp-for="Email">
+											<span asp-validation-for="Email"></span>
+											<label>آدرس</label>
+											<input type="text" asp-for="Address">
+											<span asp-validation-for="Address"></span>
+											<label>کد پستی</label>
+											<input type="text" asp-for="AddressCode">
+											<span asp-validation-for="AddressCode"></span>
+											<label>شماره موبایل</label>
+											<input type="number" asp-for="PhoneNumber">
+											<span asp-validation-for="PhoneNumber"></span>
+											<div class="save_button primary_btn default_button">
+												<button type="submit">ذخیره</button>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
