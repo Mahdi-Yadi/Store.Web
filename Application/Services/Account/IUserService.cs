@@ -16,6 +16,8 @@ public interface IUserService
 
     bool EditUserProfile(EditProdileDTO editProdile);
 
+    bool ChangeUserPassword(ChangePasswordDTO changePassword,int id);
+
     #endregion
 
 }

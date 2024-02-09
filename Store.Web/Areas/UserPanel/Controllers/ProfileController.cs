@@ -40,4 +40,19 @@ public class ProfileController : UserPanelBaseController
         return View();
     }
 
+    [HttpPost("ChangePassword")]
+    public IActionResult ChangePassword(ChangePasswordDTO changePassword)
+    {
+        var res = _userService.ChangeUserPassword(changePassword,User.GetUserId());
+        if(res)
+        {
+            ViewBag.success = true;
+        }
+        else
+        {
+            ViewBag.success = false;
+        }
+        return View(changePassword);
+    }
+
 }

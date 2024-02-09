@@ -45,7 +45,7 @@ public class AccountController : Controller
 
 
 	[HttpGet("Login")]
-	public IActionResult Login(bool registerUser = false)
+	public IActionResult Login(bool registerUser)
 	{
 		ViewBag.register = registerUser;
 		return View();
@@ -57,6 +57,7 @@ public class AccountController : Controller
 	{
 		if (ModelState.IsValid)
 		{
+			ViewBag.register = false;
 			var user = _userService.LoginUser(login);
 			if (user != null)
 			{
