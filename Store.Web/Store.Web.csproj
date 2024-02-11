@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\common\" />
-    <Folder Include="wwwroot\admin\" />
   </ItemGroup>
 
   <ItemGroup>

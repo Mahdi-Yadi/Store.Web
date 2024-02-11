@@ -18,6 +18,8 @@ public interface IUserService
 
     bool ChangeUserPassword(ChangePasswordDTO changePassword,int id);
 
+    bool CheckUser(string email);
+
     #endregion
 
 }

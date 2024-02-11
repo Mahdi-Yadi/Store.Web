@@ -28,4 +28,5 @@ public class User
 	[DataType(DataType.PhoneNumber)]
 	public string PhoneNumber { get; set; }
 	public DateTime CreateDate { get; set; }
+	public bool IsAdmin { get; set; }
 }

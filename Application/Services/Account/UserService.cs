@@ -90,6 +90,11 @@ public class UserService : IUserService
 		return true;
 	}
 
-	#endregion
+	public bool CheckUser(string email)
+	{
+		return _db.Users.Any(u => u.Email == email && u.IsAdmin);
+	}
+
+    #endregion
 
 }
