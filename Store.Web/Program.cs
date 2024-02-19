@@ -1,5 +1,6 @@
 
 using Application.Services.Account;
+using Application.Services.Categories;
 using DataLayer.Contexts;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +13,7 @@ IConfiguration configuration = new ConfigurationBuilder()
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddTransient<ICategoryService, CategoryService>();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
 	.AddCookie(options =>
