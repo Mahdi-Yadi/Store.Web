@@ -392,15 +392,18 @@
                                         {
                                             <li class="menu_item_children">
                                                 <a asp-controller="Products" asp-action="ProductsList" asp-route-category="@item.Name">@item.Name <i class="fa fa-angle-left"></i></a>
-                                                @if (item.ParentId == item.Id)
+                                                @if (cat.Any(c => c.ParentId != null))
                                                 {
-                                                    @foreach (var item2 in cat.Where(c => c.ParentId == item.Id))
-                                                    {
-                                                        <ul class="categories_mega_menu">
+                                                    <ul class="categories_mega_menu">
+                                                        @foreach (var item2 in cat.Where(c => c.ParentId == item.Id))
+                                                        {
                                                             <li class="menu_item_children">
-                                                                <a asp-controller="Products" asp-action="ProductsList" asp-route-category="@item2.Name">@item2.Name</a>
-                                                        </ul>
-                                                    }
+                                                                <a asp-controller="Products" asp-action="ProductsList" asp-route-category="@item2.Name">
+                                                                    @item2.Name
+                                                                </a>
+                                                            </li>
+                                                        }
+                                                    </ul>
                                                 }
                                             </li>
                                         }
