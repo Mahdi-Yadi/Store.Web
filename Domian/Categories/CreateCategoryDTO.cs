@@ -9,6 +9,8 @@ public class CreateCategoryDTO
     [Display(Name = "زیر گروه")]
     [MaxLength(3, ErrorMessage = "بیش از حد وارد کرده ای")]
     public int? ParentId { get; set; }
+
+    public int? Id { get; set; }
 }
 public enum CreateCategoryResult
 {
