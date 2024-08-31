@@ -3,7 +3,7 @@ namespace Store.Web.Areas.UserPanel.Controllers;
 public class OrdersController : UserPanelBaseController
 {
 
-    [HttpGet("OrdersList")]
+    //[HttpGet("OrdersList")]
     public IActionResult OrdersList()
     {
         return View();

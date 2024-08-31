@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Store.Web.Areas.UserPanel.Controllers;
 [Authorize]
 [Area("UserPanel")]
-[Route("Panel")]
+//[Route("Panel")]
 public class UserPanelBaseController : Controller
 {
     
