@@ -15,6 +15,8 @@ public class Product
 
     public decimal Price { get; set; }
 
+    public DateTime CreateDate { get; set; }
+
     public ICollection<ProductsCategories> ProductsCategories { get; set; }
 
 }

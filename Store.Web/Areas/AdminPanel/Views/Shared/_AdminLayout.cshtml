@@ -390,28 +390,29 @@
                     <i class="searchicon fa fa-search"></i>
                     <div class="searchhelper">به جستجوی صفحات، گزارشات، پیام ها و ایمیل خود بپردازید</div>
                 </div>
-                <!-- /Page Sidebar Header -->
-                <!-- Sidebar Menu -->
                 <ul class="nav sidebar-menu">
-                    <!--Dashboard-->
+              
                     <li>
                         <a asp-area="AdminPanel" asp-controller="Home" asp-action="Index">
                             <i class="menu-icon glyphicon glyphicon-home"></i>
                             <span class="menu-text"> داشبورد </span>
                         </a>
                     </li>
-                    <!--Databoxes-->
                     <li>
                         <a asp-area="AdminPanel" asp-controller="Category" asp-action="CategoriesList">
                             <i class="menu-icon glyphicon glyphicon-tasks"></i>
                             <span class="menu-text"> دسته بندی ها </span>
                         </a>
                     </li>
-                <!-- /Sidebar Menu -->
+                    <li>
+                        <a asp-area="AdminPanel" asp-controller="Products" asp-action="ProductsList">
+                            <i class="menu-icon glyphicon glyphicon-tasks"></i>
+                            <span class="menu-text"> محصولات </span>
+                        </a>
+                    </li>
+                </ul>
             </div>
-            <!-- /Page Sidebar -->
 
-           
 
             <!-- Chat Bar -->
             <div id="chatbar" class="page-chatbar">
