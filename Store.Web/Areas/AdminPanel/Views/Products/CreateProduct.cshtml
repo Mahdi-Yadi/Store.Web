@@ -1,7 +1,20 @@
-﻿
+﻿@model Domain.Products.CreateProductDTO
 @{
-    ViewData["Title"] = "CreateProduct";
+    ViewData["Title"] = "افزودن محصول";
 }
 
-<h2>CreateProduct</h2>
 
+<form method="post" asp-area="AdminPanel" asp-controller="Products" asp-action="CreateProduct" enctype="multipart/form-data">
+    
+    <input type="text" asp-for="Title" placeholder="Title" />
+    
+    <input type="text" asp-for="Price" placeholder="price"/>
+    
+    <textarea  asp-for="Description" placeholder="des">
+    </textarea>
+    
+    <input type="file" name="imageFile"/>
+
+    <button type="submit" class="btn btn-success">ثبت</button>
+
+</form>
