@@ -1,6 +1,7 @@
 ﻿using Application.Services.Products;
 using DataLayer.Contexts;
 using Domain.Products;
+using Humanizer;
 using Microsoft.AspNetCore.Mvc;
 namespace Store.Web.Areas.AdminPanel.Controllers;
 public class ProductsController : AdminBaseController
@@ -36,26 +37,62 @@ public class ProductsController : AdminBaseController
         if (res)
         {
             ViewBag.Mes = "محصول جدید ایجاد شد";
-            return Redirect(nameof(ProductsList));
+            return Redirect("/PanelAdmin/ProductsList");
         }
         else
         {
             ViewBag.Mes = "محصول جدید ایجاد نشد";
-            return Redirect(nameof(ProductsList));
+            return Redirect("/PanelAdmin/ProductsList");
         }
     }
 
-    [HttpGet("EditProduct")]
-    public IActionResult EditProduct()
+    [HttpGet("EditProduct/{id}")]
+    public IActionResult EditProduct(int id)
     {
-   
-        return View();
+        var product = _productService.GetProduct(id);
+
+        return View(product);
     }
 
-    [HttpGet("DeleteProduct")]
-    public IActionResult DeleteProduct()
+    [HttpPost("EditProduct/{id}")]
+    public IActionResult EditProduct(int id,EditProductDTO dto,IFormFile imageFile)
     {
-        return View();
+        var res = _productService.EditProduct(dto, imageFile);
+
+        if (res)
+        {
+            ViewBag.Mes = "محصول ویرایش شد";
+            return Redirect("/PanelAdmin/ProductsList");
+        }
+        else
+        {
+            ViewBag.Mes = "محصول ویرایش نشد";
+            return Redirect("/PanelAdmin/ProductsList");
+        }
+    }
+
+    [HttpGet("DeleteProduct/{id}")]
+    public IActionResult DeleteProduct(int id)
+    {
+        var product = _productService.GetProduct(id);
+        return View(product);
+    }
+
+    [HttpPost("DeleteProduct/{id}")]
+    public IActionResult DeleteProduct(int id,EditProductDTO dto)
+    {
+        var res = _productService.DeleteProduct(dto.ProductId);
+
+        if (res)
+        {
+            ViewBag.Mes = "محصول حذف شد";
+            return Redirect("/PanelAdmin/ProductsList");
+        }
+        else
+        {
+            ViewBag.Mes = "محصول حذف نشد";
+            return Redirect("/PanelAdmin/ProductsList");
+        }
     }
 
 }

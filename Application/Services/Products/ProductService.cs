@@ -28,7 +28,7 @@ public class ProductService : IProductService
             string path = "wwwroot/images/";
             var image = path + imageName;
 
-            using (var stream = new FileStream(image,FileMode.Create))
+            using (var stream = new FileStream(image, FileMode.Create))
             {
                 imageFile.CopyTo(stream);
             }
@@ -44,4 +44,74 @@ public class ProductService : IProductService
         return true;
     }
 
+    public EditProductDTO GetProduct(int id)
+    {
+        var product = _dbContext.Products.SingleOrDefault(x => x.Id == id);
+
+        EditProductDTO dto = new EditProductDTO();
+
+        if (product != null)
+        {
+            dto.ImageName = product.ImageName;
+            dto.Description = product.Description;
+            dto.Title = product.Title;
+            dto.Price = product.Price;
+            dto.ProductId = product.Id;
+        }
+
+        return dto;
+    }
+
+    public bool EditProduct(EditProductDTO dto, IFormFile imageFile)
+    {
+        var product = _dbContext.Products.SingleOrDefault(p => p.Id == dto.ProductId);
+
+        product.Title = dto.Title;
+        product.Description = dto.Description;
+        product.Price = dto.Price;
+
+        if (imageFile != null)
+        {
+            if (product.ImageName != null)
+            {
+                var pathOld = Path.Combine("wwwroot/images/" + product.ImageName);
+                if (File.Exists(pathOld))
+                {
+                    File.Delete(pathOld);
+                }
+            }
+
+            var imageName = Guid.NewGuid().ToString("N") + imageFile.FileName;
+            string path = "wwwroot/images/";
+            var image = path + imageName;
+
+            using (var stream = new FileStream(image, FileMode.Create))
+            {
+                imageFile.CopyTo(stream);
+            }
+            product.ImageName = imageName;
+        }
+        else
+        {
+            product.ImageName = dto.ImageName;
+        }
+
+        _dbContext.Products.Update(product);
+        _dbContext.SaveChanges();
+
+        return true;
+    }
+
+    public bool DeleteProduct(int id)
+    {
+        var product = _dbContext.Products.SingleOrDefault(p => p.Id == id);
+
+        if (product != null)
+        {
+            _dbContext.Products.Remove(product);
+            _dbContext.SaveChanges();
+            return true;
+        }
+        return false;
+    }
 }
