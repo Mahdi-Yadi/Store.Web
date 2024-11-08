@@ -1,4 +1,5 @@
 ﻿using DataLayer.Contexts;
+using DataLayer.Entities.Categories;
 using DataLayer.Entities.Products;
 using Domain.Products;
 using Microsoft.AspNetCore.Http;
@@ -22,6 +23,8 @@ public class ProductService : IProductService
         product.Title = dto.Title;
         product.Price = dto.Price;
 
+       
+
         if (imageFile != null)
         {
             var imageName = Guid.NewGuid().ToString("N") + imageFile.FileName;
@@ -41,6 +44,19 @@ public class ProductService : IProductService
 
         _dbContext.Products.Add(product);
         _dbContext.SaveChanges();
+
+        if (dto.catsid != null)
+        {
+            foreach (var id in dto.catsid)
+            {
+                ProductsCategories category = new ProductsCategories();
+                category.CategoryId = id;
+                category.ProductId = product.Id;
+                _dbContext.ProductsCategories.Add(category);
+            }
+            _dbContext.SaveChanges();
+        }
+
         return true;
     }
 
@@ -114,4 +130,11 @@ public class ProductService : IProductService
         }
         return false;
     }
+
+    public List<Category> GetCategories()
+    {
+        return _dbContext
+            .Categories.ToList();
+    }
+
 }

@@ -1,6 +1,8 @@
-﻿@model Domain.Products.CreateProductDTO
+﻿@using DataLayer.Entities.Categories
+@model Domain.Products.CreateProductDTO
 @{
     ViewData["Title"] = "افزودن محصول";
+    var cats = ViewBag.cats as List<Category>;
 }
 
 
@@ -14,6 +16,23 @@
     </textarea>
     
     <input type="file" name="imageFile"/>
+    
+    <br/>
+    
+    @if (cats != null)
+    {
+        @foreach (var item in cats)
+        {
+            <ul>
+                <li>
+                    <label>
+                        <input type="checkbox" id="checkbox_fixedbreadcrumbs" value="@item.Id" name="catsid">
+                        <span class="text"> @item.Name</span>
+                    </label>
+                </li>
+            </ul>
+        }
+    }
 
     <button type="submit" class="btn btn-success">ثبت</button>
 

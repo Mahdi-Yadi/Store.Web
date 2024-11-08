@@ -1,4 +1,5 @@
-﻿using Domain.Products;
+﻿using DataLayer.Entities.Categories;
+using Domain.Products;
 using Microsoft.AspNetCore.Http;
 namespace Application.Services.Products;
 public interface IProductService
@@ -11,5 +12,7 @@ public interface IProductService
     bool EditProduct(EditProductDTO dto,IFormFile imageFile);
 
     bool DeleteProduct(int id);
+
+    List<Category> GetCategories();
 
 }

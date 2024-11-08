@@ -9,4 +9,6 @@ public class CreateProductDTO
 
     public decimal Price { get; set; }
 
+    public List<int> catsid { get; set; }
+
 }

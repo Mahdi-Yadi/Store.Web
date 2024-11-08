@@ -1,7 +1,6 @@
 ﻿using Application.Services.Products;
 using DataLayer.Contexts;
 using Domain.Products;
-using Humanizer;
 using Microsoft.AspNetCore.Mvc;
 namespace Store.Web.Areas.AdminPanel.Controllers;
 public class ProductsController : AdminBaseController
@@ -27,6 +26,7 @@ public class ProductsController : AdminBaseController
     [HttpGet("CreateProduct")]
     public IActionResult CreateProduct()
     {
+        ViewBag.cats = _productService.GetCategories();
         return View();
     }
 
