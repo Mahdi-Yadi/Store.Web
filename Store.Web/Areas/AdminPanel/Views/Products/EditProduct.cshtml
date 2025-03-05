@@ -1,6 +1,9 @@
-﻿@model Domain.Products.EditProductDTO
+﻿@using DataLayer.Entities.Categories
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model Domain.Products.EditProductDTO
 @{
     ViewData["Title"] = "ویرایش محصول";
+    var cats = ViewBag.cats as List<Category>;
 }
 
 <form method="post" asp-area="AdminPanel" asp-controller="Products" asp-action="EditProduct" enctype="multipart/form-data">
@@ -17,6 +20,24 @@
     <img src="/images/@Model.ImageName" style="width: 50px; height:50px;" />
 
     <input type="file" name="imageFile" />
+    
+    <br/>
+    
+    @if (cats != null)
+    {
+        @foreach (var item in cats)
+        {
+            <ul>
+                <li>
+                    <label>
+                        <input type="checkbox" id="checkbox_fixedbreadcrumbs" value="@item.Id" name="catsid"
+                               @(Model.catsid.Any(c => c == item.Id) ? "checked" : "")>
+                        <span class="text"> @item.Name</span>
+                    </label>
+                </li>
+            </ul>
+        }
+    }
 
     <button type="submit" class="btn btn-primary">ویرایش</button>
 

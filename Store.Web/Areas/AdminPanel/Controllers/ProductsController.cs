@@ -34,6 +34,7 @@ public class ProductsController : AdminBaseController
     public IActionResult CreateProduct(CreateProductDTO dto,IFormFile imageFile)
     {
         var res = _productService.CreateProduct(dto, imageFile);
+        ViewBag.cats = _productService.GetCategories();
         if (res)
         {
             ViewBag.Mes = "محصول جدید ایجاد شد";
@@ -50,13 +51,14 @@ public class ProductsController : AdminBaseController
     public IActionResult EditProduct(int id)
     {
         var product = _productService.GetProduct(id);
-
+        ViewBag.cats = _productService.GetCategories();
         return View(product);
     }
 
     [HttpPost("EditProduct/{id}")]
     public IActionResult EditProduct(int id,EditProductDTO dto,IFormFile imageFile)
     {
+        ViewBag.cats = _productService.GetCategories();
         var res = _productService.EditProduct(dto, imageFile);
 
         if (res)

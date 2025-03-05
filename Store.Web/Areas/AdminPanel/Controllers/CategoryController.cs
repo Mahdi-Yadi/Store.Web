@@ -1,6 +1,5 @@
 ﻿using Application.Services.Categories;
 using Domain.Categories;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 namespace Store.Web.Areas.AdminPanel.Controllers;
 public class CategoryController : AdminBaseController

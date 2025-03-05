@@ -23,7 +23,7 @@ public class ProductService : IProductService
         product.Title = dto.Title;
         product.Price = dto.Price;
 
-       
+
 
         if (imageFile != null)
         {
@@ -68,6 +68,16 @@ public class ProductService : IProductService
 
         if (product != null)
         {
+            var catsId = _dbContext.ProductsCategories
+                .Where(a => a.ProductId == product.Id)
+                .Select(c => c.CategoryId)
+                .ToList();
+
+            if (catsId.Count != 0)
+            {
+                dto.catsid = catsId;
+            }
+
             dto.ImageName = product.ImageName;
             dto.Description = product.Description;
             dto.Title = product.Title;
@@ -112,6 +122,34 @@ public class ProductService : IProductService
             product.ImageName = dto.ImageName;
         }
 
+        if (dto.catsid != null)
+        {
+            var cats1 = _dbContext.ProductsCategories
+                .Where(a => a.ProductId == product.Id)
+                .ToList();
+
+            _dbContext.RemoveRange(cats1);
+            _dbContext.SaveChanges();
+
+            foreach (var id in dto.catsid)
+            {
+                ProductsCategories category = new ProductsCategories();
+                category.CategoryId = id;
+                category.ProductId = product.Id;
+                _dbContext.ProductsCategories.Add(category);
+            }
+
+            _dbContext.SaveChanges();
+        }
+        else
+        {
+            var cats = _dbContext.ProductsCategories.Where(
+                    a => a.ProductId == product.Id)
+                .ToList();
+            _dbContext.ProductsCategories.RemoveRange(cats);
+            _dbContext.SaveChanges();
+        }
+
         _dbContext.Products.Update(product);
         _dbContext.SaveChanges();
 
@@ -124,6 +162,16 @@ public class ProductService : IProductService
 
         if (product != null)
         {
+
+            var cats = _dbContext.ProductsCategories.Where(a => a.ProductId == product.Id)
+                .ToList();
+
+            if (cats.Count != 0)
+            {
+                _dbContext.RemoveRange(cats);
+                _dbContext.SaveChanges();
+            }
+
             _dbContext.Products.Remove(product);
             _dbContext.SaveChanges();
             return true;
