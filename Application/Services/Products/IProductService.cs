@@ -15,4 +15,6 @@ public interface IProductService
 
     List<Category> GetCategories();
 
+    List<ProductDto> GetProducts();
+
 }

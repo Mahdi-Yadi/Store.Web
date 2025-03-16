@@ -179,6 +179,34 @@ public class ProductService : IProductService
         return false;
     }
 
+    public List<ProductDto> GetProducts()
+    {
+        var products = _dbContext
+            .Products
+            .OrderByDescending(p=>p.CreateDate)
+            .ToList();
+
+        if (products.Count == 0)
+            return new List<ProductDto>();
+
+        List<ProductDto> dtos = new List<ProductDto>();
+
+        foreach (var item in products)
+        {
+            var a = new ProductDto()
+            {
+                Id = item.Id,
+                Description = item.Description,
+                ImageName = item.ImageName,
+                Price = item.Price,
+                Title = item.Title
+            };
+            dtos.Add(a);
+        }
+
+        return dtos;
+    }
+
     public List<Category> GetCategories()
     {
         return _dbContext
