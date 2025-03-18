@@ -13,6 +13,8 @@ public class Product
     [MaxLength(50)]
     public string ImageName { get; set; }
 
+    public bool IsSpecial { get; set; }
+
     public decimal Price { get; set; }
 
     public DateTime CreateDate { get; set; }

@@ -21,9 +21,15 @@ public class ProductController : Controller
         return View(products);
     }
 
-	[HttpGet("ProductDetail")]
-	public IActionResult ProductDetail()
+	[HttpGet("ProductDetail/{id}")]
+	public IActionResult ProductDetail(int id)
     {
-        return View();
+        var product = _productService.GetProductDetail(id);
+
+        if (product == null)
+            return Redirect("/");
+
+        return View(product);
     }
+
 }

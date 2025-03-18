@@ -14,6 +14,25 @@ public class ProductService : IProductService
         _dbContext = dbContext;
     }
 
+    public ProductDto GetProductDetail(int id)
+    {
+        var product = _dbContext.Products.FirstOrDefault(p => p.Id == id);
+
+        if (product == null)
+            return new ProductDto();
+
+        ProductDto dto = new ProductDto();
+
+        dto.Description = product.Description;
+        dto.ImageName = product.ImageName;
+        dto.Title = product.Title;
+        dto.Id = product.Id;
+        dto.Price = product.Price;
+        dto.IsSpecial = product.IsSpecial;
+
+        return dto;
+    }
+
     public bool CreateProduct(CreateProductDTO dto, IFormFile imageFile)
     {
         Product product = new Product();
@@ -22,8 +41,7 @@ public class ProductService : IProductService
         product.Description = dto.Description;
         product.Title = dto.Title;
         product.Price = dto.Price;
-
-
+        product.IsSpecial = dto.IsSpecial;
 
         if (imageFile != null)
         {
@@ -83,6 +101,7 @@ public class ProductService : IProductService
             dto.Title = product.Title;
             dto.Price = product.Price;
             dto.ProductId = product.Id;
+            dto.IsSpecial = product.IsSpecial;
         }
 
         return dto;
@@ -95,6 +114,7 @@ public class ProductService : IProductService
         product.Title = dto.Title;
         product.Description = dto.Description;
         product.Price = dto.Price;
+        product.IsSpecial = dto.IsSpecial;
 
         if (imageFile != null)
         {
@@ -184,6 +204,35 @@ public class ProductService : IProductService
         var products = _dbContext
             .Products
             .OrderByDescending(p=>p.CreateDate)
+            .ToList();
+
+        if (products.Count == 0)
+            return new List<ProductDto>();
+
+        List<ProductDto> dtos = new List<ProductDto>();
+
+        foreach (var item in products)
+        {
+            var a = new ProductDto()
+            {
+                Id = item.Id,
+                Description = item.Description,
+                ImageName = item.ImageName,
+                Price = item.Price,
+                Title = item.Title
+            };
+            dtos.Add(a);
+        }
+
+        return dtos;
+    }
+
+    public List<ProductDto> GetSpecialProducts()
+    {
+        var products = _dbContext
+            .Products
+            .OrderByDescending(p => p.CreateDate)
+            .Where(a => a.IsSpecial)
             .ToList();
 
         if (products.Count == 0)

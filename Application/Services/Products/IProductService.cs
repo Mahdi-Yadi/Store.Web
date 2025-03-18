@@ -17,4 +17,8 @@ public interface IProductService
 
     List<ProductDto> GetProducts();
 
+    List<ProductDto> GetSpecialProducts();
+
+    ProductDto GetProductDetail(int id);
+
 }

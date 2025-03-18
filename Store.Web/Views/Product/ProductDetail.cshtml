@@ -1,6 +1,6 @@
-﻿
+﻿@model Domain.Products.ProductDto
 @{
-    ViewData["Title"] = "جزییات محصول";
+    ViewData["Title"] = " جزییات محصول " + Model.Title;
 }
 <partial name="_PageNavbar" />
 
@@ -11,10 +11,10 @@
 				<div class="product-details-tab">
 					<div id="img-1" class="zoomWrapper single-zoom">
 						<a href="#">
-							<img id="zoom1" src="/site/img/product/productbig5.jpg" data-zoom-image="/site/img/product/productbig5.jpg" alt="big-1">
+							<img id="zoom1" src="/images/@Model.ImageName" data-zoom-image="/images/@Model.ImageName" alt="big-1">
 						</a>
 					</div>
-					<div class="single-zoom-thumb">
+					@* <div class="single-zoom-thumb">
 						<ul class="s-tab-zoom owl-carousel single-product-active" id="gallery_01">
 							<li>
 								<a href="#" class="elevatezoom-gallery active" data-update="" data-image="/site/img/product/productbig.jpg" data-zoom-image="/site/img/product/productbig.jpg">
@@ -41,14 +41,14 @@
 
 							</li>
 						</ul>
-					</div>
+					</div> *@
 				</div>
 			</div>
 			<div class="col-lg-6 col-md-6">
 				<div class="product_d_right">
 					<form action="#">
 
-						<h1>ماشین ظرف شویی سامسونگ DM2019</h1>
+						<h1>@Model.Title</h1>
 
 						<div class=" product_ratting">
 							<ul>
@@ -62,12 +62,14 @@
 
 						</div>
 						<div class="price_box">
-							<span class="current_price">70,000 تومان</span>
-							<span class="old_price">80,000 تومان</span>
+							<span class="current_price">@Model.Price.ToString("#,0") تومان</span>
+							@* <span class="old_price">80,000 تومان</span> *@
 
 						</div>
 						<div class="product_desc">
-							<p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده </p>
+                            <p>
+								@Html.Raw(Model.Description)
+							</p>
 						</div>
 						<div class="product_variant color">
 							<h3>گزینه های در دسترس</h3>

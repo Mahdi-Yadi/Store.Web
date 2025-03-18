@@ -10,8 +10,13 @@
     
     <input type="text" asp-for="Title" placeholder="Title" />
     
-    <input type="text" asp-for="Price" placeholder="price"/>
+    <input type="text" asp-for="Price" placeholder="price" />
     
+    <label>
+        <input type="checkbox" id="checkbox_fixedheader" asp-for="IsSpecial">
+        <span class="text">ویژه</span>
+    </label>
+
     <textarea  asp-for="Description" placeholder="des" style="width: 100px; height: 100px;">
     </textarea>
     
