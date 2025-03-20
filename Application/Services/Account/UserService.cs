@@ -2,10 +2,12 @@
 using DataLayer.Contexts;
 using DataLayer.Entities.Account;
 using Domain.Account;
+using Domain.UsersAdmin;
 using Microsoft.Win32;
 namespace Application.Services.Account;
 public class UserService : IUserService
 {
+
 	#region Constructor
 
 	private readonly DBContext _db;
@@ -94,6 +96,35 @@ public class UserService : IUserService
 	{
 		return _db.Users.Any(u => u.Email == email && u.IsAdmin);
 	}
+
+    #endregion
+
+    #region Users
+
+    public List<UserDto> GetUsers()
+    {
+        var users = _db.Users
+            .ToList();
+
+        if (users.Count == 0)
+            return new List<UserDto>();
+
+        List<UserDto> dtos = new List<UserDto>();
+
+        foreach (var item in users)
+        {
+            var a = new UserDto()
+            {
+				Id= item.Id,
+				Email = item.Email,
+				FullName = item.UserName,
+				PhoneNumber = item.PhoneNumber
+            };
+			dtos.Add(a);
+        }
+
+        return dtos;
+    }
 
     #endregion
 

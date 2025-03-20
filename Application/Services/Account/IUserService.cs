@@ -1,5 +1,6 @@
 ﻿using DataLayer.Entities.Account;
 using Domain.Account;
+using Domain.UsersAdmin;
 namespace Application.Services.Account;
 public interface IUserService
 {
@@ -19,6 +20,13 @@ public interface IUserService
     bool ChangeUserPassword(ChangePasswordDTO changePassword,int id);
 
     bool CheckUser(string email);
+
+    #endregion
+
+
+    #region Users
+
+    List<UserDto> GetUsers();
 
     #endregion
 
