@@ -3,6 +3,8 @@ using DataLayer.Entities.Categories;
 using DataLayer.Entities.Products;
 using Domain.Products;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
+
 namespace Application.Services.Products;
 public class ProductService : IProductService
 {
@@ -199,7 +201,7 @@ public class ProductService : IProductService
         return false;
     }
 
-    public List<ProductDto> GetProducts()
+    public List<ProductDto> GetLastProducts()
     {
         var products = _dbContext
             .Products
@@ -248,12 +250,23 @@ public class ProductService : IProductService
                 Description = item.Description,
                 ImageName = item.ImageName,
                 Price = item.Price,
-                Title = item.Title
+                Title = item.Title,
+                DiscountPercentage = GetDiscount(item.Id)
             };
             dtos.Add(a);
         }
 
         return dtos;
+    }
+
+    private int GetDiscount(int id)
+    {
+        var dis = _dbContext.Discounts
+            .FirstOrDefault(a => a.ExpireDate > DateTime.Now && a.IsDeleted == false && a.ProductId == id);
+        if (dis == null)
+            return 0;
+
+        return dis.DiscountPercentage;
     }
 
     public List<Category> GetCategories()

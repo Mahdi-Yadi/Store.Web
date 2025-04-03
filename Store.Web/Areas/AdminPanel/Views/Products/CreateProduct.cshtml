@@ -5,7 +5,6 @@
     var cats = ViewBag.cats as List<Category>;
 }
 
-
 <form method="post" asp-area="AdminPanel" asp-controller="Products" asp-action="CreateProduct" enctype="multipart/form-data">
     
     <input type="text" asp-for="Title" placeholder="Title" />
@@ -16,11 +15,6 @@
         <input type="checkbox" id="checkbox_fixedheader" asp-for="IsSpecial">
         <span class="text">ویژه</span>
     </label>
-
-    <textarea  asp-for="Description" placeholder="des" style="width: 100px; height: 100px;">
-    </textarea>
-    
-    <input type="file" name="imageFile"/>
     
     <br/>
     
@@ -38,6 +32,13 @@
             </ul>
         }
     }
+    
+    <input type="file" name="imageFile"/>
+
+    <br />
+    <textarea  asp-for="Description" placeholder="des" style="width: 200px; height: 300px;">
+    </textarea>
+
 
     <button type="submit" class="btn btn-success">ثبت</button>
 

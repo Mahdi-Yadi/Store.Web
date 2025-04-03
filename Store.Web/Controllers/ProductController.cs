@@ -16,7 +16,7 @@ public class ProductController : Controller
 	public IActionResult ProductsList()
     {
 
-        List<ProductDto> products = _productService.GetProducts();
+        List<ProductDto> products = _productService.GetLastProducts();
 
         return View(products);
     }

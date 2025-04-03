@@ -1,5 +1,6 @@
 ﻿using DataLayer.Entities.Account;
 using DataLayer.Entities.Categories;
+using DataLayer.Entities.Discounts;
 using DataLayer.Entities.Products;
 using Microsoft.EntityFrameworkCore;
 namespace DataLayer.Contexts;
@@ -21,6 +22,9 @@ public class DBContext : DbContext
 
 	public DbSet<Product> Products { get; set; }
 	public DbSet<ProductsCategories> ProductsCategories { get; set; }
+
+    // Discount
+    public DbSet<Discount> Discounts { get; set; }
 
 
 

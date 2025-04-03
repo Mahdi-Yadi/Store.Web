@@ -7,5 +7,5 @@ public class ProductDto
     public string ImageName { get; set; }
     public bool IsSpecial { get; set; }
     public decimal Price { get; set; }
-
+    public int DiscountPercentage { get; set; }
 }

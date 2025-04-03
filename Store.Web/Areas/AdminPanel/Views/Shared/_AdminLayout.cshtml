@@ -299,7 +299,7 @@
                                         <img src="/admin/img/avatars/adam-jansen.jpg">
                                     </div>
                                     <section>
-                                        <h2><span class="profile"><span>دیوید استیونسون </span></span></h2>
+                                        <h2><span class="profile"><span>@User.Identity.Name</span></span></h2>
                                     </section>
                                 </a>
                                 <!--Login Area Dropdown-->
@@ -337,7 +337,7 @@
                                     </li>
                                     <!--/Theme Selector Area-->
                                     <li class="dropdown-footer">
-                                        <a href="login.html">
+                                        <a asp-controller="Account" asp-action="Logout">
                                             خروج از سیستم
                                         </a>
                                     </li>

@@ -15,7 +15,7 @@ public interface IProductService
 
     List<Category> GetCategories();
 
-    List<ProductDto> GetProducts();
+    List<ProductDto> GetLastProducts();
 
     List<ProductDto> GetSpecialProducts();
 
