@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using DataLayer.Entities.Products;
-
 namespace DataLayer.Entities.Discounts;
 public class Discount
 {

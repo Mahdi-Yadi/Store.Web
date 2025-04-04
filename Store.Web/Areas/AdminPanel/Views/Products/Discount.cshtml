@@ -1,0 +1,16 @@
+﻿@model DataLayer.Entities.Discounts.Discount
+@{
+    ViewData["Title"] = "افزودن تخفیف";
+}
+<form method="post" asp-area="AdminPanel" asp-controller="Products" asp-action="Discount" >
+    <input type="hidden" asp-for="ProductId" />
+
+    <input type="date" asp-for="ExpireDate" placeholder="زمان انقضای تخفیف" />
+
+    <input type="text" asp-for="DiscountPercentage" placeholder="درصد تخفیف" />
+
+    <br />
+
+    <button type="submit" class="btn btn-primary">ثبت</button>
+
+</form>

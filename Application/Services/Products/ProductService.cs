@@ -1,5 +1,6 @@
 ﻿using DataLayer.Contexts;
 using DataLayer.Entities.Categories;
+using DataLayer.Entities.Discounts;
 using DataLayer.Entities.Products;
 using Domain.Products;
 using Microsoft.AspNetCore.Http;
@@ -251,7 +252,7 @@ public class ProductService : IProductService
                 ImageName = item.ImageName,
                 Price = item.Price,
                 Title = item.Title,
-                DiscountPercentage = GetDiscount(item.Id)
+                Discount = GetDiscount(item.Id)
             };
             dtos.Add(a);
         }
@@ -259,20 +260,69 @@ public class ProductService : IProductService
         return dtos;
     }
 
-    private int GetDiscount(int id)
+    private Discount GetDiscount(int id)
     {
         var dis = _dbContext.Discounts
             .FirstOrDefault(a => a.ExpireDate > DateTime.Now && a.IsDeleted == false && a.ProductId == id);
-        if (dis == null)
-            return 0;
 
-        return dis.DiscountPercentage;
+        if (dis == null)
+            return new Discount();
+
+        return dis;
     }
 
     public List<Category> GetCategories()
     {
         return _dbContext
             .Categories.ToList();
+    }
+
+    public bool AddDiscount(Discount dis)
+    {
+        if (dis.ProductId == 0)
+            return false;
+
+        var OldDis = _dbContext.Discounts
+            .FirstOrDefault(a => a.ProductId == dis.ProductId 
+                                 && a.IsDeleted == false 
+                                 && a.ExpireDate > DateTime.Now);
+
+        if (OldDis != null)
+        {
+            OldDis.IsDeleted = true;
+
+            _dbContext.Discounts.Update(OldDis);
+            _dbContext.SaveChanges();
+        }
+
+        Discount d = new Discount();
+
+        d.ExpireDate = dis.ExpireDate;
+        d.DiscountPercentage = dis.DiscountPercentage;
+        d.IsDeleted = false;
+        d.ProductId = dis.ProductId;
+
+        _dbContext.Discounts.Add(d);
+        _dbContext.SaveChanges();
+        return true;
+    }
+
+    public bool DeleteDiscount(int id)
+    {
+        var dis = _dbContext
+            .Discounts
+            .FirstOrDefault(a => a.ProductId == id
+            && a.ExpireDate > DateTime.Now
+            && a.IsDeleted == false);
+
+        if (dis == null)
+            return true;
+
+        dis.IsDeleted = true;
+
+        _dbContext.Discounts.Update(dis);
+        _dbContext.SaveChanges();
+        return true;
     }
 
 }

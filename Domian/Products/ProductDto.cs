@@ -1,4 +1,5 @@
-﻿namespace Domain.Products;
+﻿using DataLayer.Entities.Discounts;
+namespace Domain.Products;
 public class ProductDto
 {
     public int Id { get; set; }
@@ -7,5 +8,5 @@ public class ProductDto
     public string ImageName { get; set; }
     public bool IsSpecial { get; set; }
     public decimal Price { get; set; }
-    public int DiscountPercentage { get; set; }
+    public Discount Discount { get; set; }
 }

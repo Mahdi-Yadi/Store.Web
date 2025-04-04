@@ -22,6 +22,7 @@ public class Product
     public DateTime CreateDate { get; set; }
 
     public ICollection<ProductsCategories> ProductsCategories { get; set; }
+
     public ICollection<Discount> Discounts { get; set; }
 
 }

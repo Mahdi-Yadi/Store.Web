@@ -1,4 +1,5 @@
 ﻿using DataLayer.Entities.Categories;
+using DataLayer.Entities.Discounts;
 using Domain.Products;
 using Microsoft.AspNetCore.Http;
 namespace Application.Services.Products;
@@ -20,5 +21,9 @@ public interface IProductService
     List<ProductDto> GetSpecialProducts();
 
     ProductDto GetProductDetail(int id);
+
+    bool AddDiscount(Discount dis);
+
+    bool DeleteDiscount(int id);
 
 }

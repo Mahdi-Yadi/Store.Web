@@ -1,7 +1,10 @@
 ﻿using Application.Services.Products;
 using DataLayer.Contexts;
+using DataLayer.Entities.Discounts;
 using Domain.Products;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
 namespace Store.Web.Areas.AdminPanel.Controllers;
 public class ProductsController : AdminBaseController
 {
@@ -18,7 +21,10 @@ public class ProductsController : AdminBaseController
     [HttpGet("ProductsList")]
     public IActionResult ProductsList()
     {
-        var products = _dbContext.Products.ToList();
+        var products = _dbContext
+            .Products
+            .Include(a => a.Discounts.Where(a => a.IsDeleted == false && a.ExpireDate > DateTime.Now))
+            .ToList();
 
         return View(products);
     }
@@ -93,6 +99,64 @@ public class ProductsController : AdminBaseController
         else
         {
             ViewBag.Mes = "محصول حذف نشد";
+            return Redirect("/PanelAdmin/ProductsList");
+        }
+    }
+
+    [HttpGet("Discount/{id}")]
+    public IActionResult Discount(int id)
+    {
+        Discount dis = new Discount();
+
+        dis.ProductId = id;
+
+        return View(dis);
+    }
+
+    [HttpPost("Discount/{id}")]
+    public IActionResult Discount(Discount dis, int id)
+    {
+        dis.ProductId = id;
+
+        if (ModelState.IsValid)
+        {
+            var res = _productService.AddDiscount(dis);
+            if (res)
+            {
+                ViewBag.Mes = "تخفیف اضافه شد";
+                return Redirect("/PanelAdmin/ProductsList");
+            }
+            else
+            {
+                ViewBag.Mes = "تخفیف اضافه نشد";
+                return Redirect("/PanelAdmin/ProductsList");
+            }
+        }
+
+        return View(dis);
+    }
+
+    [HttpGet("DeleteDiscount/{id}")]
+    public IActionResult DeleteDiscount(int id,string title)
+    {
+        ViewBag.Producttitle = title;
+        ViewBag.id = id;
+        return View();
+    }
+
+    [HttpPost("DeleteDiscount/{id}")]
+    public IActionResult DeleteDiscount(int id)
+    {
+        var res = _productService.DeleteDiscount(id);
+
+        if (res)
+        {
+            ViewBag.Mes = "تخفیف حذف شد";
+            return Redirect("/PanelAdmin/ProductsList");
+        }
+        else
+        {
+            ViewBag.Mes = "تخفیف حذف نشد";
             return Redirect("/PanelAdmin/ProductsList");
         }
     }

@@ -65,6 +65,15 @@
                                         <a asp-area="AdminPanel" asp-controller="Products" asp-action="DeleteProduct" asp-route-id="@item.Id" class="btn btn-danger btn-xs delete">
                                             <i class="fa fa-trash-o"></i> حذف
                                         </a>
+                                        <a asp-area="AdminPanel" asp-controller="Products" asp-action="Discount" asp-route-id="@item.Id" class="btn btn-primary btn-xs">
+                                            <i class="fa fa-dollar"></i> تخفیف
+                                        </a>
+                                        @if (item.Discounts.Count > 0)
+                                        {
+                                            <a asp-area="AdminPanel" asp-controller="Products" asp-action="DeleteDiscount" asp-route-id="@item.Id" asp-route-title="@item.Title" class="btn btn-darkorange btn-xs">
+                                                <i class="fa fa-trash"></i> حذف تخفیف
+                                            </a>
+                                        }
                                     </td>
                                 </tr>
                             }

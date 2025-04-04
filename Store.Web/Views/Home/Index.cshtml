@@ -158,26 +158,37 @@
                                 </div>
                                 <div class="action_links">
                                     <ul>
-                                        <li class="wishlist"><a href="wishlist.html" title="افزودن به علاقه‌مندی‌ها"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
-                                        <li class="compare"><a href="#" title="مقایسه"><span class="ion-levels"></span></a></li>
+                                        <li class="wishlist">
+                                            <a href="wishlist.html" title="افزودن به علاقه‌مندی‌ها">
+                                                <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                        <li class="compare">
+                                            <a href="#" title="مقایسه"><span class="ion-levels"></span></a>
+                                        </li>
                                         <li class="quick_button">
-                                            <a href="#" data-toggle="modal" data-target="#modal_box" title="مشاهده سریع"> <span class="ion-ios-search-strong"></span></a>
+                                            <a href="#" data-toggle="modal" data-target="#modal_box" title="مشاهده سریع">
+                                                 <span class="ion-ios-search-strong"></span>
+                                            </a>
                                         </li>
                                     </ul>
                                 </div>
                                 @*      <div class="add_to_cart">
                                 <a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
                             </div> *@
-                                <div class="product_timing">
-                                    <div data-countdown="2043/12/15"></div>
-                                </div>
+                                @if (item.Discount.DiscountPercentage != 0)
+                                {
+                                    <div class="product_timing">
+                                        <div data-countdown="@item.Discount.ExpireDate.ToString("yyyy/MM/dd")"></div>
+                                    </div>
+                                }
                             </div>
                             <figcaption class="product_content">
                                 <div class="price_box">
-                                    @if (item.DiscountPercentage != 0)
+                                    @if (item.Discount.DiscountPercentage != 0)
                                     {
                                         <span class="old_price">@item.Price.ToString("#,0") تومان</span>
-                                        <span class="current_price">@(((item.Price - (item.Price * item.DiscountPercentage) / 100)).ToString("#,0")) تومان</span>
+                                        <span class="current_price">@(((item.Price - (item.Price * item.Discount.DiscountPercentage) / 100)).ToString("#,0")) تومان</span>
                                     }
                                     else
                                     {
