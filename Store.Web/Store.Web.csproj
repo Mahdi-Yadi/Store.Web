@@ -7,7 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\common\" />
+    <Compile Remove="wwwroot\common\**" />
+    <Content Remove="wwwroot\common\**" />
+    <EmbeddedResource Remove="wwwroot\common\**" />
+    <None Remove="wwwroot\common\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 

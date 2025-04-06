@@ -15,6 +15,7 @@
     <link href="/admin/css/bootstrap-rtl.min.css" rel="stylesheet" />
     <link href="/admin/css/font-awesome.min.css" rel="stylesheet" />
     <link href="/admin/css/weather-icons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/lib/persianDatepicker-master/css/persianDatepicker-default.css">
 
     <!--Fonts-->
   @*   <style>
@@ -729,6 +730,7 @@
     <script src="/admin/js/charts/flot/jquery.flot.pie.js"></script>
     <script src="/admin/js/charts/flot/jquery.flot.tooltip.js"></script>
     <script src="/admin/js/charts/flot/jquery.flot.orderBars.js"></script>
+    <script src="/lib/persianDatepicker-master/js/persianDatepicker.min.js"></script>
 
     <script>
 
@@ -1016,7 +1018,7 @@
         InitiateSparklineCharts.init();
     </script>
 
-    
+    @await RenderSectionAsync("Scripts",false)
 </body>
 <!--  /Body -->
 </html>

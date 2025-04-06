@@ -1,4 +1,5 @@
-﻿using DataLayer.Contexts;
+﻿using Application.Tools;
+using DataLayer.Contexts;
 using DataLayer.Entities.Categories;
 using DataLayer.Entities.Discounts;
 using DataLayer.Entities.Products;
@@ -297,7 +298,7 @@ public class ProductService : IProductService
 
         Discount d = new Discount();
 
-        d.ExpireDate = dis.ExpireDate;
+        d.ExpireDate = dis.ExpireDate.ToMiladi();
         d.DiscountPercentage = dis.DiscountPercentage;
         d.IsDeleted = false;
         d.ProductId = dis.ProductId;
