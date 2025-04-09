@@ -1,4 +1,3 @@
-
 using Application.Services.Account;
 using Application.Services.Categories;
 using Application.Services.Products;
@@ -28,7 +27,6 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 		options.AccessDeniedPath = "/AccessDenied";
 	});
 
-
 builder.Services.AddDbContext<DBContext>(options =>
 {
 	options.UseSqlServer(configuration.GetConnectionString("DBConnectionStrings"));
@@ -47,8 +45,10 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
 app.MapControllerRoute(
     name: "areas",
     pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
     );
+
 app.Run();

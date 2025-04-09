@@ -18,12 +18,18 @@ public interface IProductService
 
     List<ProductDto> GetLastProducts();
 
+    List<ProductDto> GetProductsHasDiscount();
+
     List<ProductDto> GetSpecialProducts();
+
+    List<ProductDto> GetPopularProducts();
 
     ProductDto GetProductDetail(int id);
 
     bool AddDiscount(Discount dis);
 
     bool DeleteDiscount(int id);
+
+    void UpdateVisit(int id);
 
 }

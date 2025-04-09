@@ -18,6 +18,10 @@ public class HomeController : Controller
 
         ViewBag.last = _productService.GetLastProducts();
 
+        ViewBag.discount = _productService.GetProductsHasDiscount();
+
+        ViewBag.popular = _productService.GetPopularProducts();
+
         return View();
     }
 }

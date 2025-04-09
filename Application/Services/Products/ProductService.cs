@@ -6,7 +6,6 @@ using DataLayer.Entities.Products;
 using Domain.Products;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-
 namespace Application.Services.Products;
 public class ProductService : IProductService
 {
@@ -33,6 +32,7 @@ public class ProductService : IProductService
         dto.Id = product.Id;
         dto.Price = product.Price;
         dto.IsSpecial = product.IsSpecial;
+        dto.TotalVisit = product.TotalVisit;
 
         return dto;
     }
@@ -223,7 +223,8 @@ public class ProductService : IProductService
                 Description = item.Description,
                 ImageName = item.ImageName,
                 Price = item.Price,
-                Title = item.Title
+                Title = item.Title,
+                Discount = GetDiscount(item.Id)
             };
             dtos.Add(a);
         }
@@ -237,6 +238,65 @@ public class ProductService : IProductService
             .Products
             .OrderByDescending(p => p.CreateDate)
             .Where(a => a.IsSpecial)
+            .ToList();
+
+        if (products.Count == 0)
+            return new List<ProductDto>();
+
+        List<ProductDto> dtos = new List<ProductDto>();
+
+        foreach (var item in products)
+        {
+            var a = new ProductDto()
+            {
+                Id = item.Id,
+                Description = item.Description,
+                ImageName = item.ImageName,
+                Price = item.Price,
+                Title = item.Title,
+                Discount = GetDiscount(item.Id)
+            };
+            dtos.Add(a);
+        }
+
+        return dtos;
+    }
+
+    public List<ProductDto> GetProductsHasDiscount()
+    {
+        var discounts = _dbContext
+            .Discounts
+            .Where(c => c.IsDeleted == false && c.ExpireDate > DateTime.Now && c.DiscountPercentage != 0)
+            .Include(a=> a.Product)
+            .ToList();
+
+        if (discounts.Count == 0)
+            return new List<ProductDto>();
+
+        List<ProductDto> dtos = new List<ProductDto>();
+
+        foreach (var item in discounts)
+        {
+            var a = new ProductDto()
+            {
+                Id = item.Product.Id,
+                Description = item.Product.Description,
+                ImageName = item.Product.ImageName,
+                Price = item.Product.Price,
+                Title = item.Product.Title,
+                Discount = GetDiscount(item.Product.Id)
+            };
+            dtos.Add(a);
+        }
+
+        return dtos;
+    }
+
+    public List<ProductDto> GetPopularProducts()
+    {
+        var products = _dbContext
+            .Products
+            .OrderByDescending(p => p.TotalVisit)
             .ToList();
 
         if (products.Count == 0)
@@ -326,4 +386,19 @@ public class ProductService : IProductService
         return true;
     }
 
+    public void UpdateVisit(int id)
+    {
+        var p = _dbContext
+            .Products
+            .FirstOrDefault(a => a.Id == id);
+
+        if (p != null)
+        {
+            p.TotalVisit += 1;
+
+            _dbContext.Products.Update(p);
+            _dbContext.SaveChanges();
+        }
+
+    }
 }

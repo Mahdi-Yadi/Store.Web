@@ -133,7 +133,9 @@
         </div>
     </div>
 </div>
-
+@{
+    List<ProductDto> discount = ViewBag.discount as List<ProductDto>;
+}
 <section class="product_area mb-46">
     <div class="container">
         <div class="row">
@@ -144,9 +146,9 @@
             </div>
         </div>
         <div class="product_carousel product_column5 owl-carousel">
-            @if (specialProducts != null)
+            @if (discount != null)
             {
-                @foreach (var item in specialProducts)
+                @foreach (var item in discount)
                 {
                     <article class="single_product">
                         <figure>
@@ -361,8 +363,15 @@
                                 </div>
                                 <figcaption class="product_content">
                                     <div class="price_box">
-                                        @* <span class="old_price">86,000 تومان</span> *@
-                                        <span class="current_price">@item.Price.ToString("#,0") تومان</span>
+                                        @if (item.Discount.DiscountPercentage != 0)
+                                        {
+                                            <span class="old_price">@item.Price.ToString("#,0") تومان</span>
+                                            <span class="current_price">@(((item.Price - (item.Price * item.Discount.DiscountPercentage) / 100)).ToString("#,0")) تومان</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="current_price">@item.Price.ToString("#,0") تومان</span>
+                                        }
                                     </div>
                                     <h3 class="product_name">
                                         <a asp-controller="Product" asp-action="ProductDetail" asp-route-id="@item.Id">
@@ -398,8 +407,8 @@
                     <article class="single_product">
                         <figure>
                             <div class="product_thumb">
-                                <a class="primary_img" href="product-details.html"><img src="/images/@item.ImageName" alt="@item.Title"></a>
-                                <a class="secondary_img" href="product-details.html"><img src="/images/@item.ImageName" alt=""></a>
+                                <a class="primary_img" asp-controller="Product" asp-action="ProductDetail" asp-route-id="@item.Id"><img src="/images/@item.ImageName" alt="@item.Title"></a>
+                                <a class="secondary_img" asp-controller="Product" asp-action="ProductDetail" asp-route-id="@item.Id"><img src="/images/@item.ImageName" alt=""></a>
                                 <div class="label_product">
                                     <span class="label_sale">فروش</span>
                                 </div>
@@ -418,11 +427,18 @@
                             </div>
                             <figcaption class="product_content">
                                 <div class="price_box">
-                                    <span class="old_price">0000 تومان</span>
-                                    <span class="current_price">@item.Price.ToString("#,0") تومان</span>
+                                    @if (item.Discount.DiscountPercentage != 0)
+                                    {
+                                        <span class="old_price">@item.Price.ToString("#,0") تومان</span>
+                                        <span class="current_price">@(((item.Price - (item.Price * item.Discount.DiscountPercentage) / 100)).ToString("#,0")) تومان</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="current_price">@item.Price.ToString("#,0") تومان</span>
+                                    }
                                 </div>
                                 <h3 class="product_name">
-                                    <a href="product-details.html">
+                                    <a asp-controller="Product" asp-action="ProductDetail" asp-route-id="@item.Id">
                                         @item.Title
                                     </a>
                                 </h3>
@@ -455,226 +471,65 @@
         </div>
     </div>
 </div>
-
+@{
+    List<ProductDto> popular = ViewBag.popular as List<ProductDto>;
+}
 <section class="product_area mb-46">
     <div class="container">
         <div class="row">
             <div class="col-lg-9 col-md-12">
                 <div class="product_left_area">
                     <div class="section_title">
-                        <h2>موبایل و تبلت</h2>
+                        <h2>محبوب ترین</h2>
                     </div>
                     <div class="product_carousel product_column4 owl-carousel">
-                        <article class="single_product">
-                            <figure>
-                                <div class="product_thumb">
-                                    <a class="primary_img" href="product-details.html"><img src="~/site/img/product/product1.jpg" alt=""></a>
-                                    <a class="secondary_img" href="product-details.html"><img src="~/site/img/product/product2.jpg" alt=""></a>
-                                    <div class="label_product">
-                                        <span class="label_sale">فروش</span>
-                                    </div>
-                                    <div class="action_links">
-                                        <ul>
-                                            <li class="wishlist"><a href="wishlist.html" title="افزودن به علاقه‌مندی‌ها"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
-                                            <li class="compare"><a href="#" title="مقایسه"><span class="ion-levels"></span></a></li>
-                                            <li class="quick_button">
-                                                <a href="#" data-toggle="modal" data-target="#modal_box" title="مشاهده سریع"> <span class="ion-ios-search-strong"></span></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="add_to_cart">
-                                        <a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
-                                    </div>
-                                </div>
-                                <figcaption class="product_content">
-                                    <div class="price_box">
-                                        <span class="old_price">86,000 تومان</span>
-                                        <span class="current_price">79,000 تومان</span>
-                                    </div>
-                                    <h3 class="product_name"><a href="product-details.html">گوشی موبایل شیائومی مدل MI 9 Lite</a></h3>
-                                </figcaption>
-                            </figure>
-                        </article>
-                        <article class="single_product">
-                            <figure>
-                                <div class="product_thumb">
-                                    <a class="primary_img" href="product-details.html"><img src="~/site/img/product/product3.jpg" alt=""></a>
-                                    <a class="secondary_img" href="product-details.html"><img src="~/site/img/product/product4.jpg" alt=""></a>
-                                    <div class="label_product">
-                                        <span class="label_sale">فروش</span>
-                                    </div>
-                                    <div class="action_links">
-                                        <ul>
-                                            <li class="wishlist"><a href="wishlist.html" title="افزودن به علاقه‌مندی‌ها"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
-                                            <li class="compare"><a href="#" title="مقایسه"><span class="ion-levels"></span></a></li>
-                                            <li class="quick_button">
-                                                <a href="#" data-toggle="modal" data-target="#modal_box" title="مشاهده سریع"> <span class="ion-ios-search-strong"></span></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="add_to_cart">
-                                        <a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
-                                    </div>
-                                </div>
-                                <figcaption class="product_content">
-                                    <div class="price_box">
-                                        <span class="old_price">86,000 تومان</span>
-                                        <span class="current_price">79,000 تومان</span>
-                                    </div>
-                                    <h3 class="product_name"><a href="product-details.html">هندزفری بی سیم شیائومی مدل 2019</a></h3>
-                                </figcaption>
-                            </figure>
-                        </article>
-                        <article class="single_product">
-                            <figure>
-                                <div class="product_thumb">
-                                    <a class="primary_img" href="product-details.html"><img src="~/site/img/product/product5.jpg" alt=""></a>
-                                    <a class="secondary_img" href="product-details.html"><img src="~/site/img/product/product6.jpg" alt=""></a>
-                                    <div class="label_product">
-                                        <span class="label_sale">فروش</span>
-                                    </div>
-                                    <div class="action_links">
-                                        <ul>
-                                            <li class="wishlist"><a href="wishlist.html" title="افزودن به علاقه‌مندی‌ها"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
-                                            <li class="compare"><a href="#" title="مقایسه"><span class="ion-levels"></span></a></li>
-                                            <li class="quick_button">
-                                                <a href="#" data-toggle="modal" data-target="#modal_box" title="مشاهده سریع"> <span class="ion-ios-search-strong"></span></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="add_to_cart">
-                                        <a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
-                                    </div>
-                                </div>
-                                <figcaption class="product_content">
-                                    <div class="price_box">
-                                        <span class="old_price">86,000 تومان</span>
-                                        <span class="current_price">79,000 تومان</span>
-                                    </div>
-                                    <h3 class="product_name"><a href="product-details.html">هدفون گیمینگ حرفه ای سونی SM5000</a></h3>
-                                </figcaption>
-                            </figure>
-                        </article>
-                        <article class="single_product">
-                            <figure>
-                                <div class="product_thumb">
-                                    <a class="primary_img" href="product-details.html"><img src="~/site/img/product/product7.jpg" alt=""></a>
-                                    <a class="secondary_img" href="product-details.html"><img src="~/site/img/product/product8.jpg" alt=""></a>
-                                    <div class="label_product">
-                                        <span class="label_sale">فروش</span>
-                                    </div>
-                                    <div class="action_links">
-                                        <ul>
-                                            <li class="wishlist"><a href="wishlist.html" title="افزودن به علاقه‌مندی‌ها"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
-                                            <li class="compare"><a href="#" title="مقایسه"><span class="ion-levels"></span></a></li>
-                                            <li class="quick_button">
-                                                <a href="#" data-toggle="modal" data-target="#modal_box" title="مشاهده سریع"> <span class="ion-ios-search-strong"></span></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="add_to_cart">
-                                        <a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
-                                    </div>
-                                </div>
-                                <figcaption class="product_content">
-                                    <div class="price_box">
-                                        <span class="old_price">86,000 تومان</span>
-                                        <span class="current_price">79,000 تومان</span>
-                                    </div>
-                                    <h3 class="product_name"><a href="product-details.html">دوربین فیلم برداری 360 درجه سامسونگ</a></h3>
-                                </figcaption>
-                            </figure>
-                        </article>
-                        <article class="single_product">
-                            <figure>
-                                <div class="product_thumb">
-                                    <a class="primary_img" href="product-details.html"><img src="~/site/img/product/product9.jpg" alt=""></a>
-                                    <a class="secondary_img" href="product-details.html"><img src="~/site/img/product/product10.jpg" alt=""></a>
-                                    <div class="label_product">
-                                        <span class="label_sale">فروش</span>
-                                    </div>
-                                    <div class="action_links">
-                                        <ul>
-                                            <li class="wishlist"><a href="wishlist.html" title="افزودن به علاقه‌مندی‌ها"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
-                                            <li class="compare"><a href="#" title="مقایسه"><span class="ion-levels"></span></a></li>
-                                            <li class="quick_button">
-                                                <a href="#" data-toggle="modal" data-target="#modal_box" title="مشاهده سریع"> <span class="ion-ios-search-strong"></span></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="add_to_cart">
-                                        <a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
-                                    </div>
-                                </div>
-                                <figcaption class="product_content">
-                                    <div class="price_box">
-                                        <span class="old_price">86,000 تومان</span>
-                                        <span class="current_price">79,000 تومان</span>
-                                    </div>
-                                    <h3 class="product_name"><a href="product-details.html">تلویزیون هوشمند 85 اینچ ال جی سری 8</a></h3>
-                                </figcaption>
-                            </figure>
-                        </article>
-                        <article class="single_product">
-                            <figure>
-                                <div class="product_thumb">
-                                    <a class="primary_img" href="product-details.html"><img src="~/site/img/product/product11.jpg" alt=""></a>
-                                    <a class="secondary_img" href="product-details.html"><img src="~/site/img/product/product12.jpg" alt=""></a>
-                                    <div class="label_product">
-                                        <span class="label_sale">فروش</span>
-                                    </div>
-                                    <div class="action_links">
-                                        <ul>
-                                            <li class="wishlist"><a href="wishlist.html" title="افزودن به علاقه‌مندی‌ها"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
-                                            <li class="compare"><a href="#" title="مقایسه"><span class="ion-levels"></span></a></li>
-                                            <li class="quick_button">
-                                                <a href="#" data-toggle="modal" data-target="#modal_box" title="مشاهده سریع"> <span class="ion-ios-search-strong"></span></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="add_to_cart">
-                                        <a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
-                                    </div>
-                                </div>
-                                <figcaption class="product_content">
-                                    <div class="price_box">
-                                        <span class="old_price">86,000 تومان</span>
-                                        <span class="current_price">79,000 تومان</span>
-                                    </div>
-                                    <h3 class="product_name"><a href="product-details.html">دسته بازی کنسول PS4 Gaming Controller</a></h3>
-                                </figcaption>
-                            </figure>
-                        </article>
-                        <article class="single_product">
-                            <figure>
-                                <div class="product_thumb">
-                                    <a class="primary_img" href="product-details.html"><img src="~/site/img/product/product4.jpg" alt=""></a>
-                                    <a class="secondary_img" href="product-details.html"><img src="~/site/img/product/product5.jpg" alt=""></a>
-                                    <div class="label_product">
-                                        <span class="label_sale">فروش</span>
-                                    </div>
-                                    <div class="action_links">
-                                        <ul>
-                                            <li class="wishlist"><a href="wishlist.html" title="افزودن به علاقه‌مندی‌ها"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
-                                            <li class="compare"><a href="#" title="مقایسه"><span class="ion-levels"></span></a></li>
-                                            <li class="quick_button">
-                                                <a href="#" data-toggle="modal" data-target="#modal_box" title="مشاهده سریع"> <span class="ion-ios-search-strong"></span></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="add_to_cart">
-                                        <a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
-                                    </div>
-                                </div>
-                                <figcaption class="product_content">
-                                    <div class="price_box">
-                                        <span class="old_price">86,000 تومان</span>
-                                        <span class="current_price">79,000 تومان</span>
-                                    </div>
-                                    <h3 class="product_name"><a href="product-details.html">گوشی موبایل شیائومی مدل MI 9 Lite</a></h3>
-                                </figcaption>
-                            </figure>
-                        </article>
+                        @if (popular != null)
+                        {
+                            @foreach (var item in popular)
+                            {
+                                <article class="single_product">
+                                    <figure>
+                                        <div class="product_thumb">
+                                            <a class="primary_img" asp-controller="Product" asp-action="ProductDetail" asp-route-id="@item.Id"><img src="/images/@item.ImageName" alt="@item.Title"></a>
+                                            <a class="secondary_img" asp-controller="Product" asp-action="ProductDetail" asp-route-id="@item.Id"><img src="/images/@item.ImageName" alt=""></a>
+                                            <div class="label_product">
+                                                <span class="label_sale">فروش</span>
+                                            </div>
+                                            <div class="action_links">
+                                                <ul>
+                                                    <li class="wishlist"><a href="wishlist.html" title="افزودن به علاقه‌مندی‌ها"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                                                    <li class="compare"><a href="#" title="مقایسه"><span class="ion-levels"></span></a></li>
+                                                    <li class="quick_button">
+                                                        <a href="#" data-toggle="modal" data-target="#modal_box" title="مشاهده سریع"> <span class="ion-ios-search-strong"></span></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="add_to_cart">
+                                                <a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
+                                            </div>
+                                        </div>
+                                        <figcaption class="product_content">
+                                            <div class="price_box">
+                                                @if (item.Discount.DiscountPercentage != 0)
+                                                {
+                                                    <span class="old_price">@item.Price.ToString("#,0") تومان</span>
+                                                    <span class="current_price">@(((item.Price - (item.Price * item.Discount.DiscountPercentage) / 100)).ToString("#,0")) تومان</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="current_price">@item.Price.ToString("#,0") تومان</span>
+                                                }
+                                            </div>
+                                            <h3 class="product_name">
+                                                <a asp-controller="Product" asp-action="ProductDetail" asp-route-id="@item.Id">
+                                                    @item.Title
+                                                </a>
+                                            </h3>
+                                        </figcaption>
+                                    </figure>
+                                </article>
+                            }
+                        }
                     </div>
                 </div>
             </div>

@@ -8,5 +8,6 @@ public class ProductDto
     public string ImageName { get; set; }
     public bool IsSpecial { get; set; }
     public decimal Price { get; set; }
+    public long TotalVisit { get; set; }
     public Discount Discount { get; set; }
 }

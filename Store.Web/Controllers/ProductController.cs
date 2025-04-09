@@ -29,6 +29,8 @@ public class ProductController : Controller
         if (product == null)
             return Redirect("/");
 
+        _productService.UpdateVisit(product.Id);
+
         return View(product);
     }
 
