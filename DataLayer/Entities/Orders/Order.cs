@@ -1,8 +1,9 @@
 ﻿using DataLayer.Entities.Account;
-
+using System.ComponentModel.DataAnnotations;
 namespace DataLayer.Entities.Orders;
 public class Order
 {
+    [Key]
     public int Id { get; set; }
 
     public int UserId { get; set; }
@@ -15,7 +16,7 @@ public class Order
 
     public DateTime CreateDate { get; set; }
 
-    public DateTime CreateDatePayment { get; set; }
+    public DateTime? CreateDatePayment { get; set; }
 
     public ICollection<OrderDetail> OrderDetails { get; set; }
 

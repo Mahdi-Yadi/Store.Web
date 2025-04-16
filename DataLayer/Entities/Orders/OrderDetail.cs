@@ -1,6 +1,8 @@
-﻿namespace DataLayer.Entities.Orders;
+﻿using System.ComponentModel.DataAnnotations;
+namespace DataLayer.Entities.Orders;
 public class OrderDetail
 {
+    [Key]
     public int Id { get; set; }
 
     public int OrderId { get; set; }

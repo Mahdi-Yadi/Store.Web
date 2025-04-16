@@ -22,9 +22,11 @@ public class ProductController : Controller
     }
 
 	[HttpGet("ProductDetail/{id}")]
-	public IActionResult ProductDetail(int id)
+	public IActionResult ProductDetail(int id,string state = null)
     {
-        var product = _productService.GetProductDetail(id);
+        ViewBag.state = state;
+
+       var product = _productService.GetProductDetail(id);
 
         if (product == null)
             return Redirect("/");

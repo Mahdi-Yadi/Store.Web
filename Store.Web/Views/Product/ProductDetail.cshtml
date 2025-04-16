@@ -46,8 +46,15 @@
 			</div>
 			<div class="col-lg-6 col-md-6">
 				<div class="product_d_right">
-					<form action="#">
-
+					<form asp-controller="Orders" asp-action="AddOrder">
+						@if (ViewBag.state == "true")
+						{
+							<div class="alert alert-success">محصول به سبد خرید افزوده شد</div>
+						}
+						@if (ViewBag.state == "false")
+						{
+							<div class="alert alert-warning">محصول به سبد خرید افزوده نشد</div>
+						}
 						<h1>@Model.Title</h1>
 
 						<div class=" product_ratting">
@@ -101,6 +108,7 @@
 							</select>
 						</div>
 						<div class="product_variant quantity">
+							<input type="hidden" name="productId" value="@Model.Id"/>
 							<label>تعداد</label>
 							<input min="1" max="100" value="1" type="number">
 							<button class="button" type="submit">افزودن به سبد</button>

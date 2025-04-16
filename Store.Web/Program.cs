@@ -1,5 +1,6 @@
 using Application.Services.Account;
 using Application.Services.Categories;
+using Application.Services.Orders;
 using Application.Services.Products;
 using DataLayer.Contexts;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -15,6 +16,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<ICategoryService, CategoryService>();
 builder.Services.AddTransient<IProductService, ProductService>();
+builder.Services.AddTransient<IOrderService, OrderService>();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
 	.AddCookie(options =>
