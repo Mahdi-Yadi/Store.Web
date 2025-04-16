@@ -1,6 +1,7 @@
 ﻿using DataLayer.Entities.Account;
 using DataLayer.Entities.Categories;
 using DataLayer.Entities.Discounts;
+using DataLayer.Entities.Orders;
 using DataLayer.Entities.Products;
 using Microsoft.EntityFrameworkCore;
 namespace DataLayer.Contexts;
@@ -26,7 +27,8 @@ public class DBContext : DbContext
     // Discount
     public DbSet<Discount> Discounts { get; set; }
 
-
+	public DbSet<Order> Orders { get; set; }
+	public DbSet<OrderDetail> OrderDetails { get; set; }
 
     #region on model creating
     protected override void OnModelCreating(ModelBuilder modelBuilder)

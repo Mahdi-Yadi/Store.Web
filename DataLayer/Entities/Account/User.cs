@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using DataLayer.Entities.Orders;
+using System.ComponentModel.DataAnnotations;
 namespace DataLayer.Entities.Account;
 public class User
 {
@@ -29,4 +30,6 @@ public class User
 	public string PhoneNumber { get; set; }
 	public DateTime CreateDate { get; set; }
 	public bool IsAdmin { get; set; }
+
+    public ICollection<Order> Orders { get; set; }
 }

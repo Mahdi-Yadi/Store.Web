@@ -357,9 +357,12 @@
                                     @*      <div class="add_to_cart">
                                 <a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
                             </div> *@
-                                    <div class="product_timing">
-                                        <div data-countdown="2043/12/15"></div>
-                                    </div>
+                                    @if (item.Discount.DiscountPercentage != 0)
+                                    {
+                                        <div class="product_timing">
+                                            <div data-countdown="@item.Discount.ExpireDate.ToString("yyyy/MM/dd")"></div>
+                                        </div>
+                                    }
                                 </div>
                                 <figcaption class="product_content">
                                     <div class="price_box">
