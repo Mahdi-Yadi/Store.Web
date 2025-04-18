@@ -31,7 +31,8 @@
 											<td>@item.Code</td>
 											<td>@item.SumPrice</td>
 											<td>@item.CreateDate</td>
-											<td><a>
+											<td>
+												<a asp-area="UserPanel" asp-controller="Orders" asp-action="Order" asp-route-id="@item.Id">
 												جزییات
 											</a></td>
 										</tr>

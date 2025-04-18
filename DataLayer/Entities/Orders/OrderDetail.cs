@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using DataLayer.Entities.Products;
+using System.ComponentModel.DataAnnotations;
 namespace DataLayer.Entities.Orders;
 public class OrderDetail
 {
@@ -14,5 +15,7 @@ public class OrderDetail
     public int Count { get; set; }
 
     public Order Order{ get; set; }
+
+    public Product Product { get; set; }
 
 }

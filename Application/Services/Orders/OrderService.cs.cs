@@ -1,5 +1,7 @@
 ﻿using DataLayer.Contexts;
+using DataLayer.Entities.Account;
 using DataLayer.Entities.Orders;
+using Microsoft.EntityFrameworkCore;
 namespace Application.Services.Orders;
 public class OrderService : IOrderService
 {
@@ -47,7 +49,7 @@ public class OrderService : IOrderService
 
             DateTime dateTime = DateTime.Now;
 
-            o.SumPrice = 0; 
+            o.SumPrice = 0;
             o.CreateDate = dateTime;
             o.Code = dateTime.ToString("yyyyMMddHHmmss");
             o.UserId = userId;
@@ -78,6 +80,35 @@ public class OrderService : IOrderService
             .ToList();
 
         return orders;
+    }
+
+    public Order GetOrder(int oredrId)
+    {
+        var order = _db
+            .Orders
+            .Include(o => o.OrderDetails)
+            .ThenInclude(o => o.Product)
+            .Include(o => o.User)
+            .FirstOrDefault(o => o.Id == oredrId);
+
+        if (order == null)
+            return new Order();
+
+        return order;
+    }
+
+    public bool DeleteOrder(int orderDetailId)
+    {
+        var order = _db
+            .OrderDetails
+            .FirstOrDefault(o => o.Id == orderDetailId);
+
+        if (order == null)
+            return false;
+
+        _db.OrderDetails.Remove(order);
+        _db.SaveChanges(); 
+        return true;
     }
 
 }

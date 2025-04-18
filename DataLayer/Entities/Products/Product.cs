@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using DataLayer.Entities.Discounts;
+using DataLayer.Entities.Orders;
 
 namespace DataLayer.Entities.Products;
 public class Product 
@@ -26,5 +27,7 @@ public class Product
     public ICollection<ProductsCategories> ProductsCategories { get; set; }
 
     public ICollection<Discount> Discounts { get; set; }
+
+    public ICollection<OrderDetail> OrderDetails { get; set; }
 
 }

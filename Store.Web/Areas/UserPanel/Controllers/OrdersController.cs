@@ -18,6 +18,35 @@ public class OrdersController : UserPanelBaseController
         return View(o);
     }
 
+    [HttpGet("Order/{id}")]
+    public IActionResult Order(int id)
+    {
+        var o = _orderService.GetOrder(id);
+
+        if (o != null)
+        {
+            if (o.UserId != User.GetUserId())
+            {
+                return Redirect("/");
+            }
+        }
+
+        return View(o);
+    }
+
+    [HttpGet("DeleteOrder/{id}")]
+    public IActionResult DeleteOrder(int orderId,int id)
+    {
+        var res = _orderService.DeleteOrder(id);
+
+        if(res)
+        {
+            return Redirect($"/Panel/Order/{orderId}");
+        }
+
+        return Redirect($"/Panel/Order/{orderId}");
+    }
+
     [HttpGet("OpenOrder")]
     public IActionResult OpenOrder()
     {
