@@ -3,49 +3,64 @@
     ViewData["Title"] = "لیست فاکتور ها";
 }
 <section class="main_content_area">
-	<div class="container">
-		<div class="account_dashboard">
-			<div class="row">
+    <div class="container">
+        <div class="account_dashboard">
+            <div class="row">
 
-				@await Component.InvokeAsync("Menu")
+                @await Component.InvokeAsync("Menu")
 
-				<div class="col-sm-12 col-md-9 col-lg-9">
-					<div class="tab-content dashboard_content">
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <div class="tab-content dashboard_content">
 
-						<table class="table">
-								<thead>
-								<tr role="row">
-									<th>شماره فاکتور</th>
-									<th>جمع فاکتور</th>
-									<th>تاریخ فاکتور</th>
-									<th>جزییات فاکتور</th>
-								</tr>
-								</thead>
+                        <table class="table">
+                            <thead>
+                                <tr role="row">
+                                    <th>شماره فاکتور</th>
+                                    <th>جمع فاکتور</th>
+                                    <th>تاریخ فاکتور</th>
+                                    <th>جزییات فاکتور</th>
+                                </tr>
+                            </thead>
 
-							<tbody>
-								@if(Model.Count > 0)
-								{
-									@foreach(var item in Model)
-									{
-										<tr>
-											<td>@item.Code</td>
-											<td>@item.SumPrice</td>
-											<td>@item.CreateDate</td>
-											<td>
-												<a asp-area="UserPanel" asp-controller="Orders" asp-action="Order" asp-route-id="@item.Id">
-												جزییات
-											</a></td>
-										</tr>
-									}
-								}
-							</tbody>
+                            <tbody>
+                                @if (Model.Count > 0)
+                                {
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.Code</td>
+                                            <td>
+                                                @if (item.OrderDetails.Count > 0)
+                                                {
+                                                    decimal sumPrice = 0;
+                                                    @foreach(var i in item.OrderDetails)
+                                                    {
+                                                        sumPrice += i.Product.Price;
+                                                    }
+                                                    @sumPrice.ToString("#,0")
+                                                }
+                                                else
+                                                {
+                                                    <span>0</span>
+                                                }
+                                            </td>
+                                            <td>@item.CreateDate</td>
+                                            <td>
+                                                <a asp-area="UserPanel" asp-controller="Orders" asp-action="Order" asp-route-id="@item.Id">
+                                                    جزییات
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
 
-						</table>
+                        </table>
 
-					</div>
-				</div>
+                    </div>
+                </div>
 
-			</div>
-		</div>
-	</div>
+            </div>
+        </div>
+    </div>
 </section>

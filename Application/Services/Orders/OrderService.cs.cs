@@ -71,12 +71,14 @@ public class OrderService : IOrderService
 
     }
 
-
     public List<Order> OrdersList(int userId)
     {
         var orders = _db
             .Orders
+            .Include(o => o.OrderDetails)
+            .ThenInclude(o => o.Product)
             .Where(o => o.UserId == userId)
+            .OrderByDescending(o => o.CreateDate)
             .ToList();
 
         return orders;
