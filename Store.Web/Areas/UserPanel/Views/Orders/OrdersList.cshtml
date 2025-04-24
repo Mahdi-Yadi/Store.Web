@@ -33,11 +33,22 @@
                                                 @if (item.OrderDetails.Count > 0)
                                                 {
                                                     decimal sumPrice = 0;
-                                                    @foreach(var i in item.OrderDetails)
+                                                    @foreach (var i in item.OrderDetails)
                                                     {
-                                                        sumPrice += i.Product.Price;
+                                                        var price = i.Product.Price;
+
+                                                        var activeDiscounts = i.Product.Discounts
+                                                        ?.FirstOrDefault(d => d.IsDeleted == false && d.ExpireDate > DateTime.Now);
+
+                                                        if (activeDiscounts != null)
+                                                        {
+                                                            price -= price * (activeDiscounts.DiscountPercentage / 100m);
+                                                        }
+
+                                                        sumPrice += price;
                                                     }
                                                     @sumPrice.ToString("#,0")
+                                                    <span> تومان </span>
                                                 }
                                                 else
                                                 {
@@ -49,6 +60,12 @@
                                                 <a asp-area="UserPanel" asp-controller="Orders" asp-action="Order" asp-route-id="@item.Id">
                                                     جزییات
                                                 </a>
+                                                @if (item.CreateDatePayment == null)
+                                                {
+                                                    <a asp-controller="Payments" asp-action="Pay">
+                                                        پرداخت
+                                                    </a>
+                                                }
                                             </td>
                                         </tr>
                                     }

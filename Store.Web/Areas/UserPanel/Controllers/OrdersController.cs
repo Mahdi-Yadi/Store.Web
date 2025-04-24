@@ -4,6 +4,7 @@ using Store.Web.Extentions;
 namespace Store.Web.Areas.UserPanel.Controllers;
 public class OrdersController : UserPanelBaseController
 {
+
     private readonly IOrderService _orderService;
     public OrdersController(IOrderService orderService)
     {

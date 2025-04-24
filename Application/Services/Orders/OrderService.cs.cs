@@ -77,6 +77,7 @@ public class OrderService : IOrderService
             .Orders
             .Include(o => o.OrderDetails)
             .ThenInclude(o => o.Product)
+            .ThenInclude( o => o.Discounts)
             .Where(o => o.UserId == userId)
             .OrderByDescending(o => o.CreateDate)
             .ToList();
