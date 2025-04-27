@@ -7,6 +7,8 @@ public interface IOrderService
 
     List<Order> OrdersList(int userId);
 
+    List<Order> OrdersListAdmin();
+
     Order GetOrder(int oredrId);
 
     bool DeleteOrder(int orderDetailId);

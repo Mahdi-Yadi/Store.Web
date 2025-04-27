@@ -85,6 +85,19 @@ public class OrderService : IOrderService
         return orders;
     }
 
+    public List<Order> OrdersListAdmin()
+    {
+        var orders = _db
+            .Orders
+            .Include(o => o.OrderDetails)
+            .ThenInclude(o => o.Product)
+            .ThenInclude(o => o.Discounts)
+            .OrderByDescending(o => o.CreateDate)
+            .ToList();
+
+        return orders;
+    }
+
     public Order GetOrder(int oredrId)
     {
         var order = _db
