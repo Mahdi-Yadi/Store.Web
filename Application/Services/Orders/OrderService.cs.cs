@@ -77,7 +77,7 @@ public class OrderService : IOrderService
             .Orders
             .Include(o => o.OrderDetails)
             .ThenInclude(o => o.Product)
-            .ThenInclude( o => o.Discounts)
+            .ThenInclude(o => o.Discounts)
             .Where(o => o.UserId == userId)
             .OrderByDescending(o => o.CreateDate)
             .ToList();
@@ -104,6 +104,7 @@ public class OrderService : IOrderService
             .Orders
             .Include(o => o.OrderDetails)
             .ThenInclude(o => o.Product)
+            .ThenInclude(o => o.Discounts)
             .Include(o => o.User)
             .FirstOrDefault(o => o.Id == oredrId);
 
@@ -123,7 +124,7 @@ public class OrderService : IOrderService
             return false;
 
         _db.OrderDetails.Remove(order);
-        _db.SaveChanges(); 
+        _db.SaveChanges();
         return true;
     }
 

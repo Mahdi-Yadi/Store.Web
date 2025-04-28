@@ -24,7 +24,7 @@ public class OrdersController : AdminBaseController
     {
         var o = _orderService.GetOrder(id);
 
-        if (o != null)
+        if (o == null)
         {
             if (o.UserId != User.GetUserId())
             {
