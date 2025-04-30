@@ -51,7 +51,17 @@ public class OrdersController : UserPanelBaseController
     [HttpGet("OpenOrder")]
     public IActionResult OpenOrder()
     {
-        return View();
+        var o = _orderService.GetOpenOrder(User.GetUserId());
+
+        if (o != null)
+        {
+            if (o.UserId != User.GetUserId())
+            {
+                return Redirect("/");
+            }
+        }
+
+        return View(o);
     }
 
 }

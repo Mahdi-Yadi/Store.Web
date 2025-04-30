@@ -51,7 +51,7 @@
                                             @if (item.Count > 0)
                                             {
                                                 decimal sumPrice = 0;
-                                                var price = item.Product.Price;
+                                                decimal price = item.Product.Price;
 
                                                 var discount = item.Product.Discounts
                                                 ?.FirstOrDefault(d => d.Id == item.DiscountId);
@@ -74,7 +74,7 @@
                                             {
                                                 decimal sumPrice = 0;
 
-                                                var price = item.Product.Price;
+                                                decimal price = item.Product.Price;
 
                                                 var activeDiscounts = item.Product.Discounts
                                                 ?.FirstOrDefault(d => d.IsDeleted == false && d.ExpireDate > DateTime.Now);

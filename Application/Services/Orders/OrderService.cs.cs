@@ -114,6 +114,22 @@ public class OrderService : IOrderService
         return order;
     }
 
+    public Order GetOpenOrder(int userId)
+    {
+        var order = _db
+            .Orders
+            .Include(o => o.OrderDetails)
+            .ThenInclude(o => o.Product)
+            .ThenInclude(o => o.Discounts)
+            .Include(o => o.User)
+            .FirstOrDefault(o => o.CreateDatePayment == null && o.UserId == userId);
+
+        if (order == null)
+            return new Order();
+
+        return order;
+    }
+
     public bool DeleteOrder(int orderDetailId)
     {
         var order = _db

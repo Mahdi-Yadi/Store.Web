@@ -11,6 +11,8 @@ public interface IOrderService
 
     Order GetOrder(int oredrId);
 
+    Order GetOpenOrder(int userId);
+
     bool DeleteOrder(int orderDetailId);
 
 }
