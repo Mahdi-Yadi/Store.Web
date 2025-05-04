@@ -5,6 +5,8 @@ using Application.Services.Products;
 using DataLayer.Contexts;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
+using Parbad.Builder;
+using Parbad.Gateway.ZarinPal;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +19,23 @@ builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<ICategoryService, CategoryService>();
 builder.Services.AddTransient<IProductService, ProductService>();
 builder.Services.AddTransient<IOrderService, OrderService>();
+
+// parbad
+builder.Services.AddParbad()
+    .ConfigureGateways(geteway =>
+    {
+        geteway.AddZarinPal()
+            .WithAccounts(accounts =>
+            {
+                accounts.AddInMemory(account =>
+                {
+                    account.MerchantId = "12345";
+                    account.IsSandbox = true;
+                });
+            });
+    })
+    .ConfigureHttpContext(build => build.UseDefaultAspNetCore())
+    .ConfigureStorage(build => build.UseMemoryCache());
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
 	.AddCookie(options =>

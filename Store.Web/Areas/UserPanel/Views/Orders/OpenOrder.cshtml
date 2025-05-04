@@ -42,7 +42,9 @@
                                         {
                                             <tr>
                                                 <td class="product_remove">
-                                                    <a href="#"><i class="fa fa-trash-o"></i></a>
+                                                    <a asp-area="UserPanel" asp-controller="Orders" asp-action="DeleteOrder" asp-route-isOpenOrder="1" asp-route-orderId="@item.OrderId" asp-route-id="@item.Id">
+                                                        <i class="fa fa-trash-o"></i>
+                                                    </a>
                                                 </td>
                                                 <td class="product_thumb">
                                                     <a asp-controller="Product" asp-action="ProductDetail" asp-route-id="@item.ProductId">

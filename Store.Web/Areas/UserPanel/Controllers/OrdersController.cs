@@ -36,13 +36,27 @@ public class OrdersController : UserPanelBaseController
     }
 
     [HttpGet("DeleteOrder/{id}")]
-    public IActionResult DeleteOrder(int orderId,int id)
+    public IActionResult DeleteOrder(int? isOpenOrder ,int orderId,int id)
     {
         var res = _orderService.DeleteOrder(id);
 
-        if(res)
+        if (isOpenOrder == 1)
         {
-            return Redirect($"/Panel/Order/{orderId}");
+            if (res)
+            {
+                return Redirect($"/Panel/OpenOrder");
+            }
+            else
+            {
+                return Redirect("/");
+            }
+        }
+        else
+        {
+            if (res)
+            {
+                return Redirect($"/Panel/Order/{orderId}");
+            }
         }
 
         return Redirect($"/Panel/Order/{orderId}");
