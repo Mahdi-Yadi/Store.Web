@@ -144,4 +144,19 @@ public class OrderService : IOrderService
         return true;
     }
 
+    public async Task<bool> UpdateOrderForPay(long orderId, string trakingNumber)
+    {
+        var o = await _db.Orders
+            .FirstOrDefaultAsync(a => a.Id == orderId);
+
+        if (o == null) return false;
+
+        o.Code = trakingNumber;
+
+        _db.Orders.Update(o);
+        await _db.SaveChangesAsync();
+
+        return true;
+    }
+
 }
