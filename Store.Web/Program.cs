@@ -29,7 +29,7 @@ builder.Services.AddParbad()
             {
                 accounts.AddInMemory(account =>
                 {
-                    account.MerchantId = "12345";
+                    account.MerchantId = "d0879652-f0af-4da0-b803-000629ef2225";
                     account.IsSandbox = true;
                 });
             });

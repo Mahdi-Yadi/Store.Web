@@ -144,14 +144,51 @@ public class OrderService : IOrderService
         return true;
     }
 
-    public async Task<bool> UpdateOrderForPay(long orderId, string trakingNumber)
+    public async Task<bool> UpdateOrderForPay(long orderId, string trackingNumber)
     {
         var o = await _db.Orders
             .FirstOrDefaultAsync(a => a.Id == orderId);
 
         if (o == null) return false;
 
-        o.Code = trakingNumber;
+        o.Code = trackingNumber;
+
+        _db.Orders.Update(o);
+        await _db.SaveChangesAsync();
+
+        return true;
+    }
+
+    public async Task<bool> UpdateOrderAfterPayment(string transactionCode, string trackingNumber)
+    {
+        var o = await _db.Orders
+            .Include(a => a.OrderDetails)
+            .ThenInclude(a => a.Product)
+            .ThenInclude(a => a.Discounts)
+            .FirstOrDefaultAsync(a => a.Code == trackingNumber);
+
+        if (o == null) return false;
+
+        decimal totalPrice = 0;
+
+        foreach (var item in o.OrderDetails)
+        {
+            decimal price = item.Product.Price;
+
+            var activeDiscounts = item.Product.Discounts
+                ?.FirstOrDefault(d => d.IsDeleted == false && d.ExpireDate > DateTime.Now);
+
+            if (activeDiscounts != null)
+            {
+                price -= price * (activeDiscounts.DiscountPercentage / 100m);
+            }
+
+            totalPrice += price;
+        }
+
+        o.SumPrice = totalPrice;    
+        o.CodePayment = transactionCode;
+        o.CreateDatePayment = DateTime.Now;
 
         _db.Orders.Update(o);
         await _db.SaveChangesAsync();

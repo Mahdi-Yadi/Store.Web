@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewData["Title"] = "نتیجه پرداخت";
+}
+@if (ViewBag.IsSuccess == true)
+{
+    <p>پرداخت با موفقیت انجام شد!!!</p>
+    <br/>
+    @ViewBag.code
+}
+else
+{
+    <p>پرداخت با موفقیت انجام  نشد!!!</p>
+    <br/>
+    @ViewBag.code
+}

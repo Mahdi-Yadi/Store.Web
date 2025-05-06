@@ -15,6 +15,8 @@ public interface IOrderService
 
     bool DeleteOrder(int orderDetailId);
 
-    Task<bool> UpdateOrderForPay(long  orderId, string trakingNumber);
+    Task<bool> UpdateOrderForPay(long orderId, string trackingNumber);
+
+    Task<bool> UpdateOrderAfterPayment(string transactionCode, string trackingNumber);
 
 }
