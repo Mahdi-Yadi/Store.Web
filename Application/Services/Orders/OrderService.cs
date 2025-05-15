@@ -1,4 +1,5 @@
-﻿using DataLayer.Contexts;
+﻿using Application.Services.Emails;
+using DataLayer.Contexts;
 using DataLayer.Entities.Account;
 using DataLayer.Entities.Orders;
 using Microsoft.EntityFrameworkCore;
@@ -130,6 +131,24 @@ public class OrderService : IOrderService
         return order;
     }
 
+    public bool CompleteOrderByAdmin(string code, string postCode)
+    {
+        var order = _db
+            .Orders
+            .FirstOrDefault(o => o.Code == code);
+
+        if (order == null)
+            return false;
+
+        order.PostCode = postCode;
+        order.IsCompleted = true;
+
+        _db.Orders.Update(order);
+        _db.SaveChanges();
+
+        return true;
+    }
+
     public bool DeleteOrder(int orderDetailId)
     {
         var order = _db
@@ -193,7 +212,27 @@ public class OrderService : IOrderService
         _db.Orders.Update(o);
         await _db.SaveChangesAsync();
 
+        SendEmailToAdmins(o.Code,o.CodePayment);
+
         return true;
+    }
+
+    private void SendEmailToAdmins(string sitecode,string paymentCode)
+    {
+        var users = _db.Users
+            .Where(a => a.IsAdmin)
+            .ToList();
+
+        if (users.Count > 0)
+        {
+            string subject = "فاکتوری در وبسایت پرداخت گردید";
+            string body = $"فاکتوری با شماره {sitecode} و با کد پیگیری {paymentCode} پرداخت گردید.";
+            foreach (var user in users)
+            {
+                // Send Email
+                EmailSender.SendEmail(user.Email,subject,body);
+            }
+        }
     }
 
 }

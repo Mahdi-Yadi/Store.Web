@@ -13,6 +13,8 @@ public interface IOrderService
 
     Order GetOpenOrder(int userId);
 
+    bool CompleteOrderByAdmin(string code, string postCode);
+
     bool DeleteOrder(int orderDetailId);
 
     Task<bool> UpdateOrderForPay(long orderId, string trackingNumber);

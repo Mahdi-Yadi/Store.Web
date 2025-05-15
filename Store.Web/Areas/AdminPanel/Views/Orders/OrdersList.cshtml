@@ -13,6 +13,11 @@
                             <th class="sorting_asc" tabindex="0" aria-controls="editabledatatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="
                                                     Username
                                                 : activate to sort column descending" style="width: 181.667px;">
+                              وضعیت
+                            </th>
+                            <th class="sorting_asc" tabindex="0" aria-controls="editabledatatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="
+                                                    Username
+                                                : activate to sort column descending" style="width: 181.667px;">
                                 شماره فاکتور
                             </th>
                             <th class="sorting_asc" tabindex="0" aria-controls="editabledatatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="
@@ -44,6 +49,23 @@
                             @foreach (var item in Model)
                             {
                                 <tr role="row" class="odd">
+                                    <td class="sorting_1">
+                                        @if(item.CreateDatePayment != null)
+                                        {
+                                            <p class="text text-success"> پرداخت شده </p>
+                                        }else
+                                        {
+                                            <p class="text text-danger"> پرداخت نشده </p>
+                                        }
+                                        @if (item.PostCode != null)
+                                        {
+                                            <p class="text text-success"> فاکتور تکمیل شده </p>
+                                        }
+                                        else
+                                        {
+                                            <p class="text text-danger"> فاکتور تکمیل نشده </p>
+                                        }
+                                    </td>
                                     <td class="sorting_1">
                                         @item.Code
                                     </td>

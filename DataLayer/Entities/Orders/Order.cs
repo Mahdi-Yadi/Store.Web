@@ -14,6 +14,10 @@ public class Order
 
     public decimal SumPrice { get; set; }
 
+    public bool IsCompleted { get; set; }
+
+    public string PostCode { get; set; }
+
     public DateTime CreateDate { get; set; }
 
     public DateTime? CreateDatePayment { get; set; }

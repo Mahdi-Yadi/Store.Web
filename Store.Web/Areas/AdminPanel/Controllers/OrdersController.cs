@@ -35,4 +35,20 @@ public class OrdersController : AdminBaseController
         return View(o);
     }
 
+    [HttpPost("CompleteOrder")]
+    public IActionResult CompleteOrder(string code,string postcode)
+    {
+        if (!string.IsNullOrEmpty(code) && !string.IsNullOrEmpty(postcode))
+        {
+            var o = _orderService.CompleteOrderByAdmin(code,postcode);
+
+            if (!o)
+            {
+                return Redirect("/");
+            }
+            return RedirectToAction(nameof(OrdersList));
+        }
+        return Redirect("/");
+    }
+
 }

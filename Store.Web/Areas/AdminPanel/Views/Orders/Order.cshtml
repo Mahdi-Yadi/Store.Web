@@ -7,8 +7,56 @@
         <div class="widget-body">
             <div id="editabledatatable_wrapper" class="dataTables_wrapper form-inline no-footer">
 
+                <div class="row  text-center">
+                    <div class="col-lg-6 text alert-warning" style="font-size:25px;">
+                        @if(Model.PostCode != null)
+                        {
+                            <span>
+                                کد پیگیری فعلی @Model.PostCode
+                            </span>
+                        }
+                        <h3>
+                            تکمیل فاکتور - ثبت کد پیگیری بسته پستی
+                        </h3>
 
+                        <form method="post" asp-area="AdminPanel" asp-controller="Orders" asp-action="CompleteOrder">
 
+                            <input type="hidden" asp-for="@Model.Code" />
+
+                            <input type="text" asp-for="PostCode" placeholder="کد بسته پستی" />
+                            
+                            <button type="submit" class="btn btn-outline-primary">
+                                تکمیل فاکتور
+                            </button>
+
+                        </form>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="alert">
+                        <div class="col-lg-6 text alert-info" style="font-size:25px;">
+                            <h2 style="color:black;"> اطلاعات خریدار </h2>
+
+                            <p> نام و نام خانوادکی  : <span> @Model.User.UserName </span> </p>
+                            <p> آدرس : <span> @Model.User.Address </span> </p>
+                            <p> کد پستی : <span> @Model.User.AddressCode </span> </p>
+                            <p> شماره تماس   : <span> @Model.User.PhoneNumber </span> </p>
+                            <p> ایمیل : <span> @Model.User.Email </span> </p>
+                        </div>
+                        <div class="col-lg-6 text alert-info" style="font-size:25px;">
+                            <h2 style="color:black;"> اطلاعات فاکتور </h2>
+
+                            <p> تاریخ ثبت : <span> @Model.CreateDate </span> </p>
+                            <p> تاریخ پرداخت : <span> @Model.CreateDatePayment </span> </p>
+                            <p> کد سایت : <span> @Model.Code </span> </p>
+                            <p> کد درگاه پرداخت : <span> @Model.CodePayment </span> </p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 style="color:black;"> جزییات فاکتور </h2>
                 <table class="table table-striped table-hover table-bordered dataTable no-footer" id="editabledatatable" role="grid" aria-describedby="editabledatatable_info">
 
                     <thead>
