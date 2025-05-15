@@ -13,10 +13,12 @@
                     <div class="tab-content dashboard_content">
 
                         <table class="table">
-                            <thead>
+                            <thead class="text-center">
                                 <tr role="row">
                                     <th>شماره فاکتور</th>
                                     <th>جمع فاکتور</th>
+                                    <th> وضعیت فاکتور </th>
+                                    <th> کد پیگیری پست </th>
                                     <th>تاریخ فاکتور</th>
                                     <th>جزییات فاکتور</th>
                                 </tr>
@@ -27,7 +29,7 @@
                                 {
                                     @foreach (var item in Model)
                                     {
-                                        <tr>
+                                        <tr class="text-center">
                                             <td>@item.Code</td>
                                             <td>
                                                 @if (item.OrderDetails.Count > 0)
@@ -54,6 +56,24 @@
                                                 {
                                                     <span>0</span>
                                                 }
+                                            </td>
+                                            <td>@if(item.CodePayment != null)
+                                                {
+                                                    <span class="text-success"> پرداخت شده </span>
+                                                }else{
+                                                    <span class="text-danger"> پرداخت نشده </span>
+                                                }
+                                                @if (item.PostCode != null)
+                                                {
+                                                    <span class="text-primary">- تکمیل شده - </span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="text-warning"> - تکمیل نشده - </span>
+                                                }
+                                            </td>
+                                            <td>
+                                                <span class="text-secondary"> @item.PostCode </span>
                                             </td>
                                             <td>@item.CreateDate</td>
                                             <td>
