@@ -1,6 +1,9 @@
 ﻿using Application.Services.Products;
 using Domain.Products;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Store.Web.Extentions;
+
 namespace Store.Web.Controllers;
 public class ProductController : Controller
 {
@@ -34,6 +37,18 @@ public class ProductController : Controller
         _productService.UpdateVisit(product.Id);
 
         return View(product);
+    }
+
+    [Authorize]
+    [HttpGet("AddProductToFav/{id}")]
+    public IActionResult AddProductToFav(int id)
+    {
+        var product = _productService.AddProductToFav(id,User.GetUserId());
+
+        if (product == false)
+            return Redirect("/");
+
+        return Redirect($"/ProductDetail/{id}");
     }
 
 }

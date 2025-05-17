@@ -17,6 +17,62 @@ public class ProductService : IProductService
         _dbContext = dbContext;
     }
 
+    public bool AddProductToFav(int id, int userId)
+    {
+        var p = _dbContext.Products.FirstOrDefault(a => a.Id == id);
+
+        if (p == null)
+            return false;
+
+        var pFav = _dbContext.FavProducts.FirstOrDefault(a => a.UserId == userId && a.ProductId == p.Id);
+
+        if (pFav != null) return true;
+
+        FavProduct fav = new FavProduct();
+
+        fav.ProductId = id;
+        fav.UserId = userId;
+
+        _dbContext.FavProducts.Add(fav);
+        _dbContext.SaveChanges();
+
+        return true;
+    }
+
+    public bool DeleteProductToFav(int id, int userId)
+    {
+        var pFav = _dbContext.FavProducts.FirstOrDefault(a => a.UserId == userId && a.ProductId == id);
+
+        _dbContext.FavProducts.Remove(pFav);
+        _dbContext.SaveChanges();
+
+        return true;
+    }
+
+    public List<ProductDto> GetFavProducts(int userId)
+    {
+        var p = _dbContext.FavProducts.Where(a => a.UserId == userId).ToList();
+
+        if (p.Count == 0) return new List<ProductDto>();
+
+        List<ProductDto> dtos = new List<ProductDto>();
+
+        foreach (var item in p)
+        {
+            var newP = _dbContext.Products.FirstOrDefault(a => a.Id == item.ProductId);
+            var a = new ProductDto()
+            {
+                Id = newP.Id, 
+                ImageName = newP.ImageName,
+                Title = newP.Title,
+                Price = newP.Price
+            };
+            dtos.Add(a);
+        }
+
+        return dtos;
+    }
+
     public ProductDto GetProductDetail(int id)
     {
         var product = _dbContext.Products.FirstOrDefault(p => p.Id == id);
@@ -207,7 +263,7 @@ public class ProductService : IProductService
     {
         var products = _dbContext
             .Products
-            .OrderByDescending(p=>p.CreateDate)
+            .OrderByDescending(p => p.CreateDate)
             .ToList();
 
         if (products.Count == 0)
@@ -267,7 +323,7 @@ public class ProductService : IProductService
         var discounts = _dbContext
             .Discounts
             .Where(c => c.IsDeleted == false && c.ExpireDate > DateTime.Now && c.DiscountPercentage != 0)
-            .Include(a=> a.Product)
+            .Include(a => a.Product)
             .ToList();
 
         if (discounts.Count == 0)
@@ -344,8 +400,8 @@ public class ProductService : IProductService
             return false;
 
         var OldDis = _dbContext.Discounts
-            .FirstOrDefault(a => a.ProductId == dis.ProductId 
-                                 && a.IsDeleted == false 
+            .FirstOrDefault(a => a.ProductId == dis.ProductId
+                                 && a.IsDeleted == false
                                  && a.ExpireDate > DateTime.Now);
 
         if (OldDis != null)

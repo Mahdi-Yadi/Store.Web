@@ -1,4 +1,5 @@
-﻿@model List<DataLayer.Entities.Orders.Order>
+﻿@using Application.Tools
+@model List<DataLayer.Entities.Orders.Order>
 @{
     ViewData["Title"] = "لیست فاکتورها";
 }
@@ -97,7 +98,7 @@
                                         }
                                     </td>
                                     <td>
-                                        @item.CreateDate - @item.CreateDatePayment
+                                        @item.CreateDate.ToStringShamsiDate() - @item.CreateDatePayment?.ToStringShamsiDate()
                                     </td>
                                     <td>
                                         <a asp-area="AdminPanel" asp-controller="Orders" asp-action="Order" asp-route-id="@item.Id" class="btn btn-info btn-xs edit">

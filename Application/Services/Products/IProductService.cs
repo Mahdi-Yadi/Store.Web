@@ -32,4 +32,10 @@ public interface IProductService
 
     void UpdateVisit(int id);
 
+    bool AddProductToFav(int id, int userId);
+
+    List<ProductDto> GetFavProducts(int userId);
+
+    bool DeleteProductToFav(int id, int userId);
+
 }
