@@ -1,0 +1,41 @@
+﻿@model Domain.Account.LoginDTO
+@{
+    ViewData["Title"] = "ورود به حساب";
+}
+<partial name="_PageNavbar" />
+<div class="customer_login mt-60">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 col-md-12">
+				<div class="account_form">
+						@if(ViewBag.register == true)
+						{
+							<div class="alert alert-success">
+								ثبت نام شما با موفقیت انجام شد!
+							</div>
+						}
+					<h2>ورود</h2>
+					<form asp-controller="Account" asp-action="Login" method="post">
+						<p>
+							<label> ایمیل <span>*</span></label>
+							<input type="email" asp-for="Email">
+							<span asp-validation-for="Email"></span>
+						</p>
+						<p>
+							<label>رمز عبور <span>*</span></label>
+							<input type="password" asp-for=" Password">
+							<span asp-validation-for="Password"></span>
+						</p>
+						<div class="login_submit">
+							<a asp-controller="Account" asp-action="ForgotPassword">رمز عبور خود را فراموش کرده اید؟</a>
+							<label for="remember">
+								<input id="remember" type="checkbox" asp-for="RemmberMe"> به خاطر سپاری
+							</label>
+							<button type="submit">ورود</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

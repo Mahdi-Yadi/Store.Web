@@ -1,0 +1,38 @@
+﻿@model Domain.Account.RegisterDTO
+@{
+	ViewData["Title"] = "ثبت نام";
+}
+
+<partial name="_PageNavbar" />
+
+<div class="customer_login mt-60">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 col-md-12">
+				<div class="account_form register">
+					<h2>ثبت نام</h2>
+					<form method="post" asp-controller="Account" asp-action="Register" >
+						<p>
+							<label>آدرس ایمیل <span>*</span></label>
+							<input type="email" asp-for="Email">
+							<span asp-validation-for="Email"></span>
+						</p>
+						<p>
+							<label>رمز عبور <span>*</span></label>
+							<input type="password" asp-for="Password">
+							<span asp-validation-for="Password"></span>
+						</p>
+						<p>
+							<label> تکرار رمز عبور <span>*</span></label>
+							<input type="password" asp-for="RePassword">
+							<span asp-validation-for="RePassword"></span>
+						</p>
+						<div class="login_submit">
+							<button type="submit">ثبت نام</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,35 @@
+﻿
+
+<div class="col-sm-12 col-md-3 col-lg-3">
+    <div class="dashboard_tab_button">
+        <ul role="tablist" class="nav flex-column dashboard-list">
+            @if(ViewBag.user == true)
+            {
+                <li>
+                    <a asp-area="AdminPanel" asp-controller="Home" asp-action="Index" class="nav-link">پنل ادمین</a>
+                </li>
+            }
+            <li>
+                <a asp-area="UserPanel" asp-controller="Home" asp-action="Index" class="nav-link">داشبورد</a>
+            </li>
+            <li>
+                <a asp-area="UserPanel" asp-controller="Orders" asp-action="OrdersList" class="nav-link">فاکتورها</a>
+            </li>
+            <li>
+                <a asp-area="UserPanel" asp-controller="Home" asp-action="FavProducts" class="nav-link">موارد مورده علاقه</a>
+            </li>
+            <li>
+                <a asp-area="UserPanel" asp-controller="Orders" asp-action="OpenOrder" class="nav-link">سبد خرید</a>
+            </li>
+            <li>
+                <a asp-area="UserPanel" asp-controller="Profile" asp-action="EditProfile" class="nav-link">ویرایش اطلاعات</a>
+            </li>
+            <li>
+                <a asp-area="UserPanel" asp-controller="Profile" asp-action="ChangePassword" class="nav-link">تغییر کلمه عبور</a>
+            </li>
+            <li>
+                <a asp-controller="Account" asp-action="Logout" class="nav-link">خروج</a>
+            </li>
+        </ul>
+    </div>
+</div>

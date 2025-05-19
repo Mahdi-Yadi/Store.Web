@@ -1,0 +1,569 @@
+﻿@using DataLayer.Entities.Categories;
+
+@{
+    var cat = ViewBag.cat as List<Category>;
+}
+
+<div class="Offcanvas_menu">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="canvas_open">
+                    <a href="javascript:void(0)"><i class="ion-navicon"></i></a>
+                </div>
+                <div class="Offcanvas_menu_wrapper">
+                    <div class="canvas_close">
+                        <a href="javascript:void(0)"><i class="ion-android-close"></i></a>
+                    </div>
+                    <div class="support_info">
+                        <p>تلفن تماس: <a class="ltr-text" href="tel:+989123456789">+(98) 123 456 789</a></p>
+                    </div>
+                    <div class="top_right text-right">
+                        <ul>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li>
+                                    <a asp-area="UserPanel" asp-controller="Home" asp-action="Index"> حساب کاربری </a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Account" asp-action="Logout"> خروج </a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li>
+                                    <a asp-controller="Account" asp-action="Register"> ثبت نام </a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Account" asp-action="Login"> ورود </a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+
+                    <div class="search_container">
+                        <form action="#">
+                            <div class="hover_category">
+                                <select class="select_option" name="select" id="categori">
+                                    <option selected value="1">همه دسته ها</option>
+                                    <option value="2">لوازم جانبی</option>
+                                    <option value="3">سایر لوازم جانبی</option>
+                                    <option value="4">قطعات کامپیوتر</option>
+                                    <option value="5">دوربین و ویدیو </option>
+                                    <option value="6">صفحه نمایش</option>
+                                    <option value="7">تبلت ها</option>
+                                    <option value="8">لپ تاپ ها</option>
+                                    <option value="9">کیف دستی</option>
+                                    <option value="10">هدفون و اسپیکر</option>
+                                    <option value="11">گیاهان دارویی</option>
+                                    <option value="12">سبزیجات</option>
+                                    <option value="13">فروشگاه</option>
+                                    <option value="14">لپ تاپ و کامپیوتر</option>
+                                    <option value="15">ساعت ها</option>
+                                    <option value="16">لوازم الکترونیکی</option>
+                                </select>
+                            </div>
+                            <div class="search_box">
+                                <input placeholder="جستجوی محصول ..." type="text">
+                                <button type="submit">جستجو</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="middel_right_info">
+                        <div class="header_wishlist">
+                            <a href="wishlist.html"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                            <span class="wishlist_quantity">3</span>
+                        </div>
+                        <div class="mini_cart_wrapper">
+                            <a href="javascript:void(0)"><i class="fa fa-shopping-bag" aria-hidden="true"></i> <i class="fa fa-angle-down"></i></a>
+                            <span class="cart_quantity">2</span>
+                            <!--mini cart-->
+                            <div class="mini_cart">
+                                <div class="cart_items_container">
+                                    <div class="cart_item">
+                                        <div class="cart_img">
+                                            <a href="#"><img src="~/site/img/s-product/product.jpg" alt=""></a>
+                                        </div>
+                                        <div class="cart_info">
+                                            <a href="#">لورم ایپسوم متن ساختگی با تولید سادگی</a>
+                                            <p>تعداد: 1 × <span> 60,000 تومان </span></p>
+                                        </div>
+                                        <div class="cart_remove">
+                                            <a href="#"><i class="ion-android-close"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="cart_item">
+                                        <div class="cart_img">
+                                            <a href="#"><img src="~/site/img/s-product/product2.jpg" alt=""></a>
+                                        </div>
+                                        <div class="cart_info">
+                                            <a href="#">لورم ایپسوم متن ساختگی با تولید سادگی</a>
+                                            <p>تعداد: 1 × <span> 60,000 تومان </span></p>
+                                        </div>
+                                        <div class="cart_remove">
+                                            <a href="#"><i class="ion-android-close"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mini_cart_table">
+                                    <div class="cart_total">
+                                        <span>جمع اجزا:</span>
+                                        <span class="price">138,000 تومان </span>
+                                    </div>
+                                    <div class="cart_total mt-10">
+                                        <span>جمع کل:</span>
+                                        <span class="price">138,000 تومان </span>
+                                    </div>
+                                </div>
+
+                                <div class="mini_cart_footer">
+                                    <div class="cart_button">
+                                        <a href="cart.html">مشاهده سبد</a>
+                                    </div>
+                                    <div class="cart_button">
+                                        <a href="checkout.html">پرداخت</a>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <!--mini cart end-->
+                        </div>
+                    </div>
+
+                    <div id="menu" class="text-left ">
+                        <ul class="offcanvas_main_menu">
+                            <li class="menu-item-has-children active">
+                                <a href="#">خانه</a>
+                                <ul class="sub-menu">
+                                    <li><a href="/">خانه 1</a></li>
+                                    <li><a href="index-2.html">خانه 2</a></li>
+                                    <li><a href="index-3.html">خانه 3</a></li>
+                                    <li><a href="index-4.html">خانه 4</a></li>
+                                    <li><a href="index-5.html">خانه 5</a></li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="#">فروشگاه</a>
+                                <ul class="sub-menu">
+                                    <li class="menu-item-has-children">
+                                        <a href="#">طرح های فروشگاه</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="shop.html">فروشگاه</a></li>
+                                            <li><a href="shop-fullwidth.html">تمام عرض</a></li>
+                                            <li><a href="shop-fullwidth-list.html">تمام عرض لیست</a></li>
+                                            <li><a href="shop-left-sidebar.html">نوار کناری چپ </a></li>
+                                            <li><a href="shop-left-sidebar-list.html"> نوار کناری چپ لیست</a></li>
+                                            <li><a href="shop-list.html">نمایش لیست</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#">سایر صفحات</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="cart.html">سبد خرید</a></li>
+                                            <li><a href="wishlist.html">لیست علاقه‌مندی‌ها</a></li>
+                                            <li><a href="checkout.html">پرداخت</a></li>
+                                            <li><a href="my-account.html">حساب کاربری</a></li>
+                                            <li><a href="404.html">خطای 404</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#">انواع محصول</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="product-details.html">جزئیات محصول</a></li>
+                                            <li><a href="product-sidebar.html">محصول با نوار کناری</a></li>
+                                            <li><a href="product-grouped.html">محصول گروهبندی شده</a></li>
+                                            <li><a href="variable-product.html">محصول متغیر</a></li>
+                                            <li><a href="product-countdown.html">محصول شمارنده</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="#">بلاگ</a>
+                                <ul class="sub-menu">
+                                    <li><a href="blog.html">بلاگ</a></li>
+                                    <li><a href="blog-details.html">جزئیات مطلب بلاگ</a></li>
+                                    <li><a href="blog-fullwidth.html">بلاگ تمام عرض</a></li>
+                                    <li><a href="blog-sidebar.html">بلاگ نوار کناری راست</a></li>
+                                    <li><a href="blog-no-sidebar.html">بلاگ بدون نوار کناری</a></li>
+                                </ul>
+
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="#">صفحات </a>
+                                <ul class="sub-menu">
+                                    <li><a href="about.html">درباره ما</a></li>
+                                    <li><a href="services.html">خدمات</a></li>
+                                    <li><a href="privacy-policy.html">سیاست حریم خصوصی</a></li>
+                                    <li><a href="faq.html">سوالات متداول</a></li>
+                                    <li><a href="contact.html">تماس</a></li>
+                                    <li><a href="login.html">ورود</a></li>
+                                    <li><a href="404.html">خطای 404</a></li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="my-account.html">حساب کاربری</a>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="about.html">درباره ما</a>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="contact.html"> تماس با ما</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="Offcanvas_footer">
+                        <span><a href="#"><i class="fa fa-envelope-o"></i> info@yourdomain.com</a></span>
+                        <ul>
+                            <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li class="pinterest"><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
+                            <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                            <li class="telegram"><a href="#"><i class="fa fa-telegram"></i></a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<header>
+    <div class="main_header">
+        <div class="header_top">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="support_info">
+                            <p>تلفن تماس: <a class="ltr-text" href="tel:+989123456789">+(98) 123 456 789</a></p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="top_right text-right">
+                            <ul>
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <li>
+                                        <a asp-area="UserPanel" asp-controller="Home" asp-action="Index"> حساب کاربری </a>
+                                    </li>
+                                    <li>
+                                        <a asp-controller="Account" asp-action="Logout"> خروج </a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li>
+                                        <a asp-controller="Account" asp-action="Register"> ثبت نام </a>
+                                    </li>
+                                    <li>
+                                        <a asp-controller="Account" asp-action="Login"> ورود </a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="header_middle">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="logo">
+                            <a href="/"><img src="~/site/img/logo/logo.png" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-9 col-md-6">
+                        <div class="middel_right">
+                            <div class="search_container">
+                                <form action="#">
+                                    <div class="hover_category">
+                                        <select class="select_option" name="select" id="categori1">
+                                            <option selected value="1">همه دسته ها</option>
+                                            <option value="2">لوازم جانبی</option>
+                                            <option value="3">سایر لوازم جانبی</option>
+                                            <option value="4">قطعات کامپیوتر</option>
+                                            <option value="5">دوربین و ویدیو </option>
+                                            <option value="6">صفحه نمایش</option>
+                                            <option value="7">تبلت ها</option>
+                                            <option value="8">لپ تاپ ها</option>
+                                            <option value="9">کیف دستی</option>
+                                            <option value="10">هدفون و اسپیکر</option>
+                                            <option value="11">گیاهان دارویی</option>
+                                            <option value="12">سبزیجات</option>
+                                            <option value="13">فروشگاه</option>
+                                            <option value="14">لپ تاپ و کامپیوتر</option>
+                                            <option value="15">ساعت ها</option>
+                                            <option value="16">لوازم الکترونیکی</option>
+                                        </select>
+                                    </div>
+                                    <div class="search_box">
+                                        <input placeholder="جستجوی محصول ..." type="text">
+                                        <button type="submit">جستجو</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="middel_right_info">
+                                <div class="header_wishlist">
+                                    <a href="wishlist.html"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                                    <span class="wishlist_quantity">3</span>
+                                </div>
+                                <div class="mini_cart_wrapper">
+                                    <a href="javascript:void(0)"><i class="fa fa-shopping-bag" aria-hidden="true"></i> <i class="fa fa-angle-down"></i></a>
+                                    <span class="cart_quantity">2</span>
+                                    <!--mini cart-->
+                                    <div class="mini_cart">
+                                        <div class="cart_items_container">
+                                            <div class="cart_item">
+                                                <div class="cart_img">
+                                                    <a href="#"><img src="~/site/img/s-product/product.jpg" alt=""></a>
+                                                </div>
+                                                <div class="cart_info">
+                                                    <a href="#">لورم ایپسوم متن ساختگی با تولید سادگی</a>
+                                                    <p>تعداد: 1 × <span> 60,000 تومان </span></p>
+                                                </div>
+                                                <div class="cart_remove">
+                                                    <a href="#"><i class="ion-android-close"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="cart_item">
+                                                <div class="cart_img">
+                                                    <a href="#"><img src="~/site/img/s-product/product2.jpg" alt=""></a>
+                                                </div>
+                                                <div class="cart_info">
+                                                    <a href="#">لورم ایپسوم متن ساختگی با تولید سادگی</a>
+                                                    <p>تعداد: 1 × <span> 60,000 تومان </span></p>
+                                                </div>
+                                                <div class="cart_remove">
+                                                    <a href="#"><i class="ion-android-close"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mini_cart_table">
+                                            <div class="cart_total">
+                                                <span>جمع اجزا:</span>
+                                                <span class="price">138,000 تومان </span>
+                                            </div>
+                                            <div class="cart_total mt-10">
+                                                <span>جمع کل:</span>
+                                                <span class="price">138,000 تومان </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="mini_cart_footer">
+                                            <div class="cart_button">
+                                                <a href="cart.html">مشاهده سبد</a>
+                                            </div>
+                                            <div class="cart_button">
+                                                <a href="checkout.html">پرداخت</a>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!--mini cart end-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main_menu_area">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-3 col-md-12">
+                        <div class="categories_menu">
+                            <div class="categories_title">
+                                <h2 class="categori_toggle">دسته‌بندی ها</h2>
+                            </div>
+                            <div class="categories_menu_toggle">
+                                @if (cat != null)
+                                {
+                                    <ul>
+                                        @foreach (var item in cat.Where(c => c.ParentId == null))
+                                        {
+                                            <li class="menu_item_children">
+                                                <a asp-controller="Products" asp-action="ProductsList" asp-route-category="@item.Name">@item.Name <i class="fa fa-angle-left"></i></a>
+                                                @if (cat.Any(c => c.ParentId != null))
+                                                {
+                                                    <ul class="categories_mega_menu">
+                                                        @foreach (var item2 in cat.Where(c => c.ParentId == item.Id))
+                                                        {
+                                                            <li class="menu_item_children">
+                                                                <a asp-controller="Products" asp-action="ProductsList" asp-route-category="@item2.Name">
+                                                                    @item2.Name
+                                                                </a>
+                                                            </li>
+                                                        }
+                                                    </ul>
+                                                }
+                                            </li>
+                                        }
+                                    </ul>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-9 col-md-12">
+                        <div class="main_menu menu_position">
+                            <nav>
+                                <ul>
+                                    <li>
+                                        <a href="/">خانه</a>
+                                    </li>
+                                    <li class="mega_items">
+                                        <a href="/ProductsList">فروشگاه<i class="fa fa-angle-down"></i></a>
+                                        @if (cat != null)
+                                        {
+                                            <div class="mega_menu">
+                                                <ul class="mega_menu_inner">
+                                                    @foreach (var item in cat.Where(c => c.ParentId == null))
+                                                    {
+                                                        <li>
+                                                            <a asp-controller="Products" asp-action="ProductsList" asp-route-category="@item.Name">@item.Name</a>
+                                                            @if (cat.Any(c => c.ParentId != null))
+                                                            {
+                                                                <ul>
+                                                                    @foreach (var item2 in cat.Where(c => c.ParentId == item.Id))
+                                                                    {
+                                                                        <li>
+                                                                            <a asp-controller="Products" asp-action="ProductsList" asp-route-category="@item2.Name">@item2.Name</a>
+                                                                        </li>
+                                                                    }
+                                                                </ul>
+                                                            }
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                        }
+                                    </li>
+                                    <li><a href="about.html">درباره ما</a></li>
+                                    <li><a href="contact.html"> تماس با ما</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</header>
+
+<div class="sticky_header_area sticky-header">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-3">
+                <div class="logo">
+                    <a href="/"><img src="~/site/img/logo/logo.png" alt=""></a>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="sticky_header_right menu_position">
+                    <div class="main_menu">
+                        <nav>
+                            <ul>
+                                <li>
+                                    <a href="/">خانه</a>
+                                </li>
+                                <li class="mega_items">
+                                    <a href="shop.html">فروشگاه<i class="fa fa-angle-down"></i></a>
+                                    <div class="mega_menu">
+                                        <ul class="mega_menu_inner">
+                                            <li>
+                                                <a href="#">طرح های فروشگاه</a>
+                                                <ul>
+                                                    <li><a href="shop-fullwidth.html">تمام عرض</a></li>
+                                                    <li><a href="shop-fullwidth-list.html">تمام عرض لیست</a></li>
+                                                    <li><a href="shop-left-sidebar.html">نوار کناری چپ </a></li>
+                                                    <li><a href="shop-left-sidebar-list.html"> نوار کناری چپ لیست</a></li>
+                                                    <li><a href="shop-list.html">نمایش لیست</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="/aboutus">درباره ما</a>
+                                </li>
+                                <li>
+                                    <a href="/contactus"> تماس با ما</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="middel_right_info">
+                        <div class="header_wishlist">
+                            <a href="wishlist.html"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                            <span class="wishlist_quantity">3</span>
+                        </div>
+                        <div class="mini_cart_wrapper">
+                            <a href="javascript:void(0)"><i class="fa fa-shopping-bag" aria-hidden="true"></i> <i class="fa fa-angle-down"></i></a>
+                            <span class="cart_quantity">2</span>
+                            <!--mini cart-->
+                            <div class="mini_cart">
+                                <div class="cart_items_container">
+                                    <div class="cart_item">
+                                        <div class="cart_img">
+                                            <a href="#"><img src="~/site/img/s-product/product.jpg" alt=""></a>
+                                        </div>
+                                        <div class="cart_info">
+                                            <a href="#">لورم ایپسوم متن ساختگی با تولید سادگی</a>
+                                            <p>تعداد: 1 × <span> 60,000 تومان </span></p>
+                                        </div>
+                                        <div class="cart_remove">
+                                            <a href="#"><i class="ion-android-close"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="cart_item">
+                                        <div class="cart_img">
+                                            <a href="#"><img src="~/site/img/s-product/product2.jpg" alt=""></a>
+                                        </div>
+                                        <div class="cart_info">
+                                            <a href="#">لورم ایپسوم متن ساختگی با تولید سادگی</a>
+                                            <p>تعداد: 1 × <span> 60,000 تومان </span></p>
+                                        </div>
+                                        <div class="cart_remove">
+                                            <a href="#"><i class="ion-android-close"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mini_cart_table">
+                                    <div class="cart_total">
+                                        <span>جمع اجزا:</span>
+                                        <span class="price">138,000 تومان </span>
+                                    </div>
+                                    <div class="cart_total mt-10">
+                                        <span>جمع کل:</span>
+                                        <span class="price">138,000 تومان </span>
+                                    </div>
+                                </div>
+
+                                <div class="mini_cart_footer">
+                                    <div class="cart_button">
+                                        <a href="cart.html">مشاهده سبد</a>
+                                    </div>
+                                    <div class="cart_button">
+                                        <a href="checkout.html">پرداخت</a>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <!--mini cart end-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

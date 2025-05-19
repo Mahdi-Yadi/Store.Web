@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html>
+<html class="no-js" lang="fa" dir="rtl">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>@ViewData["Title"]</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="shortcut icon" type="image/x-icon" href="~/site/img/favicon.ico">
+
+	<partial name="_Styles"/>
+</head>
+<body>
+
+	<div class="off_canvars_overlay">
+	</div>
+
+	@await Component.InvokeAsync("Header")
+
+	@RenderBody()
+
+	@await Component.InvokeAsync("Footer")
+	
+	
+	<div class="modal fade" id="modal_box" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+				<div class="modal_body">
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-5 col-md-5 col-sm-12">
+								<div class="modal_tab">
+									<div class="tab-content product-details-large">
+										<div class="tab-pane fade show active" id="tab1" role="tabpanel">
+											<div class="modal_tab_img">
+												<a href="#"><img src="~/site/img/product/product1.jpg" alt=""></a>
+											</div>
+										</div>
+										<div class="tab-pane fade" id="tab2" role="tabpanel">
+											<div class="modal_tab_img">
+												<a href="#"><img src="~/site/img/product/product2.jpg" alt=""></a>
+											</div>
+										</div>
+										<div class="tab-pane fade" id="tab3" role="tabpanel">
+											<div class="modal_tab_img">
+												<a href="#"><img src="~/site/img/product/product3.jpg" alt=""></a>
+											</div>
+										</div>
+										<div class="tab-pane fade" id="tab4" role="tabpanel">
+											<div class="modal_tab_img">
+												<a href="#"><img src="~/site/img/product/product5.jpg" alt=""></a>
+											</div>
+										</div>
+									</div>
+									<div class="modal_tab_button">
+										<ul class="nav product_navactive owl-carousel" role="tablist">
+											<li>
+												<a class="nav-link active" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="false"><img src="~/site/img/product/product1.jpg" alt=""></a>
+											</li>
+											<li>
+												<a class="nav-link" data-toggle="tab" href="#tab2" role="tab" aria-controls="tab2" aria-selected="false"><img src="~/site/img/product/product2.jpg" alt=""></a>
+											</li>
+											<li>
+												<a class="nav-link" data-toggle="tab" href="#tab3" role="tab" aria-controls="tab3" aria-selected="false"><img src="~/site/img/product/product3.jpg" alt=""></a>
+											</li>
+											<li>
+												<a class="nav-link" data-toggle="tab" href="#tab4" role="tab" aria-controls="tab4" aria-selected="false"><img src="~/site/img/product/product5.jpg" alt=""></a>
+											</li>
+
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-7 col-md-7 col-sm-12">
+								<div class="modal_right">
+									<div class="modal_title mb-10">
+										<h2>گوشی موبایل Xiaomi Mi 9 Lite</h2>
+									</div>
+									<div class="modal_price mb-10">
+										<span class="new_price">6,400,000 تومان</span>
+										<span class="old_price">7,800,000 تومان</span>
+									</div>
+									<div class="modal_description mb-15">
+										<p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای </p>
+									</div>
+									<div class="variants_selects">
+										<div class="variants_size">
+											<h2>اندازه</h2>
+											<select class="select_option">
+												<option selected value="1">کوچک</option>
+												<option value="1">متوسط</option>
+												<option value="1">بزرگ</option>
+											</select>
+										</div>
+										<div class="variants_color">
+											<h2>رنگ</h2>
+											<select class="select_option">
+												<option selected value="1">بنفش</option>
+												<option value="1">قرمز</option>
+												<option value="1">مشکی</option>
+												<option value="1">صورتی</option>
+												<option value="1">نارنجی</option>
+											</select>
+										</div>
+										<div class="modal_add_to_cart">
+											<form action="#">
+												<input min="0" max="100" step="2" value="1" type="number">
+												<button type="submit">افزودن به سبد</button>
+											</form>
+										</div>
+									</div>
+									<div class="modal_social">
+										<h2>اشتراک گذاری این محصول</h2>
+										<ul>
+											<li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+											<li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+											<li class="pinterest"><a href="#"><i class="fa fa-pinterest"></i></a></li>
+											<li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+											<li class="telegram"><a href="#"><i class="fa fa-telegram"></i></a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="newletter-popup">
+		<div id="boxes" class="newletter-container">
+			<div id="dialog" class="window">
+				<div id="popup2">
+					<span class="b-close"><span>بستن</span></span>
+				</div>
+				<div class="box">
+					<div class="newletter-title">
+						<h2>خبرنامه</h2>
+					</div>
+					<div class="box-content newleter-content">
+						<label class="newletter-label">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</label>
+						<div id="frm_subscribe">
+							<form name="subscribe" id="subscribe_popup">
+								<input type="text" value="" name="subscribe_pemail" id="subscribe_pemail" placeholder="آدرس ایمیل خود را وارد کنید ...">
+								<input type="hidden" value="" name="subscribe_pname" id="subscribe_pname">
+								<div id="notification"></div>
+								<a class="theme-btn-outlined" onclick="email_subscribepopup()"><span>اشتراک</span></a>
+							</form>
+							<div class="subscribe-bottom">
+								<input type="checkbox" id="newsletter_popup_dont_show_again">
+								<label for="newsletter_popup_dont_show_again">دیگر این پاپ آپ را نشان نده</label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<partial name="_Scripts"/>
+<partial name="_SiteMessages"/>
+</body>
+</html>

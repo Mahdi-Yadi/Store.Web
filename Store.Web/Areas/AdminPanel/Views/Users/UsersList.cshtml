@@ -1,0 +1,79 @@
+﻿@model List<Domain.UsersAdmin.UserDto>
+@{
+    ViewData["Title"] = "لیست کاربران";
+}
+<div class="col-xs-12 col-md-12">
+    <div class="widget">
+        <div class="widget-body">
+            <div id="editabledatatable_wrapper" class="dataTables_wrapper form-inline no-footer">
+                <table class="table table-striped table-hover table-bordered dataTable no-footer" id="editabledatatable" role="grid" aria-describedby="editabledatatable_info">
+                    <thead>
+                        <tr role="row">
+                            <th class="sorting_asc" tabindex="0" aria-controls="editabledatatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="
+                                                    Username
+                                                : activate to sort column descending" style="width: 181.667px;">
+                                نام 
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="editabledatatable" rowspan="1" colspan="1" aria-label="
+                                                    Full Name
+                                                : activate to sort column ascending" style="width: 270.667px;">
+                                ایمیل
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="editabledatatable" rowspan="1" colspan="1" aria-label="
+                                                    Full Name
+                                                : activate to sort column ascending" style="width: 270.667px;">
+                                شماره موبایل
+                            </th>
+                            <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="
+
+                                                " style="width: 342.667px;">
+                                دستورات
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @if (Model != null)
+                        {
+                            @foreach (var item in Model)
+                            {
+                                <tr role="row" class="odd">
+                                    <td class="sorting_1">@item.FullName</td>
+                                    <td>
+                                        @item.Email
+                                    </td>
+                                    <td>
+                                        @item.PhoneNumber
+                                    </td>
+                                    <td>
+                                        <a asp-area="AdminPanel" asp-controller="Users" asp-action="DeleteUser" asp-route-id="@item.Id" class="btn btn-danger btn-xs">
+                                            <i class="fa fa-trash-o"></i> حذف
+                                        </a>
+                                        <a asp-area="AdminPanel" asp-controller="Users" asp-action="InfoUser" asp-route-id="@item.Id" class="btn btn-info btn-xs">
+                                            <i class="fa fa-info"></i> جزییات
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+                <div class="row DTTTFooter">
+                    <div class="col-sm-6">
+                        <div class="dataTables_info" id="editabledatatable_info" role="status" aria-live="polite">Showing 1 to 5 of 6 entries</div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="dataTables_paginate paging_bootstrap" id="editabledatatable_paginate">
+                            <ul class="pagination">
+                                <li class="prev disabled"><a href="#">Prev</a></li>
+                                <li class="active"><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li class="next"><a href="#">Next</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

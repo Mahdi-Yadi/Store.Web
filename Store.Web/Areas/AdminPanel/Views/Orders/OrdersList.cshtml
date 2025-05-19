@@ -1,0 +1,131 @@
+﻿@using Application.Tools
+@model List<DataLayer.Entities.Orders.Order>
+@{
+    ViewData["Title"] = "لیست فاکتورها";
+}
+<div class="col-xs-12 col-md-12">
+    <div class="widget">
+        <div class="widget-body">
+            <div id="editabledatatable_wrapper" class="dataTables_wrapper form-inline no-footer">
+                <table class="table table-striped table-hover table-bordered dataTable no-footer" id="editabledatatable" role="grid" aria-describedby="editabledatatable_info">
+
+                    <thead>
+                        <tr role="row">
+                            <th class="sorting_asc" tabindex="0" aria-controls="editabledatatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="
+                                                    Username
+                                                : activate to sort column descending" style="width: 181.667px;">
+                              وضعیت
+                            </th>
+                            <th class="sorting_asc" tabindex="0" aria-controls="editabledatatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="
+                                                    Username
+                                                : activate to sort column descending" style="width: 181.667px;">
+                                شماره فاکتور
+                            </th>
+                            <th class="sorting_asc" tabindex="0" aria-controls="editabledatatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="
+                                                    Username
+                                                : activate to sort column descending" style="width: 181.667px;">
+                                شماره درگاه پرداخت
+                            </th>
+                            <th class="sorting_asc" tabindex="0" aria-controls="editabledatatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="
+                                                    Username
+                                                : activate to sort column descending" style="width: 181.667px;">
+                                جمع
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="editabledatatable" rowspan="1" colspan="1" aria-label="
+                                                    Full Name
+                                                : activate to sort column ascending" style="width: 270.667px;">
+                                تاریخ ثبت و پرداخت
+                            </th>
+                            <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="
+
+                                                " style="width: 342.667px;">
+                                دستورات
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @if (Model != null)
+                        {
+                            @foreach (var item in Model)
+                            {
+                                <tr role="row" class="odd">
+                                    <td class="sorting_1">
+                                        @if(item.CreateDatePayment != null)
+                                        {
+                                            <p class="text text-success"> پرداخت شده </p>
+                                        }else
+                                        {
+                                            <p class="text text-danger"> پرداخت نشده </p>
+                                        }
+                                        @if (item.PostCode != null)
+                                        {
+                                            <p class="text text-success"> فاکتور تکمیل شده @item.PostCode</p>
+                                        }
+                                        else
+                                        {
+                                            <p class="text text-danger"> فاکتور تکمیل نشده </p>
+                                        }
+                                    </td>
+                                    <td class="sorting_1">
+                                        @item.Code
+                                    </td>
+                                    <td class="sorting_1">@item.CodePayment</td>
+                                    <td>
+                                        @if (item.OrderDetails.Count > 0)
+                                        {
+                                            decimal sumPrice = 0;
+                                            @foreach (var i in item.OrderDetails)
+                                            {
+                                                var price = i.Product.Price;
+
+                                                var activeDiscounts = i.Product.Discounts
+                                                ?.FirstOrDefault(d => d.IsDeleted == false && d.ExpireDate > DateTime.Now);
+
+                                                if (activeDiscounts != null)
+                                                {
+                                                    price -= price * (activeDiscounts.DiscountPercentage / 100m);
+                                                }
+
+                                                sumPrice += price;
+                                            }
+                                            @sumPrice.ToString("#,0")
+                                            <span> تومان </span>
+                                        }
+                                        else
+                                        {
+                                            <span>0</span>
+                                        }
+                                    </td>
+                                    <td>
+                                        @item.CreateDate.ToStringShamsiDate() - @item.CreateDatePayment?.ToStringShamsiDate()
+                                    </td>
+                                    <td>
+                                        <a asp-area="AdminPanel" asp-controller="Orders" asp-action="Order" asp-route-id="@item.Id" class="btn btn-info btn-xs edit">
+                                            <i class="fa fa-eye"></i> جزییات فاکتور
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+                <div class="row DTTTFooter">
+                    <div class="col-sm-6">
+                        <div class="dataTables_info" id="editabledatatable_info" role="status" aria-live="polite">Showing 1 to 5 of 6 entries</div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="dataTables_paginate paging_bootstrap" id="editabledatatable_paginate">
+                            <ul class="pagination">
+                                <li class="prev disabled"><a href="#">Prev</a></li>
+                                <li class="active"><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li class="next"><a href="#">Next</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

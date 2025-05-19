@@ -1,0 +1,728 @@
+﻿@using Domain.Products
+@using NuGet.Protocol
+
+@{
+    ViewData["Title"] = "صفحه اصلی";
+    List<ProductDto> specialProducts = ViewBag.special as List<ProductDto>;
+}
+
+
+<section class="slider_section mb-70">
+    <div class="slider_area owl-carousel">
+        <div class="single_slider d-flex align-items-center" data-bgimg="/site/img/slider/slider1.jpg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="slider_content">
+                            <h1> طراحی زیبا</h1>
+                            <h2>تلویزیون 85 اینچ</h2>
+                            <p>پیشنهاد ویژه <span> 20% تخفیف </span> این هفته</p>
+                            <a class="button" href="shop.html">اکنون بخرید</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="single_slider d-flex align-items-center" data-bgimg="/site/img/slider/slider2.jpg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="slider_content">
+                            <h1>دوربین دوگانه</h1>
+                            <h2>کیفیت 20MP</h2>
+                            <p>پیشنهاد ویژه <span> 20% تخفیف </span> این هفته</p>
+                            <a class="button" href="shop.html">اکنون بخرید</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="single_slider d-flex align-items-center" data-bgimg="/site/img/slider/slider3.jpg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="slider_content">
+                            <h1>عجله کنید!</h1>
+                            <h2>محصولات برتر سال</h2>
+                            <p>پیشنهاد ویژه <span> 20% تخفیف </span> این هفته</p>
+                            <a class="button" href="shop.html">اکنون بخرید</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="shipping_area mb-70">
+    <div class="container">
+        <div class=" row">
+            <div class="col-lg-3 col-md-6">
+                <div class="single_shipping">
+                    <div class="shipping_icone">
+                        <img src="~/site/img/about/shipping1.png" alt="">
+                    </div>
+                    <div class="shipping_content">
+                        <h2>ارسال رایگان</h2>
+                        <p>ارسال رایگان به تمام نقاط کشور</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="single_shipping">
+                    <div class="shipping_icone">
+                        <img src="~/site/img/about/shipping2.png" alt="">
+                    </div>
+                    <div class="shipping_content">
+                        <h2>پشتیبانی 24 ساعته</h2>
+                        <p>هر ساعت از شبانه روز تماس بگیرید</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="single_shipping">
+                    <div class="shipping_icone">
+                        <img src="~/site/img/about/shipping3.png" alt="">
+                    </div>
+                    <div class="shipping_content">
+                        <h2>100% بازگشت وجه</h2>
+                        <p>30 روز مهلت بازگشت وجه</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="single_shipping">
+                    <div class="shipping_icone">
+                        <img src="~/site/img/about/shipping4.png" alt="">
+                    </div>
+                    <div class="shipping_content">
+                        <h2>پرداخت ایمن</h2>
+                        <p>امنیت پرداخت تضمین شده</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="banner_area mb-40">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3">
+                <div class="single_banner mb-30">
+                    <div class="banner_thumb">
+                        <a href="shop.html"><img src="~/site/img/bg/banner1.jpg" alt=""></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="single_banner mb-30">
+                    <div class="banner_thumb">
+                        <a href="shop.html"><img src="~/site/img/bg/banner2.jpg" alt=""></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3">
+                <div class="single_banner mb-30">
+                    <div class="banner_thumb">
+                        <a href="shop.html"><img src="~/site/img/bg/banner3.jpg" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@{
+    List<ProductDto> discount = ViewBag.discount as List<ProductDto>;
+}
+<section class="product_area mb-46">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section_title">
+                    <h2>پیشنهاد های ویژه</h2>
+                </div>
+            </div>
+        </div>
+        <div class="product_carousel product_column5 owl-carousel">
+            @if (discount != null)
+            {
+                @foreach (var item in discount)
+                {
+                    <article class="single_product">
+                        <figure>
+                            <div class="product_thumb">
+                                <a class="primary_img" asp-controller="Product" asp-action="ProductDetail" asp-route-id="@item.Id"><img src="/images/@item.ImageName" alt=""></a>
+                                <a class="secondary_img" asp-controller="Product" asp-action="ProductDetail" asp-route-id="@item.Id"><img src="/images/@item.ImageName" alt=""></a>
+                                <div class="label_product">
+                                    <span class="label_sale">فروش</span>
+                                </div>
+                                <div class="action_links">
+                                    <ul>
+                                        <li class="wishlist">
+                                            <a href="wishlist.html" title="افزودن به علاقه‌مندی‌ها">
+                                                <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                        <li class="compare">
+                                            <a href="#" title="مقایسه"><span class="ion-levels"></span></a>
+                                        </li>
+                                        <li class="quick_button">
+                                            <a href="#" data-toggle="modal" data-target="#modal_box" title="مشاهده سریع">
+                                                 <span class="ion-ios-search-strong"></span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                @*      <div class="add_to_cart">
+                                <a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
+                            </div> *@
+                                @if (item.Discount.DiscountPercentage != 0)
+                                {
+                                    <div class="product_timing">
+                                        <div data-countdown="@item.Discount.ExpireDate.ToString("yyyy/MM/dd")"></div>
+                                    </div>
+                                }
+                            </div>
+                            <figcaption class="product_content">
+                                <div class="price_box">
+                                    @if (item.Discount.DiscountPercentage != 0)
+                                    {
+                                        <span class="old_price">@item.Price.ToString("#,0") تومان</span>
+                                        <span class="current_price">@(((item.Price - (item.Price * item.Discount.DiscountPercentage) / 100)).ToString("#,0")) تومان</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="current_price">@item.Price.ToString("#,0") تومان</span>
+                                    }
+                                </div>
+                                <h3 class="product_name">
+                                    <a asp-controller="Product" asp-action="ProductDetail" asp-route-id="@item.Id">
+                                        @item.Title
+                                    </a>
+                                </h3>
+                            </figcaption>
+                        </figure>
+                    </article>
+                }
+            }
+        </div>
+    </div>
+</section>
+
+<div class="banner_area mb-40">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="single_banner mb-30">
+                    <div class="banner_thumb">
+                        <a href="shop.html"><img src="~/site/img/bg/banner4.jpg" alt=""></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="single_banner mb-30">
+                    <div class="banner_thumb">
+                        <a href="shop.html"><img src="~/site/img/bg/banner5.jpg" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="top_category_product mb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2 col-md-3">
+                <div class="top_category_header">
+                    <h3>محبوب ترین دسته های این هفته</h3>
+                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</p>
+                    <a href="shop.html">نمایش همه دسته ها</a>
+                </div>
+            </div>
+            <div class="col-lg-10 col-md-9">
+                <div class="top_category_container category_column5 owl-carousel">
+                    <div class="col-lg-2">
+                        <article class="single_category">
+                            <figure>
+                                <div class="category_thumb">
+                                    <a href="shop.html"><img src="~/site/img/s-product/category1.jpg" alt=""></a>
+                                </div>
+                                <figcaption class="category_name">
+                                    <h3><a href="shop.html">بازی و کنسول </a></h3>
+                                </figcaption>
+                            </figure>
+                        </article>
+                    </div>
+                    <div class="col-lg-2">
+                        <article class="single_category">
+                            <figure>
+                                <div class="category_thumb">
+                                    <a href="shop.html"><img src="~/site/img/s-product/category2.jpg" alt=""></a>
+                                </div>
+                                <figcaption class="category_name">
+                                    <h3><a href="shop.html">لوازم خانگی</a></h3>
+                                </figcaption>
+                            </figure>
+                        </article>
+                    </div>
+                    <div class="col-lg-2">
+                        <article class="single_category">
+                            <figure>
+                                <div class="category_thumb">
+                                    <a href="shop.html"><img src="~/site/img/s-product/category3.jpg" alt=""></a>
+                                </div>
+                                <figcaption class="category_name">
+                                    <h3><a href="shop.html">صوتی و تصویری</a></h3>
+                                </figcaption>
+                            </figure>
+                        </article>
+                    </div>
+                    <div class="col-lg-2">
+                        <article class="single_category">
+                            <figure>
+                                <div class="category_thumb">
+                                    <a href="shop.html"><img src="~/site/img/s-product/category4.jpg" alt=""></a>
+                                </div>
+                                <figcaption class="category_name">
+                                    <h3><a href="shop.html">بازی و کنسول </a></h3>
+                                </figcaption>
+                            </figure>
+                        </article>
+                    </div>
+                    <div class="col-lg-2">
+                        <article class="single_category">
+                            <figure>
+                                <div class="category_thumb">
+                                    <a href="shop.html"><img src="~/site/img/s-product/category5.jpg" alt=""></a>
+                                </div>
+                                <figcaption class="category_name">
+                                    <h3><a href="shop.html">لپ تاپ و تبلت </a></h3>
+                                </figcaption>
+                            </figure>
+                        </article>
+                    </div>
+                    <div class="col-lg-2">
+                        <article class="single_category">
+                            <figure>
+                                <div class="category_thumb">
+                                    <a href="shop.html"><img src="~/site/img/s-product/category2.jpg" alt=""></a>
+                                </div>
+                                <figcaption class="category_name">
+                                    <h3><a href="shop.html">لوازم خانگی</a></h3>
+                                </figcaption>
+                            </figure>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="featured_product_area mb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section_title">
+                    <h2>محصولات ویژه</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row featured_container featured_column3">
+            @if (specialProducts != null)
+            {
+                @foreach (var item in specialProducts)
+                {
+                    <div class="col-lg-4">
+                        <article class="single_product">
+                            <figure>
+                                <div class="product_thumb">
+                                    <a class="primary_img" asp-controller="Product" asp-action="ProductDetail" asp-route-id="@item.Id"><img src="/images/@item.ImageName" alt=""></a>
+                                    <a class="secondary_img" asp-controller="Product" asp-action="ProductDetail" asp-route-id="@item.Id"><img src="/images/@item.ImageName" alt=""></a>
+                                    <div class="label_product">
+                                        <span class="label_sale">فروش</span>
+                                    </div>
+                                    <div class="action_links">
+                                        <ul>
+                                            <li class="wishlist"><a href="wishlist.html" title="افزودن به علاقه‌مندی‌ها"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                                            <li class="compare"><a href="#" title="مقایسه"><span class="ion-levels"></span></a></li>
+                                            <li class="quick_button">
+                                                <a href="#" data-toggle="modal" data-target="#modal_box" title="مشاهده سریع"> <span class="ion-ios-search-strong"></span></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    @*      <div class="add_to_cart">
+                                <a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
+                            </div> *@
+                                    @if (item.Discount.DiscountPercentage != 0)
+                                    {
+                                        <div class="product_timing">
+                                            <div data-countdown="@item.Discount.ExpireDate.ToString("yyyy/MM/dd")"></div>
+                                        </div>
+                                    }
+                                </div>
+                                <figcaption class="product_content">
+                                    <div class="price_box">
+                                        @if (item.Discount.DiscountPercentage != 0)
+                                        {
+                                            <span class="old_price">@item.Price.ToString("#,0") تومان</span>
+                                            <span class="current_price">@(((item.Price - (item.Price * item.Discount.DiscountPercentage) / 100)).ToString("#,0")) تومان</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="current_price">@item.Price.ToString("#,0") تومان</span>
+                                        }
+                                    </div>
+                                    <h3 class="product_name">
+                                        <a asp-controller="Product" asp-action="ProductDetail" asp-route-id="@item.Id">
+                                            @item.Title
+                                        </a>
+                                    </h3>
+                                </figcaption>
+                            </figure>
+                        </article>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</section>
+@{
+    List<ProductDto> productDtos = ViewBag.last as List<ProductDto>;
+}
+<section class="product_area mb-46">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section_title">
+                    <h2>آخرین محصولات</h2>
+                </div>
+            </div>
+        </div>
+        <div class="product_carousel product_column5 owl-carousel">
+            @if (productDtos != null)
+            {
+                @foreach (var item in productDtos)
+                {
+                    <article class="single_product">
+                        <figure>
+                            <div class="product_thumb">
+                                <a class="primary_img" asp-controller="Product" asp-action="ProductDetail" asp-route-id="@item.Id"><img src="/images/@item.ImageName" alt="@item.Title"></a>
+                                <a class="secondary_img" asp-controller="Product" asp-action="ProductDetail" asp-route-id="@item.Id"><img src="/images/@item.ImageName" alt=""></a>
+                                <div class="label_product">
+                                    <span class="label_sale">فروش</span>
+                                </div>
+                                <div class="action_links">
+                                    <ul>
+                                        <li class="wishlist"><a href="wishlist.html" title="افزودن به علاقه‌مندی‌ها"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                                        <li class="compare"><a href="#" title="مقایسه"><span class="ion-levels"></span></a></li>
+                                        <li class="quick_button">
+                                            <a href="#" data-toggle="modal" data-target="#modal_box" title="مشاهده سریع"> <span class="ion-ios-search-strong"></span></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="add_to_cart">
+                                    <a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
+                                </div>
+                            </div>
+                            <figcaption class="product_content">
+                                <div class="price_box">
+                                    @if (item.Discount.DiscountPercentage != 0)
+                                    {
+                                        <span class="old_price">@item.Price.ToString("#,0") تومان</span>
+                                        <span class="current_price">@(((item.Price - (item.Price * item.Discount.DiscountPercentage) / 100)).ToString("#,0")) تومان</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="current_price">@item.Price.ToString("#,0") تومان</span>
+                                    }
+                                </div>
+                                <h3 class="product_name">
+                                    <a asp-controller="Product" asp-action="ProductDetail" asp-route-id="@item.Id">
+                                        @item.Title
+                                    </a>
+                                </h3>
+                            </figcaption>
+                        </figure>
+                    </article>
+                }
+            }
+        </div>
+    </div>
+</section>
+
+<div class="banner_area mb-40">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 col-md-9">
+                <div class="single_banner mb-30">
+                    <div class="banner_thumb">
+                        <a href="shop.html"><img src="~/site/img/bg/banner6.jpg" alt=""></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3">
+                <div class="single_banner mb-30">
+                    <div class="banner_thumb">
+                        <a href="shop.html"><img src="~/site/img/bg/banner7.jpg" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@{
+    List<ProductDto> popular = ViewBag.popular as List<ProductDto>;
+}
+<section class="product_area mb-46">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 col-md-12">
+                <div class="product_left_area">
+                    <div class="section_title">
+                        <h2>محبوب ترین</h2>
+                    </div>
+                    <div class="product_carousel product_column4 owl-carousel">
+                        @if (popular != null)
+                        {
+                            @foreach (var item in popular)
+                            {
+                                <article class="single_product">
+                                    <figure>
+                                        <div class="product_thumb">
+                                            <a class="primary_img" asp-controller="Product" asp-action="ProductDetail" asp-route-id="@item.Id"><img src="/images/@item.ImageName" alt="@item.Title"></a>
+                                            <a class="secondary_img" asp-controller="Product" asp-action="ProductDetail" asp-route-id="@item.Id"><img src="/images/@item.ImageName" alt=""></a>
+                                            <div class="label_product">
+                                                <span class="label_sale">فروش</span>
+                                            </div>
+                                            <div class="action_links">
+                                                <ul>
+                                                    <li class="wishlist"><a href="wishlist.html" title="افزودن به علاقه‌مندی‌ها"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                                                    <li class="compare"><a href="#" title="مقایسه"><span class="ion-levels"></span></a></li>
+                                                    <li class="quick_button">
+                                                        <a href="#" data-toggle="modal" data-target="#modal_box" title="مشاهده سریع"> <span class="ion-ios-search-strong"></span></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="add_to_cart">
+                                                <a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
+                                            </div>
+                                        </div>
+                                        <figcaption class="product_content">
+                                            <div class="price_box">
+                                                @if (item.Discount.DiscountPercentage != 0)
+                                                {
+                                                    <span class="old_price">@item.Price.ToString("#,0") تومان</span>
+                                                    <span class="current_price">@(((item.Price - (item.Price * item.Discount.DiscountPercentage) / 100)).ToString("#,0")) تومان</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="current_price">@item.Price.ToString("#,0") تومان</span>
+                                                }
+                                            </div>
+                                            <h3 class="product_name">
+                                                <a asp-controller="Product" asp-action="ProductDetail" asp-route-id="@item.Id">
+                                                    @item.Title
+                                                </a>
+                                            </h3>
+                                        </figcaption>
+                                    </figure>
+                                </article>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-12">
+                <!--testimonials section start-->
+                <div class="testimonial_are">
+                    <div class="section_title">
+                        <h2>دیدگاه مشتریان</h2>
+                    </div>
+                    <div class="testimonial_active owl-carousel">
+                        <article class="single_testimonial">
+                            <figure>
+                                <div class="testimonial_thumb">
+                                    <a href="#"><img src="~/site/img/about/testimonial1.jpg" alt=""></a>
+                                </div>
+                                <figcaption class="testimonial_content">
+                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم</p>
+                                    <h3><a href="#">بیل گیتس</a><span> - بنیان گذار مایکروسافت</span></h3>
+                                </figcaption>
+
+                            </figure>
+                        </article>
+                        <article class="single_testimonial">
+                            <figure>
+                                <div class="testimonial_thumb">
+                                    <a href="#"><img src="~/site/img/about/testimonial2.jpg" alt=""></a>
+                                </div>
+                                <figcaption class="testimonial_content">
+                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه</p>
+                                    <h3><a href="#">جان اسنو</a><span> - مشتری</span></h3>
+                                </figcaption>
+
+                            </figure>
+                        </article>
+                        <article class="single_testimonial">
+                            <figure>
+                                <div class="testimonial_thumb">
+                                    <a href="#"><img src="~/site/img/about/testimonial3.jpg" alt=""></a>
+                                </div>
+                                <figcaption class="testimonial_content">
+                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
+                                    <h3><a href="#">استیو جابز</a><span> - رئیس شرکت اپل</span></h3>
+                                </figcaption>
+
+                            </figure>
+                        </article>
+                    </div>
+                </div>
+                <!--testimonials section end-->
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="blog_section mb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section_title">
+                    <h2>بلاگ</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="blog_carousel blog_column4 owl-carousel">
+                <div class="col-lg-3">
+                    <article class="single_blog">
+                        <figure>
+                            <div class="blog_thumb">
+                                <a href="blog-details.html"><img src="~/site/img/blog/blog1.jpg" alt=""></a>
+                            </div>
+                            <figcaption class="blog_content">
+                                <p class="post_author">توسط <a href="#">مدیر</a> 6 آذر 1398</p>
+                                <h3 class="post_title"><a href="blog-details.html">مطلب بلاگ تصویری</a></h3>
+                            </figcaption>
+                        </figure>
+                    </article>
+                </div>
+                <div class="col-lg-3">
+                    <article class="single_blog">
+                        <figure>
+                            <div class="blog_thumb">
+                                <a href="blog-details.html"><img src="~/site/img/blog/blog2.jpg" alt=""></a>
+                            </div>
+                            <figcaption class="blog_content">
+                                <p class="post_author">توسط <a href="#">مدیر</a> 6 آذر 1398</p>
+                                <h3 class="post_title"><a href="blog-details.html">مطلب دارای گالری</a></h3>
+                            </figcaption>
+                        </figure>
+                    </article>
+                </div>
+                <div class="col-lg-3">
+                    <article class="single_blog">
+                        <figure>
+                            <div class="blog_thumb">
+                                <a href="blog-details.html"><img src="~/site/img/blog/blog3.jpg" alt=""></a>
+                            </div>
+                            <figcaption class="blog_content">
+                                <p class="post_author">توسط <a href="#">مدیر</a> 6 آذر 1398</p>
+                                <h3 class="post_title"><a href="blog-details.html">مطلب بلاگ صوتی</a></h3>
+                            </figcaption>
+                        </figure>
+                    </article>
+                </div>
+                <div class="col-lg-3">
+                    <article class="single_blog">
+                        <figure>
+                            <div class="blog_thumb">
+                                <a href="blog-details.html"><img src="~/site/img/blog/blog4.jpg" alt=""></a>
+                            </div>
+                            <figcaption class="blog_content">
+                                <p class="post_author">توسط <a href="#">مدیر</a> 6 آذر 1398</p>
+                                <h3 class="post_title"><a href="blog-details.html">مطلب بلاگ ویدیویی</a></h3>
+                            </figcaption>
+                        </figure>
+                    </article>
+                </div>
+                <div class="col-lg-3">
+                    <article class="single_blog">
+                        <figure>
+                            <div class="blog_thumb">
+                                <a href="blog-details.html"><img src="~/site/img/blog/blog5.jpg" alt=""></a>
+                            </div>
+                            <figcaption class="blog_content">
+                                <p class="post_author">توسط <a href="#">مدیر</a> 6 آذر 1398</p>
+                                <h3 class="post_title"><a href="blog-details.html">لورم ایپسوم متن ساختگی</a></h3>
+                            </figcaption>
+                        </figure>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="brand_area mb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="brand_container owl-carousel">
+                    <div class="brand_items">
+                        <div class="single_brand">
+                            <a href="#"><img src="~/site/img/brand/brand1.jpg" alt=""></a>
+                        </div>
+                        <div class="single_brand">
+                            <a href="#"><img src="~/site/img/brand/brand2.jpg" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="brand_items">
+                        <div class="single_brand">
+                            <a href="#"><img src="~/site/img/brand/brand3.jpg" alt=""></a>
+                        </div>
+                        <div class="single_brand">
+                            <a href="#"><img src="~/site/img/brand/brand4.jpg" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="brand_items">
+                        <div class="single_brand">
+                            <a href="#"><img src="~/site/img/brand/brand5.jpg" alt=""></a>
+                        </div>
+                        <div class="single_brand">
+                            <a href="#"><img src="~/site/img/brand/brand6.jpg" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="brand_items">
+                        <div class="single_brand">
+                            <a href="#"><img src="~/site/img/brand/brand7.jpg" alt=""></a>
+                        </div>
+                        <div class="single_brand">
+                            <a href="#"><img src="~/site/img/brand/brand8.jpg" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="brand_items">
+                        <div class="single_brand">
+                            <a href="#"><img src="~/site/img/brand/brand9.jpg" alt=""></a>
+                        </div>
+                        <div class="single_brand">
+                            <a href="#"><img src="~/site/img/brand/brand10.jpg" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="brand_items">
+                        <div class="single_brand">
+                            <a href="#"><img src="~/site/img/brand/brand2.jpg" alt=""></a>
+                        </div>
+                        <div class="single_brand">
+                            <a href="#"><img src="~/site/img/brand/brand3.jpg" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+﻿@using DataLayer.Entities.Categories
+@model Domain.Products.CreateProductDTO
+@{
+    ViewData["Title"] = "افزودن محصول";
+    var cats = ViewBag.cats as List<Category>;
+}
+
+<form method="post" asp-area="AdminPanel" asp-controller="Products" asp-action="CreateProduct" enctype="multipart/form-data">
+    
+    <input type="text" asp-for="Title" placeholder="Title" />
+    
+    <input type="text" asp-for="Price" placeholder="price" />
+    
+    <label>
+        <input type="checkbox" id="checkbox_fixedheader" asp-for="IsSpecial">
+        <span class="text">ویژه</span>
+    </label>
+    
+    <br/>
+    
+    @if (cats != null)
+    {
+        @foreach (var item in cats)
+        {
+            <ul>
+                <li>
+                    <label>
+                        <input type="checkbox" id="checkbox_fixedbreadcrumbs" value="@item.Id" name="catsid">
+                        <span class="text"> @item.Name</span>
+                    </label>
+                </li>
+            </ul>
+        }
+    }
+    
+    <input type="file" name="imageFile"/>
+
+    <br />
+    <textarea  asp-for="Description" placeholder="des" style="width: 200px; height: 300px;">
+    </textarea>
+
+
+    <button type="submit" class="btn btn-success">ثبت</button>
+
+</form>

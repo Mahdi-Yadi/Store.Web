@@ -1,0 +1,1030 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"]</title>
+
+    <meta name="description" content="Dashboard" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="shortcut icon" href="/admin/img/favicon.png" type="image/x-icon">
+
+    <!--Basic Styles-->
+    <link href="/admin/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/admin/css/bootstrap-rtl.min.css" rel="stylesheet" />
+    <link href="/admin/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="/admin/css/weather-icons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/lib/persianDatepicker-master/css/persianDatepicker-default.css">
+
+    <!--Fonts-->
+  @*   <style>
+        @font-face {
+            font-family: 'WYekan';
+            src: url('/admin/fonts/BYekan.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+    </style> *@
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300" rel="stylesheet" type="text/css">
+
+    <!--Beyond styles-->
+    <link href="/admin/css/beyond-rtl.min.css" rel="stylesheet" />
+    <link href="/admin/css/4095-rtl.min.css" rel="stylesheet" type="text/css" />
+    <link href="/admin/css/demo.min.css" rel="stylesheet" />
+    <link href="/admin/css/typicons.min.css" rel="stylesheet" />
+    <link href="/admin/css/animate.min.css" rel="stylesheet" />
+    <link id="skin-link" href="" rel="stylesheet" type="text/css" />
+</head>
+<!-- /Head -->
+<!-- Body -->
+<body>
+    <!-- Loading Container -->
+    <div class="loading-container">
+        <div class="loader"></div>
+    </div>
+    <!--  /Loading Container -->
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="navbar-container">
+                <!-- Navbar Barnd -->
+                <div class="navbar-header pull-right">
+                    <a href="/" class="navbar-brand">
+                        <small>
+                            <img src="/admin/img/logo-rtl.png" alt="" />
+                        </small>
+                    </a>
+                </div>
+                <!-- /Navbar Barnd -->
+                <!-- Sidebar Collapse -->
+                <div class="sidebar-collapse" id="sidebar-collapse">
+                    <i class="collapse-icon fa fa-bars"></i>
+                </div>
+                <!-- /Sidebar Collapse -->
+                <!-- Account Area and Settings --->
+                <div class="navbar-header pull-left">
+                    <div class="navbar-account">
+                        <ul class="account-area">
+                            <li>
+                                <a class=" dropdown-toggle" data-toggle="dropdown" title="Help" href="#">
+                                    <i class="icon fa fa-warning"></i>
+                                </a>
+                                <!--Notification Dropdown-->
+                                <ul class="pull-right dropdown-menu dropdown-arrow dropdown-notifications">
+                                    <li>
+                                        <a href="#">
+                                            <div class="clearfix">
+                                                <div class="notification-icon">
+                                                    <i class="fa fa-phone bg-themeprimary white"></i>
+                                                </div>
+                                                <div class="notification-body">
+                                                    <span class="title">ملاقات در اسکایپ با علی</span>
+                                                    <span class="description">01:00 بعد از ظهر</span>
+                                                </div>
+                                                <div class="notification-extra">
+                                                    <i class="fa fa-clock-o themeprimary"></i>
+                                                    <span class="description">دفتر</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="clearfix">
+                                                <div class="notification-icon">
+                                                    <i class="fa fa-check bg-darkorange white"></i>
+                                                </div>
+                                                <div class="notification-body">
+                                                    <span class="title">استراحت پیش بینی نشده</span>
+                                                    <span class="description">03:30 pm - 05:15 pm</span>
+                                                </div>
+                                                <div class="notification-extra">
+                                                    <i class="fa fa-clock-o darkorange"></i>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="clearfix">
+                                                <div class="notification-icon">
+                                                    <i class="fa fa-gift bg-warning white"></i>
+                                                </div>
+                                                <div class="notification-body">
+                                                    <span class="title">تولد مهرام</span>
+                                                    <span class="description">08:30 pm</span>
+                                                </div>
+                                                <div class="notification-extra">
+                                                    <i class="fa fa-calendar warning"></i>
+                                                    <i class="fa fa-clock-o warning"></i>
+                                                    <span class="description">خانه</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="clearfix">
+                                                <div class="notification-icon">
+                                                    <i class="fa fa-glass bg-success white"></i>
+                                                </div>
+                                                <div class="notification-body">
+                                                    <span class="title">شام با دوستان</span>
+                                                    <span class="description">10:30 pm</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="dropdown-footer ">
+                                        <span>
+                                            امروز، 14 تیر
+                                        </span>
+                                        <span class="pull-left">
+                                            10°c
+                                            <i class="wi wi-cloudy"></i>
+                                        </span>
+                                    </li>
+                                </ul>
+                                <!--/Notification Dropdown-->
+                            </li>
+                            <li>
+                                <a class="dropdown-toggle" data-toggle="dropdown" title="Mails" href="#">
+                                    <i class="icon fa fa-envelope"></i>
+                                    <span class="badge">3</span>
+                                </a>
+                                <!--Messages Dropdown-->
+                                <ul class="pull-right dropdown-menu dropdown-arrow dropdown-messages">
+                                    <li>
+                                        <a href="#">
+                                            <img src="/admin/img/avatars/divyia.jpg" class="message-avatar" alt="Divyia Austin">
+                                            <div class="message">
+                                                <span class="message-sender">
+                                                    دیویا فیلیپس
+                                                </span>
+                                                <span class="message-time">
+                                                    2 دقیقه پیش
+                                                </span>
+                                                <span class="message-subject">
+                                                    دستور پخت پای سیب ارسال می گردد
+                                                </span>
+                                                <span class="message-body">
+                                                    برای پختن پای سیب تنها لازم است تا سیب داشته باشید
+                                                </span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="/admin/img/avatars/bing.png" class="message-avatar" alt="Microsoft Bing">
+                                            <div class="message">
+                                                <span class="message-sender">
+                                                    Bing.com
+                                                </span>
+                                                <span class="message-time">
+                                                    دیروز
+                                                </span>
+                                                <span class="message-subject">
+                                                    Bing Newsletter: The January Issue‏
+                                                </span>
+                                                <span class="message-body">
+                                                    Discover new music just in time for the Grammy® Awards.
+                                                </span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="/admin/img/avatars/adam-jansen.jpg" class="message-avatar" alt="Divyia Austin">
+                                            <div class="message">
+                                                <span class="message-sender">
+                                                    Nicolas
+                                                </span>
+                                                <span class="message-time">
+                                                    Friday, September 22
+                                                </span>
+                                                <span class="message-subject">
+                                                    دوربین های 4کی جدید
+                                                </span>
+                                                <span class="message-body">
+                                                    انقلاب دوربین های 4کی به مرحله جدیدی رسیده است.
+                                                </span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <!--/Messages Dropdown-->
+                            </li>
+
+                            <li>
+                                <a class="dropdown-toggle" data-toggle="dropdown" title="Tasks" href="#">
+                                    <i class="icon fa fa-tasks"></i>
+                                    <span class="badge">4</span>
+                                </a>
+                                <!--Tasks Dropdown-->
+                                <ul class="pull-right dropdown-menu dropdown-tasks dropdown-arrow ">
+                                    <li class="dropdown-header bordered-darkorange">
+                                        <i class="fa fa-tasks"></i>
+                                        4 وظیفه در حال انجام
+                                    </li>
+
+                                    <li>
+                                        <a href="#">
+                                            <div class="clearfix">
+                                                <span class="pull-right">ایجاد حساب</span>
+                                                <span class="pull-left">65%</span>
+                                            </div>
+
+                                            <div class="progress progress-xs">
+                                                <div style="width:65%" class="progress-bar"></div>
+                                            </div>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#">
+                                            <div class="clearfix">
+                                                <span class="pull-right">تکمیل پروفایل</span>
+                                                <span class="pull-left">35%</span>
+                                            </div>
+
+                                            <div class="progress progress-xs">
+                                                <div style="width:35%" class="progress-bar progress-bar-success"></div>
+                                            </div>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#">
+                                            <div class="clearfix">
+                                                <span class="pull-right">تکمیل رزومه</span>
+                                                <span class="pull-left">75%</span>
+                                            </div>
+
+                                            <div class="progress progress-xs">
+                                                <div style="width:75%" class="progress-bar progress-bar-darkorange"></div>
+                                            </div>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#">
+                                            <div class="clearfix">
+                                                <span class="pull-left">افزودن دوستان</span>
+                                                <span class="pull-right">10%</span>
+                                            </div>
+
+                                            <div class="progress progress-xs">
+                                                <div style="width:10%" class="progress-bar progress-bar-warning"></div>
+                                            </div>
+                                        </a>
+                                    </li>
+
+                                    <li class="dropdown-footer">
+                                        <a href="#">
+                                            مشاهده همه وظایف
+                                        </a>
+                                        <button class="btn btn-xs btn-default shiny darkorange icon-only pull-left"><i class="fa fa-check"></i></button>
+                                    </li>
+                                </ul>
+                                <!--/Tasks Dropdown-->
+                            </li>
+                            <li>
+                                <a class="wave in" id="chat-link" title="Chat" href="#">
+                                    <i class="icon glyphicon glyphicon-comment"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="login-area dropdown-toggle" data-toggle="dropdown">
+                                    <div class="avatar" title="View your public profile">
+                                        <img src="/admin/img/avatars/adam-jansen.jpg">
+                                    </div>
+                                    <section>
+                                        <h2><span class="profile"><span>@User.Identity.Name</span></span></h2>
+                                    </section>
+                                </a>
+                                <!--Login Area Dropdown-->
+                                <ul class="pull-right dropdown-menu dropdown-arrow dropdown-login-area">
+                                    <li class="username"><a>دیوید استیونسون</a></li>
+                                    <li class="email"><a>David.Stevenson@live.com</a></li>
+                                    <!--Avatar Area-->
+                                    <li>
+                                        <div class="avatar-area">
+                                            <img src="/admin/img/avatars/adam-jansen.jpg" class="avatar">
+                                            <span class="caption">تغییر تصویر</span>
+                                        </div>
+                                    </li>
+                                    <!--Avatar Area-->
+                                    <li class="edit">
+                                        <a href="profile.html" class="pull-left">پروفایل</a>
+                                        <a href="#" class="pull-right">تنظیمات</a>
+                                    </li>
+                                    <!--Theme Selector Area-->
+                                    <li class="theme-area">
+                                        <ul class="colorpicker" id="skin-changer">
+                                            <li><a class="colorpick-btn" href="#" style="background-color:#5DB2FF;" rel="/admin/css/skins/blue.min.css"></a></li>
+                                            <li><a class="colorpick-btn" href="#" style="background-color:#2dc3e8;" rel="/admin/css/skins/azure.min.css"></a></li>
+                                            <li><a class="colorpick-btn" href="#" style="background-color:#03B3B2;" rel="/admin/css/skins/teal.min.css"></a></li>
+                                            <li><a class="colorpick-btn" href="#" style="background-color:#53a93f;" rel="/admin/css/skins/green.min.css"></a></li>
+                                            <li><a class="colorpick-btn" href="#" style="background-color:#FF8F32;" rel="/admin/css/skins/orange.min.css"></a></li>
+                                            <li><a class="colorpick-btn" href="#" style="background-color:#cc324b;" rel="/admin/css/skins/pink.min.css"></a></li>
+                                            <li><a class="colorpick-btn" href="#" style="background-color:#AC193D;" rel="/admin/css/skins/darkred.min.css"></a></li>
+                                            <li><a class="colorpick-btn" href="#" style="background-color:#8C0095;" rel="/admin/css/skins/purple.min.css"></a></li>
+                                            <li><a class="colorpick-btn" href="#" style="background-color:#0072C6;" rel="/admin/css/skins/darkblue.min.css"></a></li>
+                                            <li><a class="colorpick-btn" href="#" style="background-color:#585858;" rel="/admin/css/skins/gray.min.css"></a></li>
+                                            <li><a class="colorpick-btn" href="#" style="background-color:#474544;" rel="/admin/css/skins/black.min.css"></a></li>
+                                            <li><a class="colorpick-btn" href="#" style="background-color:#001940;" rel="/admin/css/skins/deepblue.min.css"></a></li>
+                                        </ul>
+                                    </li>
+                                    <!--/Theme Selector Area-->
+                                    <li class="dropdown-footer">
+                                        <a asp-controller="Account" asp-action="Logout">
+                                            خروج از سیستم
+                                        </a>
+                                    </li>
+                                </ul>
+                                <!--/Login Area Dropdown-->
+                            </li>
+                            <!-- /Account Area -->
+                            <!--Note: notice that setting div must start right after account area list.
+                            no space must be between these elements-->
+                            <!-- Settings -->
+                        </ul><div class="setting">
+                            <a id="btn-setting" title="Setting" href="#">
+                                <i class="icon glyphicon glyphicon-cog"></i>
+                            </a>
+                        </div><div class="setting-container">
+                            <label>
+                                <input type="checkbox" id="checkbox_fixednavbar">
+                                <span class="text">نوار بالایی ثابت</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" id="checkbox_fixedsidebar">
+                                <span class="text">منوی کناری ثابت</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" id="checkbox_fixedbreadcrumbs">
+                                <span class="text">نوار بردکرامبز ثابت</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" id="checkbox_fixedheader">
+                                <span class="text">نوار میانی ثابت</span>
+                            </label>
+                        </div>
+                        <!-- Settings -->
+                    </div>
+                </div>
+                <!-- /Account Area and Settings -->
+            </div>
+        </div>
+    </div>
+    <!-- /Navbar -->
+    <!-- Main Container -->
+    <div class="main-container container-fluid">
+        <!-- Page Container -->
+        <div class="page-container">
+            <!-- Page Sidebar -->
+            <div class="page-sidebar" id="sidebar">
+                <!-- Page Sidebar Header-->
+                <div class="sidebar-header-wrapper">
+                    <input type="text" class="searchinput" />
+                    <i class="searchicon fa fa-search"></i>
+                    <div class="searchhelper">به جستجوی صفحات، گزارشات، پیام ها و ایمیل خود بپردازید</div>
+                </div>
+                <ul class="nav sidebar-menu">
+              
+                    <li>
+                        <a asp-area="AdminPanel" asp-controller="Home" asp-action="Index">
+                            <i class="menu-icon glyphicon glyphicon-home"></i>
+                            <span class="menu-text"> داشبورد </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-area="AdminPanel" asp-controller="Users" asp-action="UsersList">
+                            <i class="menu-icon fa-user glyphicon-tasks"></i>
+                            <span class="menu-text"> لیست کاربران</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-area="AdminPanel" asp-controller="Category" asp-action="CategoriesList">
+                            <i class="menu-icon glyphicon glyphicon-tasks"></i>
+                            <span class="menu-text"> دسته بندی ها </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-area="AdminPanel" asp-controller="Products" asp-action="ProductsList">
+                            <i class="menu-icon glyphicon glyphicon-tasks"></i>
+                            <span class="menu-text"> محصولات </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-area="AdminPanel" asp-controller="Orders" asp-action="OrdersList">
+                            <i class="menu-icon glyphicon glyphicon-tasks"></i>
+                            <span class="menu-text"> فاکتورها </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+
+            <!-- Chat Bar -->
+            <div id="chatbar" class="page-chatbar">
+                <div class="chatbar-contacts">
+                    <div class="contacts-search">
+                        <input type="text" class="searchinput" placeholder="Search Contacts" />
+                        <i class="searchicon fa fa-search"></i>
+                        <div class="searchhelper">Search Your Contacts and Chat History</div>
+                    </div>
+                    <ul class="contacts-list">
+                        <li class="contact">
+                            <div class="contact-avatar">
+                                <img src="/admin/img/avatars/divyia.jpg" />
+                            </div>
+                            <div class="contact-info">
+                                <div class="contact-name">Divyia Philips</div>
+                                <div class="contact-status">
+                                    <div class="online"></div>
+                                    <div class="status">online</div>
+                                </div>
+                                <div class="last-chat-time">
+                                    last week
+                                </div>
+                            </div>
+                        </li>
+                        <li class="contact">
+                            <div class="contact-avatar">
+                                <img src="/admin/img/avatars/Nicolai-Larson.jpg" />
+                            </div>
+                            <div class="contact-info">
+                                <div class="contact-name">Adam Johnson</div>
+                                <div class="contact-status">
+                                    <div class="offline"></div>
+                                    <div class="status">left 4 mins ago</div>
+                                </div>
+                                <div class="last-chat-time">
+                                    today
+                                </div>
+                            </div>
+                        </li>
+                        <li class="contact">
+                            <div class="contact-avatar">
+                                <img src="/admin/img/avatars/John-Smith.jpg" />
+                            </div>
+                            <div class="contact-info">
+                                <div class="contact-name">John Smith</div>
+                                <div class="contact-status">
+                                    <div class="online"></div>
+                                    <div class="status">online</div>
+                                </div>
+                                <div class="last-chat-time">
+                                    1:57 am
+                                </div>
+                            </div>
+                        </li>
+                        <li class="contact">
+                            <div class="contact-avatar">
+                                <img src="/admin/img/avatars/Osvaldus-Valutis.jpg" />
+                            </div>
+                            <div class="contact-info">
+                                <div class="contact-name">Osvaldus Valutis</div>
+                                <div class="contact-status">
+                                    <div class="online"></div>
+                                    <div class="status">online</div>
+                                </div>
+                                <div class="last-chat-time">
+                                    today
+                                </div>
+                            </div>
+                        </li>
+                        <li class="contact">
+                            <div class="contact-avatar">
+                                <img src="/admin/img/avatars/Javi-Jimenez.jpg" />
+                            </div>
+                            <div class="contact-info">
+                                <div class="contact-name">Javi Jimenez</div>
+                                <div class="contact-status">
+                                    <div class="online"></div>
+                                    <div class="status">online</div>
+                                </div>
+                                <div class="last-chat-time">
+                                    today
+                                </div>
+                            </div>
+                        </li>
+                        <li class="contact">
+                            <div class="contact-avatar">
+                                <img src="/admin/img/avatars/Stephanie-Walter.jpg" />
+                            </div>
+                            <div class="contact-info">
+                                <div class="contact-name">Stephanie Walter</div>
+                                <div class="contact-status">
+                                    <div class="online"></div>
+                                    <div class="status">online</div>
+                                </div>
+                                <div class="last-chat-time">
+                                    yesterday
+                                </div>
+                            </div>
+                        </li>
+                        <li class="contact">
+                            <div class="contact-avatar">
+                                <img src="/admin/img/avatars/Sergey-Azovskiy.jpg" />
+                            </div>
+                            <div class="contact-info">
+                                <div class="contact-name">Sergey Azovskiy</div>
+                                <div class="contact-status">
+                                    <div class="offline"></div>
+                                    <div class="status">offline since oct 24</div>
+                                </div>
+                                <div class="last-chat-time">
+                                    22 oct
+                                </div>
+                            </div>
+                        </li>
+                        <li class="contact">
+                            <div class="contact-avatar">
+                                <img src="/admin/img/avatars/Lee-Munroe.jpg" />
+                            </div>
+                            <div class="contact-info">
+                                <div class="contact-name">Lee Munroe</div>
+                                <div class="contact-status">
+                                    <div class="online"></div>
+                                    <div class="status">online</div>
+                                </div>
+                                <div class="last-chat-time">
+                                    today
+                                </div>
+                            </div>
+                        </li>
+                        <li class="contact">
+                            <div class="contact-avatar">
+                                <img src="/admin/img/avatars/divyia.jpg" />
+                            </div>
+                            <div class="contact-info">
+                                <div class="contact-name">Divyia Philips</div>
+                                <div class="contact-status">
+                                    <div class="online"></div>
+                                    <div class="status">online</div>
+                                </div>
+                                <div class="last-chat-time">
+                                    last week
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="chatbar-messages" style="display: none;">
+                    <div class="messages-contact">
+                        <div class="contact-avatar">
+                            <img src="/admin/img/avatars/divyia.jpg" />
+                        </div>
+                        <div class="contact-info">
+                            <div class="contact-name">Divyia Philips</div>
+                            <div class="contact-status">
+                                <div class="online"></div>
+                                <div class="status">online</div>
+                            </div>
+                            <div class="last-chat-time">
+                                a moment ago
+                            </div>
+                            <div class="back">
+                                <i class="fa fa-arrow-circle-left"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="messages-list">
+                        <li class="message">
+                            <div class="message-info">
+                                <div class="bullet"></div>
+                                <div class="contact-name">Me</div>
+                                <div class="message-time">10:14 AM, Today</div>
+                            </div>
+                            <div class="message-body">
+                                Hi, Hope all is good. Are we meeting today?
+                            </div>
+                        </li>
+                        <li class="message reply">
+                            <div class="message-info">
+                                <div class="bullet"></div>
+                                <div class="contact-name">Divyia</div>
+                                <div class="message-time">10:15 AM, Today</div>
+                            </div>
+                            <div class="message-body">
+                                Hi, Hope all is good. Are we meeting today?
+                            </div>
+                        </li>
+                        <li class="message">
+                            <div class="message-info">
+                                <div class="bullet"></div>
+                                <div class="contact-name">Me</div>
+                                <div class="message-time">10:14 AM, Today</div>
+                            </div>
+                            <div class="message-body">
+                                Hi, Hope all is good. Are we meeting today?
+                            </div>
+                        </li>
+                        <li class="message reply">
+                            <div class="message-info">
+                                <div class="bullet"></div>
+                                <div class="contact-name">Divyia</div>
+                                <div class="message-time">10:15 AM, Today</div>
+                            </div>
+                            <div class="message-body">
+                                Hi, Hope all is good. Are we meeting today?
+                            </div>
+                        </li>
+                        <li class="message">
+                            <div class="message-info">
+                                <div class="bullet"></div>
+                                <div class="contact-name">Me</div>
+                                <div class="message-time">10:14 AM, Today</div>
+                            </div>
+                            <div class="message-body">
+                                Hi, Hope all is good. Are we meeting today?
+                            </div>
+                        </li>
+                        <li class="message reply">
+                            <div class="message-info">
+                                <div class="bullet"></div>
+                                <div class="contact-name">Divyia</div>
+                                <div class="message-time">10:15 AM, Today</div>
+                            </div>
+                            <div class="message-body">
+                                Hi, Hope all is good. Are we meeting today?
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="send-message">
+                        <span class="input-icon icon-right">
+                            <textarea rows="4" class="form-control" placeholder="Type your message"></textarea>
+                            <i class="fa fa-camera themeprimary"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <!-- /Chat Bar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="fa fa-home"></i>
+                            <a asp-area="AdminPanel" asp-controller="Home" asp-action="Index">خانه</a>
+                        </li>
+                        <li class="active">@ViewData["Title"]</li>
+                    </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+                <!-- Page Header -->
+                <div class="page-header position-relative">
+                    <div class="header-title">
+                        <h1>
+                            @ViewData["Title"]
+                        </h1>
+                    </div>
+                    <!--Header Buttons-->
+                    <div class="header-buttons">
+                        <a class="sidebar-toggler" href="#">
+                            <i class="fa fa-arrows-h"></i>
+                        </a>
+                        <a class="refresh" id="refresh-toggler" href="">
+                            <i class="glyphicon glyphicon-refresh"></i>
+                        </a>
+                        <a class="fullscreen" id="fullscreen-toggler" href="#">
+                            <i class="glyphicon glyphicon-fullscreen"></i>
+                        </a>
+                    </div>
+                    <!--Header Buttons End-->
+                </div>
+                <!-- /Page Header -->
+                <!-- Page Body -->
+                <div class="page-body">
+                    @RenderBody()
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+        </div>
+        <!-- /Page Container -->
+        <!-- Main Container -->
+
+    </div>
+
+    <!--Basic Scripts-->
+    <script src="/admin/js/jquery.min.js"></script>
+    <script src="/admin/js/bootstrap.min.js"></script>
+    <script src="/admin/js/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!--Beyond Scripts-->
+    <script src="/admin/js/skins.min.js"></script>
+    <script src="/admin/js/beyond.min.js"></script>
+
+
+    <!--Page Related Scripts-->
+    <!--Sparkline Charts Needed Scripts-->
+    <script src="/admin/js/charts/sparkline/jquery.sparkline.js"></script>
+    <script src="/admin/js/charts/sparkline/sparkline-init.js"></script>
+
+    <!--Easy Pie Charts Needed Scripts-->
+    <script src="/admin/js/charts/easypiechart/jquery.easypiechart.js"></script>
+    <script src="/admin/js/charts/easypiechart/easypiechart-init.js"></script>
+
+    <!--Flot Charts Needed Scripts-->
+    <script src="/admin/js/charts/flot/jquery.flot.js"></script>
+    <script src="/admin/js/charts/flot/jquery.flot.resize.js"></script>
+    <script src="/admin/js/charts/flot/jquery.flot.pie.js"></script>
+    <script src="/admin/js/charts/flot/jquery.flot.tooltip.js"></script>
+    <script src="/admin/js/charts/flot/jquery.flot.orderBars.js"></script>
+    <script src="/lib/persianDatepicker-master/js/persianDatepicker.min.js"></script>
+
+    <script>
+
+        //Sets The Hidden Chart Width
+        $('#dashboard-bandwidth-chart')
+            .data('width', $('.box-tabbs')
+                .width() - 20);
+        //Visitor Sources Pie Chart
+        var data = [
+            {
+                data: [[1, 21]],
+                color: '#fb6e52'
+            },
+            {
+                data: [[1, 12]],
+                color: '#e75b8d'
+            },
+            {
+                data: [[1, 11]],
+                color: '#a0d468'
+            },
+            {
+                data: [[1, 10]],
+                color: '#ffce55'
+            },
+            {
+                data: [[1, 46]],
+                color: '#5db2ff'
+            }
+        ];
+        var placeholder = $("#dashboard-pie-chart-sources");
+        placeholder.unbind();
+
+        $.plot(placeholder, data, {
+            series: {
+                pie: {
+                    innerRadius: 0.45,
+                    show: true,
+                    stroke: {
+                        width: 4
+                    }
+                }
+            }
+        });
+
+        //Visit Chart (Main Chart)
+        var data2 = [{
+            color: themesecondary,
+            label: "بازدید مستقیم",
+            data: [[3, 2], [4, 5], [5, 4], [6, 11], [7, 12], [8, 11], [9, 8], [10, 14], [11, 12], [12, 16], [13, 9],
+            [14, 10], [15, 14], [16, 15], [17, 9]],
+
+            lines: {
+                show: true,
+                fill: true,
+                lineWidth: .1,
+                fillColor: {
+                    colors: [{
+                        opacity: 0
+                    }, {
+                        opacity: 0.4
+                    }]
+                }
+            },
+            points: {
+                show: false
+            },
+            shadowSize: 0
+        },
+            {
+                color: themeprimary,
+                label: "لینک از سایتها",
+                data: [[3, 10], [4, 13], [5, 12], [6, 16], [7, 19], [8, 19], [9, 24], [10, 19], [11, 18], [12, 21], [13, 17],
+                [14, 14], [15, 12], [16, 14], [17, 15]],
+                bars: {
+                    order: 1,
+                    show: true,
+                    borderWidth: 0,
+                    barWidth: 0.4,
+                    lineWidth: .5,
+                    fillColor: {
+                        colors: [{
+                            opacity: 0.4
+                        }, {
+                            opacity: 1
+                        }]
+                    }
+                }
+            },
+            {
+                color: themethirdcolor,
+                label: "موتورهای جستجو",
+                data: [[3, 14], [4, 11], [5, 10], [6, 9], [7, 5], [8, 8], [9, 5], [10, 6], [11, 4], [12, 7], [13, 4],
+                [14, 3], [15, 4], [16, 6], [17, 4]],
+                lines: {
+                    show: true,
+                    fill: false,
+                    fillColor: {
+                        colors: [{
+                            opacity: 0.3
+                        }, {
+                            opacity: 0
+                        }]
+                    }
+                },
+                points: {
+                    show: true
+                }
+            }
+        ];
+        var options = {
+            legend: {
+                show: false
+            },
+            xaxis: {
+                tickDecimals: 0,
+                color: '#f3f3f3'
+            },
+            yaxis: {
+                min: 0,
+                color: '#f3f3f3',
+                tickFormatter: function (val, axis) {
+                    return "";
+                },
+            },
+            grid: {
+                hoverable: true,
+                clickable: false,
+                borderWidth: 0,
+                aboveData: false,
+                color: '#fbfbfb'
+
+            },
+            tooltip: true,
+            tooltipOpts: {
+                defaultTheme: false,
+                content: " <b>%x تیر ماه</b> , <b>%s</b> : <span>%y</span>",
+            }
+        };
+        var placeholder = $("#dashboard-chart-visits");
+        var plot = $.plot(placeholder, data2, options);
+
+        //Real-Time Chart
+        var realTimedata = [],
+                realTimedata2 = [],
+                totalPoints = 300;
+
+        var getSeriesObj = function () {
+            return [
+            {
+                data: getRandomData(),
+                lines: {
+                    show: true,
+                    lineWidth: 1,
+                    fill: true,
+                    fillColor: {
+                        colors: [
+                            {
+                                opacity: 0
+                            }, {
+                                opacity: 1
+                            }
+                        ]
+                    },
+                    steps: false
+                },
+                shadowSize: 0
+            }, {
+                data: getRandomData2(),
+                lines: {
+                    lineWidth: 0,
+                    fill: true,
+                    fillColor: {
+                        colors: [
+                            {
+                                opacity: .5
+                            }, {
+                                opacity: 1
+                            }
+                        ]
+                    },
+                    steps: false
+                },
+                shadowSize: 0
+            }
+            ];
+        };
+        function getRandomData() {
+            if (realTimedata.length > 0)
+                realTimedata = realTimedata.slice(1);
+
+            // Do a random walk
+
+            while (realTimedata.length < totalPoints) {
+
+                var prev = realTimedata.length > 0 ? realTimedata[realTimedata.length - 1] : 50,
+                    y = prev + Math.random() * 10 - 5;
+
+                if (y < 0) {
+                    y = 0;
+                } else if (y > 100) {
+                    y = 100;
+                }
+                realTimedata.push(y);
+            }
+
+            // Zip the generated y values with the x values
+
+            var res = [];
+            for (var i = 0; i < realTimedata.length; ++i) {
+                res.push([i, realTimedata[i]]);
+            }
+
+            return res;
+        }
+        function getRandomData2() {
+            if (realTimedata2.length > 0)
+                realTimedata2 = realTimedata2.slice(1);
+
+            // Do a random walk
+
+            while (realTimedata2.length < totalPoints) {
+
+                var prev = realTimedata2.length > 0 ? realTimedata[realTimedata2.length] : 50,
+                    y = prev - 25;
+
+                if (y < 0) {
+                    y = 0;
+                } else if (y > 100) {
+                    y = 100;
+                }
+                realTimedata2.push(y);
+            }
+
+
+            var res = [];
+            for (var i = 0; i < realTimedata2.length; ++i) {
+                res.push([i, realTimedata2[i]]);
+            }
+
+            return res;
+        }
+        // Set up the control widget
+        var updateInterval = 500;
+        var plot = $.plot("#dashboard-chart-realtime", getSeriesObj(), {
+            yaxis: {
+                color: '#f3f3f3',
+                min: 0,
+                max: 100,
+                tickFormatter: function (val, axis) {
+                    return "";
+                }
+            },
+            xaxis: {
+                color: '#f3f3f3',
+                min: 0,
+                max: 100,
+                tickFormatter: function (val, axis) {
+                    return "";
+                }
+            },
+            grid: {
+                hoverable: true,
+                clickable: false,
+                borderWidth: 0,
+                aboveData: false
+            },
+            colors: ['#eee', themeprimary],
+        });
+
+        function update() {
+
+            plot.setData(getSeriesObj());
+
+            plot.draw();
+            setTimeout(update, updateInterval);
+        }
+        update();
+
+
+        //Initiates Easy Pie Chart instances in page
+        InitiateEasyPieChart.init();
+
+        //Initiates Sparkline Chart instances in page
+        InitiateSparklineCharts.init();
+    </script>
+
+    @await RenderSectionAsync("Scripts",false)
+</body>
+<!--  /Body -->
+</html>

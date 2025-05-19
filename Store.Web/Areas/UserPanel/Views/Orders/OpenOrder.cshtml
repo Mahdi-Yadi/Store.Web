@@ -1,0 +1,157 @@
+﻿@model DataLayer.Entities.Orders.Order
+@{
+    ViewData["Title"] = "سبد خرید";
+}
+<div class="breadcrumbs_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb_content">
+                    <ul>
+                        <li><a href="/">خانه</a></li>
+                        <li>سبد خرید</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="shopping_cart_area mt-60">
+    <div class="container">
+        <form action="#">
+            <div class="row">
+                <div class="col-12">
+                    <div class="table_desc">
+                        <div class="cart_page table-responsive">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th class="product_remove">حذف</th>
+                                        <th class="product_thumb">تصویر</th>
+                                        <th class="product_name">محصول</th>
+                                        <th class="product-price">قیمت</th>
+                                        <th class="product_quantity">تعداد</th>
+                                        <th class="product_total">جمع کل</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model.OrderDetails.Count > 0)
+                                    {
+                                        @foreach (var item in Model.OrderDetails)
+                                        {
+                                            <tr>
+                                                <td class="product_remove">
+                                                    <a asp-area="UserPanel" asp-controller="Orders" asp-action="DeleteOrder" asp-route-isOpenOrder="1" asp-route-orderId="@item.OrderId" asp-route-id="@item.Id">
+                                                        <i class="fa fa-trash-o"></i>
+                                                    </a>
+                                                </td>
+                                                <td class="product_thumb">
+                                                    <a asp-controller="Product" asp-action="ProductDetail" asp-route-id="@item.ProductId">
+                                                        <img src="/images/@item.Product.ImageName">
+                                                    </a>
+                                                </td>
+                                                <td class="product_name">
+                                                    <a asp-controller="Product" asp-action="ProductDetail" asp-route-id="@item.ProductId">
+                                                        @item.Product.Title
+                                                    </a>
+                                                </td>
+                                                <td class="product-price">
+                                                    @{
+                                                        decimal sumPrice = 0;
+
+                                                        decimal price = item.Product.Price;
+
+                                                        var activeDiscounts = item.Product.Discounts
+                                                        ?.FirstOrDefault(d => d.IsDeleted == false && d.ExpireDate > DateTime.Now);
+
+                                                        if (activeDiscounts != null)
+                                                        {
+                                                            price -= price * (activeDiscounts.DiscountPercentage / 100m);
+                                                        }
+
+                                                        sumPrice += price;
+
+                                                        @sumPrice.ToString("#,0")
+                                                    }
+                                                    تومان
+                                                </td>
+                                                <td class="product_quantity">
+                                                    <label>تعداد</label>
+                                                    @item.Count
+                                                </td>
+                                                <td class="product_total">
+                                                    @((sumPrice *= item.Count).ToString("#,0")) تومان
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="cart_submit">
+                            <button type="submit">به روز رسانی سبد</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="coupon_area">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="coupon_code left">
+                            <h3>کد تخفیف</h3>
+                            <div class="coupon_inner">
+                                <p>کد تخفیف خود را در صورت وجود وارد نمایید</p>
+                                <input placeholder="کد تخفیف" type="text">
+                                <button type="submit">اعمال کد تخفیف</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="coupon_code right">
+                            <h3>مجموع سبد</h3>
+                            <div class="coupon_inner">
+                                @if (Model.OrderDetails.Count > 0)
+                                {
+                                    decimal total = 0;
+                                    decimal totalDis = 0;
+
+                                    <div class="cart_subtotal">
+                                        <p>جمع اجزا</p>
+                                        <p class="cart_amount">
+                                            @foreach (var item in Model.OrderDetails)
+                                            {
+                                                decimal price = item.Product.Price;
+
+                                                var activeDiscounts = item.Product.Discounts
+                                                ?.FirstOrDefault(d => d.IsDeleted == false && d.ExpireDate > DateTime.Now);
+
+                                                if (activeDiscounts != null)
+                                                {
+                                                    totalDis += price * (activeDiscounts.DiscountPercentage / 100m) * item.Count;
+                                                    price -= price * (activeDiscounts.DiscountPercentage / 100m);
+                                                }
+
+                                                total += price * item.Count;
+                                            }
+                                            @total.ToString("#,0")
+                                            تومان
+                                        </p>
+                                    </div>
+                                    <div class="cart_subtotal ">
+                                        <p>جمع تخفیف</p>
+                                        <p class="cart_amount">@totalDis.ToString("#,0") تومان</p>
+                                    </div>
+                                }
+                                <a href="#">محاسبه هزینه</a>
+                                <div class="checkout_btn">
+                                    <a asp-controller="Payments" asp-action="Pay">پرداخت</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

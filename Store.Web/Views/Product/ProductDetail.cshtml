@@ -1,0 +1,150 @@
+﻿@model Domain.Products.ProductDto
+@{
+    ViewData["Title"] = " جزییات محصول " + Model.Title;
+}
+<partial name="_PageNavbar" />
+
+<div class="product_details variable_product mt-60 mb-60">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 col-md-6">
+				<div class="product-details-tab">
+					<div id="img-1" class="zoomWrapper single-zoom">
+						<a href="#">
+							<img id="zoom1" src="/images/@Model.ImageName" data-zoom-image="/images/@Model.ImageName" alt="big-1">
+						</a>
+					</div>
+					@* <div class="single-zoom-thumb">
+						<ul class="s-tab-zoom owl-carousel single-product-active" id="gallery_01">
+							<li>
+								<a href="#" class="elevatezoom-gallery active" data-update="" data-image="/site/img/product/productbig.jpg" data-zoom-image="/site/img/product/productbig.jpg">
+									<img src="/site/img/product/productbig.jpg" alt="zo-th-1">
+								</a>
+
+							</li>
+							<li>
+								<a href="#" class="elevatezoom-gallery active" data-update="" data-image="/site/img/product/productbig1.jpg" data-zoom-image="/site/img/product/productbig1.jpg">
+									<img src="/site/img/product/productbig1.jpg" alt="zo-th-1">
+								</a>
+
+							</li>
+							<li>
+								<a href="#" class="elevatezoom-gallery active" data-update="" data-image="/site/img/product/productbig2.jpg" data-zoom-image="/site/img/product/productbig2.jpg">
+									<img src="/site/img/product/productbig2.jpg" alt="zo-th-1">
+								</a>
+
+							</li>
+							<li>
+								<a href="#" class="elevatezoom-gallery active" data-update="" data-image="/site/img/product/productbig3.jpg" data-zoom-image="/site/img/product/productbig3.jpg">
+									<img src="/site/img/product/productbig3.jpg" alt="zo-th-1">
+								</a>
+
+							</li>
+						</ul>
+					</div> *@
+				</div>
+			</div>
+			<div class="col-lg-6 col-md-6">
+				<div class="product_d_right">
+					<form asp-controller="Orders" asp-action="AddOrder">
+						@if (ViewBag.state == "true")
+						{
+							<div class="alert alert-success">محصول به سبد خرید افزوده شد</div>
+						}
+						@if (ViewBag.state == "false")
+						{
+							<div class="alert alert-warning">محصول به سبد خرید افزوده نشد</div>
+						}
+						<h1>@Model.Title</h1>
+
+						<div class=" product_ratting">
+							<ul>
+								<li><span><i class="fa fa-star"></i></span></li>
+								<li><span><i class="fa fa-star"></i></span></li>
+								<li><span><i class="fa fa-star"></i></span></li>
+								<li><span><i class="fa fa-star"></i></span></li>
+								<li><span><i class="fa fa-star"></i></span></li>
+								<li class="review"><a href="#"> (امتیاز مشتریان) </a></li>
+							</ul>
+
+						</div>
+						<div class="price_box">
+							<span class="current_price">@Model.Price.ToString("#,0") تومان</span>
+							@* <span class="old_price">80,000 تومان</span> *@
+
+						</div>
+						<div class="product_desc">
+                            <p>
+								@Html.Raw(Model.Description)
+							</p>
+						</div>
+						<div class="product_variant color">
+							<h3>گزینه های در دسترس</h3>
+							<label>رنگ</label>
+							<ul>
+								<li class="color1">
+									<a href="#"></a>
+								</li>
+								<li class="color2">
+									<a href="#"></a>
+								</li>
+								<li class="color3">
+									<a href="#"></a>
+								</li>
+								<li class="color4">
+									<a href="#"></a>
+								</li>
+							</ul>
+						</div>
+
+						<div class="product_variant size">
+							<label>اندازه</label>
+							<select class="niceselect_option" id="color2" name="produc_color2">
+								<option selected value="2">کوچک</option>
+								<option value="3">متوسط</option>
+								<option value="4">بزرگ</option>
+								<option value="5">XL</option>
+								<option value="6">XXL</option>
+							</select>
+						</div>
+						<div class="product_variant quantity">
+							<input type="hidden" name="productId" value="@Model.Id"/>
+							<label>تعداد</label>
+							<input min="1" max="100" value="1" type="number">
+							<button class="button" type="submit">افزودن به سبد</button>
+
+						</div>
+						<div class=" product_d_action">
+							<ul>
+								<li><a asp-controller="Product" asp-action="AddProductToFav" asp-route-id="@Model.Id" title="افزودن به علاقه‌مندی‌ها">+ افزودن به علاقه‌مندی‌ها</a></li>
+								<li><a href="#" title="مقایسه">+ مقایسه</a></li>
+							</ul>
+						</div>
+
+					</form>
+
+					<div class="product_d_meta">
+						<span>شناسه: 1234567</span>
+						<span>بازدید: @Model.TotalVisit</span>
+                        <span>دسته: <a href="#">پوشاک</a></span>
+						<span>
+							برچسب ها:
+							<a href="#">کودکانه</a> ،
+							<a href="#">شلوار</a>
+						</span>
+					</div>
+					<div class="priduct_social">
+						<ul>
+							<li><a class="facebook" href="#" title="فیسبوک"><i class="fa fa-facebook"></i> لایک</a></li>
+							<li><a class="twitter" href="#" title="توییتر"><i class="fa fa-twitter"></i> توییت</a></li>
+							<li><a class="pinterest" href="#" title="پینترست"><i class="fa fa-pinterest"></i> ذخیره</a></li>
+							<li><a class="google-plus" href="#" title="گوگل پلاس"><i class="fa fa-google-plus"></i> اشتراک گذاری</a></li>
+							<li><a class="telegram" href="#" title="تلگرام"><i class="fa fa-telegram"></i> تلگرام</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>

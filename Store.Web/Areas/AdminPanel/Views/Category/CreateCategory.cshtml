@@ -1,0 +1,35 @@
+﻿
+@model Domain.Categories.CreateCategoryDTO
+@{
+    ViewData["Title"] = "افزودن دسته بندی";
+}
+<div class="col-xs-12 col-md-12">
+    <div class="widget">
+        <div class="widget-body">
+            <div id="editabledatatable_wrapper" class="dataTables_wrapper form-inline no-footer">
+
+                <form method="post" asp-area="AdminPanel" asp-controller="Category" asp-action="CreateCategory">
+                    <input type="hidden" asp-for="Id"/>
+                    
+                    @if (ViewBag.Mes != null)
+                    {
+                        <div class="alert alert-warning">
+                            <p>@ViewBag.Mes</p>
+                        </div>
+                    }
+
+                    <label> عنوان </label>
+                    <br />
+                    <input type="text" asp-for="Title" />
+                    <span asp-validation-for="Title"></span>
+
+                    <br />
+
+                    <button type="submit" class="btn btn-outline-primary"> ثبت </button>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

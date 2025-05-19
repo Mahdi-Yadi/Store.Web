@@ -1,0 +1,59 @@
+﻿@model DataLayer.Entities.Orders.Order
+@{
+    ViewData["Title"] = " فاکتور ";
+}
+<section class="main_content_area">
+	<div class="container">
+		<div class="account_dashboard">
+			<div class="row">
+
+				@await Component.InvokeAsync("Menu")
+
+				<div class="col-sm-12 col-md-9 col-lg-9">
+					<div class="tab-content dashboard_content">
+
+						<table class="table">
+							<thead>
+								<tr role="row">
+									<th> نام محصول </th>
+									<th> قیمت محصول </th>
+									<th> تعداد </th>
+									<th> عملیات </th>
+								</tr>
+							</thead>
+
+							<tbody>
+								@if (Model.OrderDetails.Count > 0)
+								{
+									@foreach (var item in Model.OrderDetails)
+									{
+										<tr>
+											<td>
+												<a asp-controller="Product" asp-action="ProductDetail" asp-route-id="@item.ProductId">
+													@item.Product.Title
+												</a>
+												</td>
+											<td>@item.Product.Price.ToString("#,0")</td>
+											<td>@item.Count</td>
+											<td>
+												@if(Model.CreateDatePayment == null)
+												{
+													<a asp-area="UserPanel" asp-controller="Orders" asp-action="DeleteOrder" asp-route-isOpenOrder="0" asp-route-orderId="@item.OrderId" asp-route-id="@item.Id">
+														حذف
+													</a>
+												}
+											</td>
+										</tr>
+									}
+								}
+							</tbody>
+
+						</table>
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</section>

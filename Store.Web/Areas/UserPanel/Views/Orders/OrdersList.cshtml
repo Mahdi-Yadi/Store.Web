@@ -1,0 +1,105 @@
+﻿@using Application.Tools
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model List<DataLayer.Entities.Orders.Order>
+@{
+    ViewData["Title"] = "لیست فاکتور ها";
+}
+<section class="main_content_area">
+    <div class="container">
+        <div class="account_dashboard">
+            <div class="row">
+
+                @await Component.InvokeAsync("Menu")
+
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <div class="tab-content dashboard_content">
+
+                        <table class="table">
+                            <thead class="text-center">
+                                <tr role="row">
+                                    <th>شماره فاکتور</th>
+                                    <th>جمع فاکتور</th>
+                                    <th> وضعیت فاکتور </th>
+                                    <th> کد پیگیری پست </th>
+                                    <th>تاریخ فاکتور</th>
+                                    <th>جزییات فاکتور</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @if (Model.Count > 0)
+                                {
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr class="text-center">
+                                            <td>@item.Code</td>
+                                            <td>
+                                                @if (item.OrderDetails.Count > 0)
+                                                {
+                                                    decimal sumPrice = 0;
+                                                    @foreach (var i in item.OrderDetails)
+                                                    {
+                                                        var price = i.Product.Price;
+
+                                                        var activeDiscounts = i.Product.Discounts
+                                                        ?.FirstOrDefault(d => d.IsDeleted == false && d.ExpireDate > DateTime.Now);
+
+                                                        if (activeDiscounts != null)
+                                                        {
+                                                            price -= price * (activeDiscounts.DiscountPercentage / 100m);
+                                                        }
+
+                                                        sumPrice += price;
+                                                    }
+                                                    @sumPrice.ToString("#,0")
+                                                    <span> تومان </span>
+                                                }
+                                                else
+                                                {
+                                                    <span>0</span>
+                                                }
+                                            </td>
+                                            <td>@if(item.CodePayment != null)
+                                                {
+                                                    <span class="text-success"> پرداخت شده </span>
+                                                }else{
+                                                    <span class="text-danger"> پرداخت نشده </span>
+                                                }
+                                                @if (item.PostCode != null)
+                                                {
+                                                    <span class="text-primary">- تکمیل شده - </span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="text-warning"> - تکمیل نشده - </span>
+                                                }
+                                            </td>
+                                            <td>
+                                                <span class="text-secondary"> @item.PostCode </span>
+                                            </td>
+                                            <td>@item.CreateDate.ToStringShamsiDate()</td>
+                                            <td>
+                                                <a asp-area="UserPanel" asp-controller="Orders" asp-action="Order" asp-route-id="@item.Id">
+                                                    جزییات
+                                                </a>
+                                                @if (item.CreateDatePayment == null)
+                                                {
+                                                    <a asp-controller="Payments" asp-action="Pay">
+                                                        پرداخت
+                                                    </a>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,138 @@
+﻿
+@{
+    ViewData["Title"] = "پنل کاربری";
+}
+<section class="main_content_area">
+	<div class="container">
+		<div class="account_dashboard">
+			<div class="row">
+
+				@await Component.InvokeAsync("Menu")
+
+				<div class="col-sm-12 col-md-9 col-lg-9">
+					<div class="tab-content dashboard_content">
+						<div class="tab-pane fade show active" id="dashboard">
+							<h3>داشبورد </h3>
+							<p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با <a href="#">سفارشات اخیر</a>لورم ایپسوم متن <a href="#">لورم ایپسوم متن ساختگی با تولید</a> لورم <a href="#">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</a></p>
+						</div>
+						<div class="tab-pane fade" id="orders">
+							<h3>سفارشات</h3>
+							<div class="table-responsive">
+								<table class="table">
+									<thead>
+										<tr>
+											<th>سفارش</th>
+											<th>تاریخ</th>
+											<th>وضعیت</th>
+											<th>جمع</th>
+											<th>اقدامات</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>1</td>
+											<td>10 تیر 1397</td>
+											<td><span class="success">اتمام یافته</span></td>
+											<td>50,000 تومان برای یک محصول </td>
+											<td><a href="cart.html" class="view">مشاهده</a></td>
+										</tr>
+										<tr>
+											<td>2</td>
+											<td>10 تیر 1397</td>
+											<td>در حال پردازش</td>
+											<td>180,000 تومان برای یک محصول </td>
+											<td><a href="cart.html" class="view">مشاهده</a></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="tab-pane fade" id="downloads">
+							<h3>دریافت ها</h3>
+							<div class="table-responsive">
+								<table class="table">
+									<thead>
+										<tr>
+											<th>محصول</th>
+											<th>دریافت ها</th>
+											<th>انقضا</th>
+											<th>دریافت</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</td>
+											<td>10 تیر 1397</td>
+											<td><span class="danger">منقضی شده</span></td>
+											<td><a href="#" class="view">برای دریافت فایل خود کلیک کنید</a></td>
+										</tr>
+										<tr>
+											<td>لورم ایپسوم متن ساختگی با تولید سادگی</td>
+											<td>11 مرداد 1397</td>
+											<td>هرگز</td>
+											<td><a href="#" class="view">برای دریافت فایل خود کلیک کنید</a></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="tab-pane" id="address">
+							<p>آدرس های زیر به صورت پیش فرض در صفحه سفارش شما استفاده خواهند شد.</p>
+							<h4 class="billing-address">آدرس صورت حساب</h4>
+							<a href="#" class="view">ویرایش</a>
+							<p><strong>جان اسنو</strong></p>
+							<address>
+								ایران<br>
+								آذربایجان شرقی<br>
+								تبریز<br>
+								چهارراه آبرسان، فلکه دانشگاه، برج بلور، طبقه 456، واحد 89
+							</address>
+						</div>
+						<div class="tab-pane fade" id="account-details">
+							<h3>جزئیات حساب </h3>
+							<div class="login">
+								<div class="login_form_container">
+									<div class="account_login_form">
+										<form action="#">
+											<p>حساب کاربری دارید؟ <a href="#">وارد شوید!</a></p>
+											<div class="input-radio">
+												<span class="custom-radio"><label><input type="radio" value="1" name="id_gender"> آقا</label></span>
+												<span class="custom-radio"><label><input type="radio" value="1" name="id_gender"> خانم</label></span>
+											</div>
+											<br>
+											<label>نام</label>
+											<input type="text" name="first-name">
+											<label>نام خانوادگی</label>
+											<input type="text" name="last-name">
+											<label>ایمیل</label>
+											<input type="email" name="email-name" dir="ltr">
+											<label>رمز عبور</label>
+											<input type="password" name="user-password">
+											<label>تاریخ تولد</label>
+											<input type="text" placeholder="YYYY/MM/DD" value="" name="birthday">
+											<span class="example">
+												(مثال: 1397/05/26)
+											</span>
+											<br>
+											<span class="custom_checkbox">
+												<label><input type="checkbox" value="1" name="optin"> دریافت پیشنهادات ویژه</label>
+											</span>
+											<br>
+											<span class="custom_checkbox">
+												<label><input type="checkbox" value="1" name="newsletter"> عضویت در خبرنامه ما<br><em>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و</em></label>
+											</span>
+											<div class="save_button primary_btn default_button">
+												<button type="submit">ذخیره</button>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,12 @@
+﻿
+@{
+     ViewData["Title"] = "حذف تخفیف";
+}
+<form method="post" asp-area="AdminPanel" asp-controller="Products" asp-action="DeleteDiscount">
+    <input type="hidden" name="id" value="@ViewBag.id" />
+    
+    حذف تخفیف برای محصول @ViewBag.Producttitle
+
+    <button type="submit" class="btn btn-danger">حذف</button>
+
+</form>

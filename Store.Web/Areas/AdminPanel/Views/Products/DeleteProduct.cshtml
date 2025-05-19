@@ -1,0 +1,16 @@
+﻿@model Domain.Products.EditProductDTO
+@{
+    ViewData["Title"] = "حذف محصول";
+}
+<form method="post" asp-area="AdminPanel" asp-controller="Products" asp-action="DeleteProduct">
+    <input type="hidden" asp-for="ProductId" />
+
+    <input type="text" asp-for="Title" placeholder="Title" />
+
+    <input type="text" asp-for="Price" placeholder="price" />
+
+    <img src="/images/@Model.ImageName" style="width: 50px; height:50px;" />
+
+    <button type="submit" class="btn btn-danger">حذف</button>
+
+</form>
