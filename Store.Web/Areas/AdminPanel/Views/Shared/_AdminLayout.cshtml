@@ -16,9 +16,10 @@
     <link href="/admin/css/font-awesome.min.css" rel="stylesheet" />
     <link href="/admin/css/weather-icons.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="/lib/persianDatepicker-master/css/persianDatepicker-default.css">
+    <link rel="stylesheet" href="~/lib/Notifications/notifications.css">
 
     <!--Fonts-->
-  @*   <style>
+    @*   <style>
         @font-face {
             font-family: 'WYekan';
             src: url('/admin/fonts/BYekan.woff') format('woff');
@@ -392,7 +393,7 @@
                     <div class="searchhelper">به جستجوی صفحات، گزارشات، پیام ها و ایمیل خود بپردازید</div>
                 </div>
                 <ul class="nav sidebar-menu">
-              
+
                     <li>
                         <a asp-area="AdminPanel" asp-controller="Home" asp-action="Index">
                             <i class="menu-icon glyphicon glyphicon-home"></i>
@@ -1024,7 +1025,10 @@
         InitiateSparklineCharts.init();
     </script>
 
-    @await RenderSectionAsync("Scripts",false)
+    @await RenderSectionAsync("Scripts", false)
+    <script src="~/lib/Notifications/notifications.js"></script>
+    <script src="~/lib/Custom.js"></script>
+    <partial name="_SiteMessages" />
 </body>
 <!--  /Body -->
 </html>

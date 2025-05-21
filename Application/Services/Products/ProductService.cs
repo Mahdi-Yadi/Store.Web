@@ -49,8 +49,6 @@ public class ProductService : IProductService
         return true;
     }
 
- 
-
     public List<ProductDto> GetFavProducts(int userId)
     {
         var p = _dbContext.FavProducts.Where(a => a.UserId == userId).ToList();
@@ -64,7 +62,7 @@ public class ProductService : IProductService
             var newP = _dbContext.Products.FirstOrDefault(a => a.Id == item.ProductId);
             var a = new ProductDto()
             {
-                Id = newP.Id, 
+                Id = newP.Id,
                 ImageName = newP.ImageName,
                 Title = newP.Title,
                 Price = newP.Price
@@ -464,27 +462,81 @@ public class ProductService : IProductService
 
     public ColorResult AddColor(ColorProduct c)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var oldColor = _dbContext.ColorProducts.FirstOrDefault(a => a.ProductId == c.ProductId && a.Name == c.Name);
+
+            if (oldColor != null)
+                return ColorResult.IsExist;
+
+            _dbContext.ColorProducts.Add(c);
+            _dbContext.SaveChanges();
+
+            return ColorResult.Success;
+        }
+        catch (Exception)
+        {
+            return ColorResult.Error;
+        }
     }
 
-    public ColorResult GetForUpdateColor(long id)
+    public ColorProduct GetForUpdateColor(long id)
     {
-        throw new NotImplementedException();
+        var color = _dbContext.ColorProducts.FirstOrDefault(a => a.Id == id);
+
+        return color != null ? color : new ColorProduct();
     }
 
     public ColorResult UpdateColor(ColorProduct c)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var oldColor = _dbContext.ColorProducts.FirstOrDefault(a => a.ProductId == c.ProductId && a.Name == c.Name);
+
+            if (oldColor != null)
+                return ColorResult.IsExist;
+
+            var color = _dbContext.ColorProducts.FirstOrDefault(a => a.Id == c.Id);
+
+            color = c;
+
+            _dbContext.ColorProducts.Update(c);
+            _dbContext.SaveChanges();
+
+            return ColorResult.Success;
+        }
+        catch (Exception)
+        {
+            return ColorResult.Error;
+        }
     }
 
     public ColorResult DeleteColor(long id)
     {
-        throw new NotImplementedException();
+        var color = _dbContext.ColorProducts.FirstOrDefault(a => a.Id == id);
+
+        if (color != null)
+        {
+            color.IsDelete = true;
+
+            _dbContext.ColorProducts.Update(color);
+            _dbContext.SaveChanges();
+
+            return ColorResult.Success;
+        }
+
+        return ColorResult.Null;
     }
 
     public List<ColorProduct> GetColorProducts(long productId)
     {
-        throw new NotImplementedException();
+        var colors = _dbContext.ColorProducts.Where(a => a.ProductId == productId)
+            .ToList();
+
+        if(colors.Count == 0)
+            return new List<ColorProduct>();
+
+        return colors;
     }
 
 }

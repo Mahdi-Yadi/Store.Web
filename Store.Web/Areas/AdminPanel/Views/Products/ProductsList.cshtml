@@ -68,6 +68,9 @@
                                         <a asp-area="AdminPanel" asp-controller="Products" asp-action="Discount" asp-route-id="@item.Id" class="btn btn-primary btn-xs">
                                             <i class="fa fa-dollar"></i> تخفیف
                                         </a>
+                                        <a asp-area="AdminPanel" asp-controller="Products" asp-action="ColorsList" asp-route-productId="@item.Id" class="btn btn-secondary btn-xs">
+                                            <i class="fa fa-picture-o"></i> رنگبندی
+                                        </a>
                                         @if (item.Discounts.Count > 0)
                                         {
                                             <a asp-area="AdminPanel" asp-controller="Products" asp-action="DeleteDiscount" asp-route-id="@item.Id" asp-route-title="@item.Title" class="btn btn-darkorange btn-xs">

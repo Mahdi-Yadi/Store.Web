@@ -44,7 +44,7 @@ public interface IProductService
 
     ColorResult AddColor(ColorProduct c);
 
-    ColorResult GetForUpdateColor(long id);
+    ColorProduct GetForUpdateColor(long id);
 
     ColorResult UpdateColor(ColorProduct c);
 

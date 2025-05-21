@@ -1,6 +1,7 @@
 ﻿using Application.Services.Products;
 using DataLayer.Contexts;
 using DataLayer.Entities.Discounts;
+using DataLayer.Entities.Products;
 using Domain.Products;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -161,18 +162,44 @@ public class ProductsController : AdminBaseController
         }
     }
 
-    [HttpGet("ColorsList/{id}")]
-    public IActionResult ColorsList(long id)
+    [HttpGet("ColorsList/{productId}")]
+    public IActionResult ColorsList(long productId)
     {
-        var colors = _productService.GetColorProducts(id);
+        var colors = _productService.GetColorProducts(productId);
+
+        ViewBag.productId = productId;
 
         return View(colors);
     }
 
-    [HttpGet("AddColor/{id}")]
-    public IActionResult AddColor(long id)
+    [HttpGet("AddColor/{productId}")]
+    public IActionResult AddColor(long productId)
     {
-        
+        return View();
+    }
+
+    [HttpPost("AddColor/{productId}")]
+    public IActionResult AddColor(ColorProduct c ,long productId)
+    {
+        c.ProductId = productId;
+        var res = _productService.AddColor(c);
+
+        switch (res)
+        {
+            case ColorResult.Null:
+                TempData[WarningMessage] = "اطلاعات کامل نیست";
+                break;
+            case ColorResult.Error:
+                TempData[ErrorMessage] = "خطایی رخ داد";
+                break;
+            case ColorResult.IsExist:
+                TempData[WarningMessage] = "رنگ ثبت شده!";
+                break;
+            case ColorResult.Success:
+                TempData[SuccessMessage] = "رنگ جدید با موفقیت ثبت شد";
+                return Redirect($"/PanelAdmin/AddColor/{c.ProductId}");
+        }
+
         return View();
     }
 
