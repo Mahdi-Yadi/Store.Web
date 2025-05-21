@@ -23,8 +23,8 @@ public class DBContext : DbContext
 
 	public DbSet<Product> Products { get; set; }
 	public DbSet<ProductsCategories> ProductsCategories { get; set; }
-
-	public DbSet<FavProduct> FavProducts { get; set; }
+    public DbSet<ColorProduct> ColorProducts { get; set; }
+    public DbSet<FavProduct> FavProducts { get; set; }
 
     // Discount
     public DbSet<Discount> Discounts { get; set; }

@@ -1,5 +1,6 @@
 ﻿using DataLayer.Entities.Categories;
 using DataLayer.Entities.Discounts;
+using DataLayer.Entities.Products;
 using Domain.Products;
 using Microsoft.AspNetCore.Http;
 namespace Application.Services.Products;
@@ -37,5 +38,18 @@ public interface IProductService
     List<ProductDto> GetFavProducts(int userId);
 
     bool DeleteProductToFav(int id, int userId);
+
+
+    // color
+
+    ColorResult AddColor(ColorProduct c);
+
+    ColorResult GetForUpdateColor(long id);
+
+    ColorResult UpdateColor(ColorProduct c);
+
+    ColorResult DeleteColor(long id);
+
+    List<ColorProduct> GetColorProducts(long productId);
 
 }

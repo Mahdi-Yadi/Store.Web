@@ -30,4 +30,6 @@ public class Product
 
     public ICollection<OrderDetail> OrderDetails { get; set; }
 
+    public ICollection<ColorProduct> ColorProducts { get; set; }
+
 }

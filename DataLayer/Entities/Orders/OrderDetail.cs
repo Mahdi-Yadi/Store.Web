@@ -12,6 +12,10 @@ public class OrderDetail
 
     public int ProductId { get; set; }
 
+    public int? ColorId { get; set; }
+
+    public decimal ColorPrice { get; set; }
+
     public decimal Price { get; set; }
 
     public int Count { get; set; }

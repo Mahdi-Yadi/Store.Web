@@ -161,4 +161,33 @@ public class ProductsController : AdminBaseController
         }
     }
 
+    [HttpGet("ColorsList/{id}")]
+    public IActionResult ColorsList(long id)
+    {
+        var colors = _productService.GetColorProducts(id);
+
+        return View(colors);
+    }
+
+    [HttpGet("AddColor/{id}")]
+    public IActionResult AddColor(long id)
+    {
+        
+        return View();
+    }
+
+    [HttpGet("UpdateColor/{id}")]
+    public IActionResult UpdateColor(long id)
+    {
+
+        return View();
+    }
+
+    [HttpGet("DeleteColor/{id}")]
+    public IActionResult DeleteColor(long id)
+    {
+
+        return View();
+    }
+
 }

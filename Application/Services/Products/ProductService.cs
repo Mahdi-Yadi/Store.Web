@@ -49,6 +49,8 @@ public class ProductService : IProductService
         return true;
     }
 
+ 
+
     public List<ProductDto> GetFavProducts(int userId)
     {
         var p = _dbContext.FavProducts.Where(a => a.UserId == userId).ToList();
@@ -457,4 +459,32 @@ public class ProductService : IProductService
         }
 
     }
+
+    // color
+
+    public ColorResult AddColor(ColorProduct c)
+    {
+        throw new NotImplementedException();
+    }
+
+    public ColorResult GetForUpdateColor(long id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public ColorResult UpdateColor(ColorProduct c)
+    {
+        throw new NotImplementedException();
+    }
+
+    public ColorResult DeleteColor(long id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public List<ColorProduct> GetColorProducts(long productId)
+    {
+        throw new NotImplementedException();
+    }
+
 }
