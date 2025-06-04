@@ -1,5 +1,25 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model DataLayer.Entities.Products.ColorProduct
 @{
+    ViewData["Title"] = "ویرایش رنگ";
 }
+
+<form method="post" asp-area="AdminPanel" asp-controller="Products" asp-action="UpdateColor">
+
+    <input type="text" asp-for="Name" placeholder="Name" />
+
+    <input type="text" asp-for="Price" placeholder="price" />
+
+    <input type="number" asp-for="Count" placeholder="count" />
+
+    <input type="text" asp-for="ColorCode" placeholder="colorCode" />
+
+    <label>
+        <input type="checkbox" id="checkbox_fixedheader" asp-for="IsDelete">
+        <span class="text">فعال/غیرفعال</span>
+    </label>
+
+    <br />
+
+    <button type="submit" class="btn btn-success">ثبت</button>
+
+</form>

@@ -4,8 +4,8 @@ using DataLayer.Entities.Discounts;
 using DataLayer.Entities.Products;
 using Domain.Products;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
-
 namespace Store.Web.Areas.AdminPanel.Controllers;
 public class ProductsController : AdminBaseController
 {
@@ -18,6 +18,8 @@ public class ProductsController : AdminBaseController
         _dbContext = dbContext;
         _productService = productService;
     }
+
+    #region Products
 
     [HttpGet("ProductsList")]
     public IActionResult ProductsList()
@@ -38,7 +40,7 @@ public class ProductsController : AdminBaseController
     }
 
     [HttpPost("CreateProduct")]
-    public IActionResult CreateProduct(CreateProductDTO dto,IFormFile imageFile)
+    public IActionResult CreateProduct(CreateProductDTO dto, IFormFile imageFile)
     {
         var res = _productService.CreateProduct(dto, imageFile);
         ViewBag.cats = _productService.GetCategories();
@@ -63,7 +65,7 @@ public class ProductsController : AdminBaseController
     }
 
     [HttpPost("EditProduct/{id}")]
-    public IActionResult EditProduct(int id,EditProductDTO dto,IFormFile imageFile)
+    public IActionResult EditProduct(int id, EditProductDTO dto, IFormFile imageFile)
     {
         ViewBag.cats = _productService.GetCategories();
         var res = _productService.EditProduct(dto, imageFile);
@@ -88,7 +90,7 @@ public class ProductsController : AdminBaseController
     }
 
     [HttpPost("DeleteProduct/{id}")]
-    public IActionResult DeleteProduct(int id,EditProductDTO dto)
+    public IActionResult DeleteProduct(int id, EditProductDTO dto)
     {
         var res = _productService.DeleteProduct(dto.ProductId);
 
@@ -103,6 +105,11 @@ public class ProductsController : AdminBaseController
             return Redirect("/PanelAdmin/ProductsList");
         }
     }
+
+    #endregion
+
+    #region Discounts
+
 
     [HttpGet("Discount/{id}")]
     public IActionResult Discount(int id)
@@ -138,7 +145,7 @@ public class ProductsController : AdminBaseController
     }
 
     [HttpGet("DeleteDiscount/{id}")]
-    public IActionResult DeleteDiscount(int id,string title)
+    public IActionResult DeleteDiscount(int id, string title)
     {
         ViewBag.Producttitle = title;
         ViewBag.id = id;
@@ -162,6 +169,10 @@ public class ProductsController : AdminBaseController
         }
     }
 
+    #endregion
+
+    #region Colors
+
     [HttpGet("ColorsList/{productId}")]
     public IActionResult ColorsList(long productId)
     {
@@ -179,7 +190,7 @@ public class ProductsController : AdminBaseController
     }
 
     [HttpPost("AddColor/{productId}")]
-    public IActionResult AddColor(ColorProduct c ,long productId)
+    public IActionResult AddColor(ColorProduct c, long productId)
     {
         c.ProductId = productId;
         var res = _productService.AddColor(c);
@@ -197,24 +208,76 @@ public class ProductsController : AdminBaseController
                 break;
             case ColorResult.Success:
                 TempData[SuccessMessage] = "رنگ جدید با موفقیت ثبت شد";
-                return Redirect($"/PanelAdmin/AddColor/{c.ProductId}");
+                return Redirect($"/PanelAdmin/ColorsList/{c.ProductId}");
         }
 
         return View();
     }
 
-    [HttpGet("UpdateColor/{id}")]
-    public IActionResult UpdateColor(long id)
+    [HttpGet("UpdateColor/{colorId}/{productId}")]
+    public IActionResult UpdateColor(long colorId, long productId)
     {
+        var color = _productService.GetForUpdateColor(colorId);
+
+        if(color == null)
+        {
+            TempData[SuccessMessage] = "رنگی یافت نشد!";
+            return Redirect($"/PanelAdmin/ColorsList/{productId}");
+        }
+
+        return View(color);
+    }
+
+    [HttpPost("UpdateColor/{colorId}/{productId}")]
+    public IActionResult UpdateColor(ColorProduct c,long colorId, long productId)
+    {
+        c.ProductId = productId;
+        c.Id = colorId;
+        var res = _productService.UpdateColor(c);
+
+        switch (res)
+        {
+            case ColorResult.Null:
+                TempData[WarningMessage] = "اطلاعات کامل نیست";
+                break;
+            case ColorResult.Error:
+                TempData[ErrorMessage] = "خطایی رخ داد";
+                break;
+            case ColorResult.IsExist:
+                TempData[WarningMessage] = "رنگ ثبت شده!";
+                break;
+            case ColorResult.Success:
+                TempData[SuccessMessage] = "رنگ جدید با موفقیت ثبت شد";
+                return Redirect($"/PanelAdmin/ColorsList/{c.ProductId}");
+        }
 
         return View();
     }
 
-    [HttpGet("DeleteColor/{id}")]
-    public IActionResult DeleteColor(long id)
+    [HttpGet("DeleteColor/{colorId}/{productId}")]
+    public IActionResult DeleteColor(long colorId, long productId)
     {
+        ColorResult res = _productService.DeleteColor(colorId);
 
-        return View();
+        if(res == ColorResult.Null)
+        {
+            TempData[WarningMessage] = "خطای رخ داده است";
+            return Redirect($"/PanelAdmin/ColorsList/{productId}");
+        }
+        if (res == ColorResult.Error)
+        {
+            TempData[ErrorMessage] = "خطا";
+            return Redirect($"/PanelAdmin/ColorsList/{productId}");
+        }
+        if (res == ColorResult.Success)
+        {
+            TempData[SuccessMessage] = "رنگ با موفقیت حذف شد";
+            return Redirect($"/PanelAdmin/ColorsList/{productId}");
+        }
+
+        return Redirect($"/PanelAdmin/ColorsList/{productId}");
     }
+
+    #endregion
 
 }

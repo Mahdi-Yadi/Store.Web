@@ -491,16 +491,22 @@ public class ProductService : IProductService
     {
         try
         {
-            var oldColor = _dbContext.ColorProducts.FirstOrDefault(a => a.ProductId == c.ProductId && a.Name == c.Name);
+            var oldColor = _dbContext.ColorProducts.FirstOrDefault(a => a.ProductId == c.ProductId 
+            && a.Id != c.Id
+            && a.Name == c.Name);
 
             if (oldColor != null)
                 return ColorResult.IsExist;
 
             var color = _dbContext.ColorProducts.FirstOrDefault(a => a.Id == c.Id);
 
-            color = c;
+            color.Name = c.Name;
+            color.ColorCode = c.ColorCode;
+            color.Count = c.Count;
+            color.Price = c.Price;
+            color.IsDelete = false;
 
-            _dbContext.ColorProducts.Update(c);
+            _dbContext.ColorProducts.Update(color);
             _dbContext.SaveChanges();
 
             return ColorResult.Success;
