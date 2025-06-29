@@ -20,4 +20,16 @@ public class UsersController : AdminBaseController
         return View(users);
     }
 
+
+    [HttpGet("UserInfo/{id}")]
+    public IActionResult UserInfo(int id)
+    {
+        var user = _userService.GetUser(id);
+
+        if (user == null)
+            return Redirect("/");
+
+        return View(user);
+    }
+
 }

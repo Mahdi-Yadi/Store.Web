@@ -126,6 +126,24 @@ public class UserService : IUserService
         return dtos;
     }
 
+    public UserDto GetUser(int id)
+    {
+		var u = _db.Users.FirstOrDefault(u => u.Id == id);
+
+		if (u == null) return null;
+
+        UserDto dto = new UserDto();
+
+		dto.Id = id;
+		dto.Email = u.Email;
+		dto.PhoneNumber = u.PhoneNumber;
+        dto.FullName = u.UserName;
+		dto.Address = u.Address;
+		dto.AddressCode = u.AddressCode;
+
+        return dto;
+    }
+
     #endregion
 
 }

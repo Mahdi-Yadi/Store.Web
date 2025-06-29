@@ -23,10 +23,11 @@ public interface IUserService
 
     #endregion
 
-
     #region Users
 
     List<UserDto> GetUsers();
+
+    UserDto GetUser(int id);
 
     #endregion
 

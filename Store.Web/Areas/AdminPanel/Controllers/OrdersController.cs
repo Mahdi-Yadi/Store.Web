@@ -1,4 +1,5 @@
 ﻿using Application.Services.Orders;
+using DataLayer.Entities.Orders;
 using Microsoft.AspNetCore.Mvc;
 using Store.Web.Extentions;
 namespace Store.Web.Areas.AdminPanel.Controllers;
@@ -13,9 +14,19 @@ public class OrdersController : AdminBaseController
 
 
     [HttpGet("OrdersList")]
-    public IActionResult OrdersList()
+    public IActionResult OrdersList(int id = 0)
     {
-        var o = _orderService.OrdersListAdmin();
+        List<Order> o = new List<Order>();
+
+        if (id == 0)
+        {
+            o = _orderService.OrdersListAdmin();
+        }
+        else
+        {
+            o = _orderService.OrdersList(id);
+        }
+
         return View(o);
     }
 
@@ -36,11 +47,11 @@ public class OrdersController : AdminBaseController
     }
 
     [HttpPost("CompleteOrder")]
-    public IActionResult CompleteOrder(string code,string postcode)
+    public IActionResult CompleteOrder(string code, string postcode)
     {
         if (!string.IsNullOrEmpty(code) && !string.IsNullOrEmpty(postcode))
         {
-            var o = _orderService.CompleteOrderByAdmin(code,postcode);
+            var o = _orderService.CompleteOrderByAdmin(code, postcode);
 
             if (!o)
             {

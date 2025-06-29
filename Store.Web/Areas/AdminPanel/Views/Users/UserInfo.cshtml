@@ -1,0 +1,31 @@
+﻿@model Domain.UsersAdmin.UserDto
+@{
+    ViewData["Title"] = " کاربر " + Model.FullName;
+}
+<div class="col-xs-12 col-md-12">
+    <div class="widget">
+        <div class="widget-body">
+            <div id="editabledatatable_wrapper" class="dataTables_wrapper form-inline no-footer">
+
+                <div class="row">
+                    <div class="alert">
+                        <div class="col-lg-6 text alert-info" style="font-size:25px;">
+                            <h2 style="color:black;"> اطلاعات </h2>
+
+                            <p> نام و نام خانوادکی  : <span> @Model.FullName </span> </p>
+                            <p> آدرس : <span> @Model.Address </span> </p>
+                            <p> کد پستی : <span> @Model.AddressCode </span> </p>
+                            <p> شماره تماس   : <span> @Model.PhoneNumber </span> </p>
+                            <p> ایمیل : <span> @Model.Email </span> </p>
+                            <p> فاکتورهای کاربر <a asp-area="AdminPanel" asp-controller="Orders" asp-action="OrdersList" 
+                                                   asp-route-id="@Model.Id">فاکتورها</a></p>
+
+                        </div>
+                       
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
