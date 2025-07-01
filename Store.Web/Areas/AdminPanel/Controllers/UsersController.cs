@@ -1,4 +1,5 @@
 ﻿using Application.Services.Account;
+using Domain.Products;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Store.Web.Areas.AdminPanel.Controllers;
@@ -32,4 +33,31 @@ public class UsersController : AdminBaseController
         return View(user);
     }
 
+    [HttpGet("DeleteUser/{id}")]
+    public IActionResult DeleteUser(int id)
+    {
+        var res = _userService.DeleteUser(id);
+
+        if (res == true)
+        {
+            TempData[SuccessMessage] = "کاربر با موفقیت حذف شد";
+            return RedirectToAction(nameof(UsersList));
+        }
+        TempData[WarningMessage] = "کاربر یافت نشد";
+        return RedirectToAction(nameof(UsersList));
+    }
+
+    [HttpGet("RecoverUser/{id}")]
+    public IActionResult RecoverUser(int id)
+    {
+        var res = _userService.RecoverUser(id);
+
+        if (res == true)
+        {
+            TempData[SuccessMessage] = "کاربر با موفقیت بازگردانده شد";
+            return RedirectToAction(nameof(UsersList));
+        }
+        TempData[WarningMessage] = "کاربر یافت نشد";
+        return RedirectToAction(nameof(UsersList));
+    }
 }

@@ -30,6 +30,7 @@ public class User
 	public string PhoneNumber { get; set; }
 	public DateTime CreateDate { get; set; }
 	public bool IsAdmin { get; set; }
+	public bool IsDelete { get; set; }
 
     public ICollection<Order> Orders { get; set; }
 }

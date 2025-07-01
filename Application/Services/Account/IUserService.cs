@@ -29,6 +29,10 @@ public interface IUserService
 
     UserDto GetUser(int id);
 
+    bool DeleteUser(int id);
+
+    bool RecoverUser(int id);
+
     #endregion
 
 }

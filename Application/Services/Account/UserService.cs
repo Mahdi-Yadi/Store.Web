@@ -118,7 +118,8 @@ public class UserService : IUserService
 				Id= item.Id,
 				Email = item.Email,
 				FullName = item.UserName,
-				PhoneNumber = item.PhoneNumber
+				PhoneNumber = item.PhoneNumber,
+				IsDelete = item.IsDelete,
             };
 			dtos.Add(a);
         }
@@ -142,6 +143,34 @@ public class UserService : IUserService
 		dto.AddressCode = u.AddressCode;
 
         return dto;
+    }
+
+    public bool DeleteUser(int id)
+    {
+        var u = _db.Users.FirstOrDefault(u => u.Id == id);
+
+        if (u == null) return false;
+
+		u.IsDelete = true;
+
+        _db.Users.Update(u);
+        _db.SaveChanges();
+
+		return true;
+    }
+
+    public bool RecoverUser(int id)
+    {
+        var u = _db.Users.FirstOrDefault(u => u.Id == id);
+
+        if (u == null) return false;
+
+        u.IsDelete = false;
+
+        _db.Users.Update(u);
+        _db.SaveChanges();
+
+        return true;
     }
 
     #endregion

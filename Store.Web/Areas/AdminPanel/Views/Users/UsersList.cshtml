@@ -46,10 +46,19 @@
                                         @item.PhoneNumber
                                     </td>
                                     <td>
-                                        <a asp-area="AdminPanel" asp-controller="Users" asp-action="DeleteUser" asp-route-id="@item.Id" class="btn btn-danger btn-xs">
-                                            <i class="fa fa-trash-o"></i> حذف
-                                        </a>
-                                        <a asp-area="AdminPanel" asp-controller="Users" asp-action="UserInfo" asp-route-id="@item.Id" class="btn btn-info btn-xs">
+                                      @if (!item.IsDelete)
+                                      {
+                                          <a asp-area="AdminPanel" asp-controller="Users" asp-action="DeleteUser" asp-route-id="@item.Id" class="btn btn-danger btn-xs">
+                                              <i class="fa fa-trash-o"></i> حذف
+                                          </a>
+                                      }
+                                      else
+                                      {
+                                          <a asp-area="AdminPanel" asp-controller="Users" asp-action="RecoverUser" asp-route-id="@item.Id" class="btn btn-primary btn-xs">
+                                              <i class="fa fa-refresh"></i> بازگرداندن
+                                          </a>
+                                      }
+                                      <a asp-area="AdminPanel" asp-controller="Users" asp-action="UserInfo" asp-route-id="@item.Id" class="btn btn-info btn-xs">
                                             <i class="fa fa-info"></i> جزییات
                                         </a>
                                     </td>

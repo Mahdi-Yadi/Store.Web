@@ -7,4 +7,5 @@ public class UserDto
     public string PhoneNumber { get; set; }
     public string Address { get; set; }
     public string AddressCode { get; set; }
+    public bool IsDelete { get; set; }
 }
