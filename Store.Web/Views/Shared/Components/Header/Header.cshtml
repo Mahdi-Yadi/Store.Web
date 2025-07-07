@@ -1,4 +1,7 @@
 ﻿@using DataLayer.Entities.Categories;
+@using DataLayer.Entities.Discounts
+@using DataLayer.Entities.Orders
+@using Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
     var cat = ViewBag.cat as List<Category>;
@@ -69,16 +72,20 @@
                             </div>
                         </form>
                     </div>
-
+                    @{
+                        Order openOrder = ViewBag.openOrder as Order;
+                    }
                     <div class="middel_right_info">
                         <div class="header_wishlist">
-                            <a href="wishlist.html"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-                            <span class="wishlist_quantity">3</span>
+                            <a asp-area="UserPanel" asp-controller="Home" asp-action="FavProducts">
+                                <i class="fa fa-heart-o" aria-hidden="true"></i>
+                            </a>
                         </div>
                         <div class="mini_cart_wrapper">
-                            <a href="javascript:void(0)"><i class="fa fa-shopping-bag" aria-hidden="true"></i> <i class="fa fa-angle-down"></i></a>
+                            <a href="javascript:void(0)">
+                                <i class="fa fa-shopping-bag" aria-hidden="true"></i> <i class="fa fa-angle-down"></i>
+                            </a>
                             <span class="cart_quantity">2</span>
-                            <!--mini cart-->
                             <div class="mini_cart">
                                 <div class="cart_items_container">
                                     <div class="cart_item">
@@ -128,7 +135,7 @@
                                 </div>
 
                             </div>
-                            <!--mini cart end-->
+
                         </div>
                     </div>
 
@@ -309,65 +316,126 @@
                                     </div>
                                 </form>
                             </div>
+
                             <div class="middel_right_info">
                                 <div class="header_wishlist">
-                                    <a href="wishlist.html"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-                                    <span class="wishlist_quantity">3</span>
+                                    <a asp-area="UserPanel" asp-controller="Home" asp-action="FavProducts">
+                                        <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                    </a>
                                 </div>
                                 <div class="mini_cart_wrapper">
-                                    <a href="javascript:void(0)"><i class="fa fa-shopping-bag" aria-hidden="true"></i> <i class="fa fa-angle-down"></i></a>
-                                    <span class="cart_quantity">2</span>
-                                    <!--mini cart-->
+                                    <a href="javascript:void(0)">
+                                        <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                                        <i class="fa fa-angle-down"></i>
+                                    </a>
+                                    <span class="cart_quantity">@openOrder.OrderDetails.Count</span>
                                     <div class="mini_cart">
                                         <div class="cart_items_container">
-                                            <div class="cart_item">
-                                                <div class="cart_img">
-                                                    <a href="#"><img src="~/site/img/s-product/product.jpg" alt=""></a>
+                                            @if (openOrder.OrderDetails.Count != 0)
+                                            {
+                                                @foreach (var item in openOrder.OrderDetails)
+                                                {
+                                                    <div class="cart_item">
+                                                        <div class="cart_img">
+                                                            <a asp-controller="Product" asp-action="ProductDetail" asp-route-id="@item.ProductId">
+                                                                <img src="/images/@item.Product.ImageName">
+                                                            </a>
+                                                        </div>
+                                                        <div class="cart_info">
+                                                            <a asp-controller="Product" asp-action="ProductDetail" asp-route-id="@item.ProductId">
+                                                                @item.Product.Title
+                                                            </a>
+                                                            <p>
+                                                                تعداد: @item.Count × <span>
+                                                                    @{
+                                                                        decimal sumPrice = 0;
+
+                                                                        decimal price = item.Product.Price;
+
+                                                                        var activeDiscounts = item.Product.Discounts
+                                                                        ?.FirstOrDefault(d => d.IsDeleted == false && d.ExpireDate > DateTime.Now);
+
+                                                                        if (activeDiscounts != null)
+                                                                        {
+                                                                            price -= price * (activeDiscounts.DiscountPercentage / 100m);
+                                                                        }
+
+                                                                        sumPrice += price;
+
+                                                                        @sumPrice.ToString("#,0")
+                                                                    }
+                                                                    تومان
+                                                                </span>
+                                                            </p>
+                                                        </div>
+                                                        <div class="cart_remove">
+                                                            <a asp-area="UserPanel" asp-controller="Orders" asp-action="DeleteOrder"
+                                                               asp-route-isOpenOrder="1"
+                                                               asp-route-orderId="@item.OrderId"
+                                                               asp-route-id="@item.Id">
+                                                                <i class="ion-android-close"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <div class="alert alert-warning">
+                                                    سبد خرید خالی است.
                                                 </div>
-                                                <div class="cart_info">
-                                                    <a href="#">لورم ایپسوم متن ساختگی با تولید سادگی</a>
-                                                    <p>تعداد: 1 × <span> 60,000 تومان </span></p>
-                                                </div>
-                                                <div class="cart_remove">
-                                                    <a href="#"><i class="ion-android-close"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="cart_item">
-                                                <div class="cart_img">
-                                                    <a href="#"><img src="~/site/img/s-product/product2.jpg" alt=""></a>
-                                                </div>
-                                                <div class="cart_info">
-                                                    <a href="#">لورم ایپسوم متن ساختگی با تولید سادگی</a>
-                                                    <p>تعداد: 1 × <span> 60,000 تومان </span></p>
-                                                </div>
-                                                <div class="cart_remove">
-                                                    <a href="#"><i class="ion-android-close"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="mini_cart_table">
-                                            <div class="cart_total">
-                                                <span>جمع اجزا:</span>
-                                                <span class="price">138,000 تومان </span>
-                                            </div>
-                                            <div class="cart_total mt-10">
-                                                <span>جمع کل:</span>
-                                                <span class="price">138,000 تومان </span>
-                                            </div>
+                                            }
                                         </div>
 
-                                        <div class="mini_cart_footer">
-                                            <div class="cart_button">
-                                                <a href="cart.html">مشاهده سبد</a>
-                                            </div>
-                                            <div class="cart_button">
-                                                <a href="checkout.html">پرداخت</a>
+                                        @if (openOrder.OrderDetails.Count > 0)
+                                        {
+                                            decimal total = 0;
+                                            decimal totalDis = 0;
+
+                                            foreach (var item in openOrder.OrderDetails)
+                                            {
+                                                decimal price = item.Product.Price;
+
+                                                var activeDiscounts = item.Product.Discounts
+                                                    ?.FirstOrDefault(d => d.IsDeleted == false && d.ExpireDate > DateTime.Now);
+
+                                                if (activeDiscounts != null)
+                                                {
+                                                    totalDis += price * (activeDiscounts.DiscountPercentage / 100m) * item.Count;
+                                                    price -= price * (activeDiscounts.DiscountPercentage / 100m);
+                                                }
+
+                                                total += price * item.Count;
+                                            }
+
+                                            <div class="mini_cart_table">
+                                                <div class="cart_total">
+                                                    <span>جمع تخفیف:</span>
+                                                    <span class="price">
+                                                        @totalDis.ToString("#,0") تومان
+                                                    </span>
+                                                </div>
+                                                <div class="cart_total mt-10">
+                                                    <span>جمع کل:</span>
+                                                    <span class="price">
+                                                        @total.ToString("#,0") تومان
+                                                    </span>
+                                                </div>
                                             </div>
 
-                                        </div>
+                                            <div class="mini_cart_footer">
+                                                <div class="cart_button">
+                                                    <a asp-area="UserPanel"
+                                                       asp-controller="Orders" asp-action="OpenOrder">مشاهده سبد</a>
+                                                </div>
+                                                <div class="cart_button">
+                                                    <a asp-controller="Payments" asp-action="Pay">پرداخت</a>
+                                                </div>
 
+                                            </div>
+                                        }
                                     </div>
-                                    <!--mini cart end-->
+
                                 </div>
                             </div>
                         </div>

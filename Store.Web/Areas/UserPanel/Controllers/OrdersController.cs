@@ -36,7 +36,7 @@ public class OrdersController : UserPanelBaseController
     }
 
     [HttpGet("DeleteOrder/{id}")]
-    public IActionResult DeleteOrder(int? isOpenOrder ,int orderId,int id)
+    public IActionResult DeleteOrder(int? isOpenOrder, int orderId, int id)
     {
         var res = _orderService.DeleteOrder(id);
 

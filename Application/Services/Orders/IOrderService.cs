@@ -9,7 +9,7 @@ public interface IOrderService
 
     List<Order> OrdersListAdmin();
 
-    Order GetOrder(int oredrId);
+    Order GetOrder(int orderId);
 
     Order GetOpenOrder(int userId);
 

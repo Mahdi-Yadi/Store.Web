@@ -99,7 +99,7 @@ public class OrderService : IOrderService
         return orders;
     }
 
-    public Order GetOrder(int oredrId)
+    public Order GetOrder(int orderId)
     {
         var order = _db
             .Orders
@@ -107,7 +107,7 @@ public class OrderService : IOrderService
             .ThenInclude(o => o.Product)
             .ThenInclude(o => o.Discounts)
             .Include(o => o.User)
-            .FirstOrDefault(o => o.Id == oredrId);
+            .FirstOrDefault(o => o.Id == orderId);
 
         if (order == null)
             return new Order();
