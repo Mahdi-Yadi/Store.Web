@@ -33,6 +33,10 @@ public interface IUserService
 
     bool RecoverUser(int id);
 
+    bool SetUserToAdmin(int id);
+
+    bool GetAdminFromUser(int id);
+
     #endregion
 
 }

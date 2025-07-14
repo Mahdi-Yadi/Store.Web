@@ -119,7 +119,8 @@ public class UserService : IUserService
 				Email = item.Email,
 				FullName = item.UserName,
 				PhoneNumber = item.PhoneNumber,
-				IsDelete = item.IsDelete,
+				IsAdmin = item.IsAdmin,
+                IsDelete = item.IsDelete,
             };
 			dtos.Add(a);
         }
@@ -166,6 +167,34 @@ public class UserService : IUserService
         if (u == null) return false;
 
         u.IsDelete = false;
+
+        _db.Users.Update(u);
+        _db.SaveChanges();
+
+        return true;
+    }
+
+    public bool SetUserToAdmin(int id)
+    {
+        var u = _db.Users.FirstOrDefault(u => u.Id == id);
+
+        if (u == null) return false;
+
+        u.IsAdmin = true;
+
+        _db.Users.Update(u);
+        _db.SaveChanges();
+
+        return true;
+    }
+
+    public bool GetAdminFromUser(int id)
+    {
+        var u = _db.Users.FirstOrDefault(u => u.Id == id);
+
+        if (u == null) return false;
+
+        u.IsAdmin = false;
 
         _db.Users.Update(u);
         _db.SaveChanges();

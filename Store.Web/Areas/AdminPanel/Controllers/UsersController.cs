@@ -1,7 +1,5 @@
 ﻿using Application.Services.Account;
-using Domain.Products;
 using Microsoft.AspNetCore.Mvc;
-
 namespace Store.Web.Areas.AdminPanel.Controllers;
 public class UsersController : AdminBaseController
 {
@@ -60,4 +58,36 @@ public class UsersController : AdminBaseController
         TempData[WarningMessage] = "کاربر یافت نشد";
         return RedirectToAction(nameof(UsersList));
     }
+
+    [HttpGet("SetUserToAdmin/{id}")]
+    public IActionResult SetUserToAdmin(int id)
+    {
+        var result = _userService.SetUserToAdmin(id);
+
+        if (result == false)
+        {
+            TempData[WarningMessage] = "عملیات با شکست مواجه شد.";
+            return RedirectToAction(nameof(UsersList));
+        }
+
+        TempData[SuccessMessage] = "کاربر به ادمین تغییر پیدا کرد.";
+        return RedirectToAction(nameof(UsersList));
+    }
+
+
+    [HttpGet("GetAdminFromUser/{id}")]
+    public IActionResult GetAdminFromUser(int id)
+    {
+        var result = _userService.GetAdminFromUser(id);
+
+        if (result == false)
+        {
+            TempData[WarningMessage] = "عملیات با شکست مواجه شد.";
+            return RedirectToAction(nameof(UsersList));
+        }
+
+        TempData[SuccessMessage] = "کاربر به حالت عادی تغییر پیدا کرد.";
+        return RedirectToAction(nameof(UsersList));
+    }
+
 }

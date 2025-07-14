@@ -8,4 +8,5 @@ public class UserDto
     public string Address { get; set; }
     public string AddressCode { get; set; }
     public bool IsDelete { get; set; }
+    public bool IsAdmin { get; set; }
 }

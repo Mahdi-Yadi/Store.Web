@@ -328,10 +328,16 @@
                                         <i class="fa fa-shopping-bag" aria-hidden="true"></i>
                                         <i class="fa fa-angle-down"></i>
                                     </a>
-                                    <span class="cart_quantity">@openOrder.OrderDetails.Count</span>
+                                    <span class="cart_quantity">@if(openOrder.OrderDetails != null)
+                                        { @openOrder.OrderDetails.Count }
+                                                                else
+                                                                {
+                                            <spa>0</spa>
+                                                                }
+                                    </span>
                                     <div class="mini_cart">
                                         <div class="cart_items_container">
-                                            @if (openOrder.OrderDetails.Count != 0)
+                                            @if (openOrder.OrderDetails != null)
                                             {
                                                 @foreach (var item in openOrder.OrderDetails)
                                                 {
@@ -387,7 +393,7 @@
                                             }
                                         </div>
 
-                                        @if (openOrder.OrderDetails.Count > 0)
+                                        @if (openOrder.OrderDetails != null)
                                         {
                                             decimal total = 0;
                                             decimal totalDis = 0;

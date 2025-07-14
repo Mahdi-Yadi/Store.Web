@@ -12,7 +12,7 @@
                             <th class="sorting_asc" tabindex="0" aria-controls="editabledatatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="
                                                     Username
                                                 : activate to sort column descending" style="width: 181.667px;">
-                                نام 
+                                نام
                             </th>
                             <th class="sorting" tabindex="0" aria-controls="editabledatatable" rowspan="1" colspan="1" aria-label="
                                                     Full Name
@@ -46,21 +46,33 @@
                                         @item.PhoneNumber
                                     </td>
                                     <td>
-                                      @if (!item.IsDelete)
-                                      {
-                                          <a asp-area="AdminPanel" asp-controller="Users" asp-action="DeleteUser" asp-route-id="@item.Id" class="btn btn-danger btn-xs">
-                                              <i class="fa fa-trash-o"></i> حذف
-                                          </a>
-                                      }
-                                      else
-                                      {
-                                          <a asp-area="AdminPanel" asp-controller="Users" asp-action="RecoverUser" asp-route-id="@item.Id" class="btn btn-primary btn-xs">
-                                              <i class="fa fa-refresh"></i> بازگرداندن
-                                          </a>
-                                      }
-                                      <a asp-area="AdminPanel" asp-controller="Users" asp-action="UserInfo" asp-route-id="@item.Id" class="btn btn-info btn-xs">
+                                        @if (!item.IsDelete)
+                                        {
+                                            <a asp-area="AdminPanel" asp-controller="Users" asp-action="DeleteUser" asp-route-id="@item.Id" class="btn btn-danger btn-xs">
+                                                <i class="fa fa-trash-o"></i> حذف
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <a asp-area="AdminPanel" asp-controller="Users" asp-action="RecoverUser" asp-route-id="@item.Id" class="btn btn-primary btn-xs">
+                                                <i class="fa fa-refresh"></i> بازگرداندن
+                                            </a>
+                                        }
+                                        <a asp-area="AdminPanel" asp-controller="Users" asp-action="UserInfo" asp-route-id="@item.Id" class="btn btn-info btn-xs">
                                             <i class="fa fa-info"></i> جزییات
                                         </a>
+                                        @if (!item.IsAdmin)
+                                        {
+                                            <a asp-area="AdminPanel" asp-controller="Users" asp-action="SetUserToAdmin" asp-route-id="@item.Id" class="btn btn-danger btn-xs">
+                                                <i class="fa fa-user-secret"></i> ادمین
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <a asp-area="AdminPanel" asp-controller="Users" asp-action="GetAdminFromUser" asp-route-id="@item.Id" class="btn btn-primary btn-xs">
+                                                <i class="fa fa-minus"></i> گرفتن ادمین از کاربر
+                                            </a>
+                                        }
                                     </td>
                                 </tr>
                             }
