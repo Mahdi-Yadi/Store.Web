@@ -3,6 +3,7 @@ using DataLayer.Entities.Categories;
 using DataLayer.Entities.Discounts;
 using DataLayer.Entities.Orders;
 using DataLayer.Entities.Products;
+using DataLayer.Entities.Sites;
 using Microsoft.EntityFrameworkCore;
 namespace DataLayer.Contexts;
 public class DBContext : DbContext
@@ -31,6 +32,10 @@ public class DBContext : DbContext
 
 	public DbSet<Order> Orders { get; set; }
 	public DbSet<OrderDetail> OrderDetails { get; set; }
+
+	// site
+
+	public DbSet<Slider> Sliders { get; set; }
 
     #region on model creating
     protected override void OnModelCreating(ModelBuilder modelBuilder)

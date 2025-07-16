@@ -9,6 +9,7 @@ using Parbad.Builder;
 using Parbad.Gateway.ZarinPal;
 using System.Text.Encodings.Web;
 using System.Text.Unicode;
+using Application.Services.Sliders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +22,7 @@ builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<ICategoryService, CategoryService>();
 builder.Services.AddTransient<IProductService, ProductService>();
 builder.Services.AddTransient<IOrderService, OrderService>();
+builder.Services.AddTransient<ISliderService, SliderService>();
 
 // parbad
 builder.Services.AddParbad()

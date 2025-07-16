@@ -36,11 +36,14 @@ public class AccountController : BaseController
 			}
 			var res = _userService.CreateUser(register);
 			if (res)
-			{
+            {
+                TempData[SuccessMessage] = "ثبت نام با موفقیت انجام شد.";
 				return Redirect("Login?registerUser=true");
 			}
-		}
-		return View(register);
+            TempData[WarningMessage] = "خطایی رخ داده";
+        }
+        TempData[WarningMessage] = "تمامی موارد را وارد نمایید";
+        return View(register);
 	}
 
 
@@ -77,13 +80,14 @@ public class AccountController : BaseController
 					   CookieAuthenticationDefaults.AuthenticationScheme,
 					   new ClaimsPrincipal(identity),
 					   properties);
-				return Redirect("/");
+                TempData[SuccessMessage] = "ورود با موفقیت انجام شد.";
+                return Redirect("/");
 			}
-			ModelState.AddModelError("Email","کاربری یافت نشد!");
+            TempData[WarningMessage] = "کاربری یافت نشد!.";
 			return View(login);
 		}
-		ModelState.AddModelError("Email", "خطای نامشخص");
-		return View(login);
+        TempData[WarningMessage] = "تمامی موارد را وارد نمایید";
+        return View(login);
 	}
 
 	[HttpGet("Logout")]
@@ -92,7 +96,8 @@ public class AccountController : BaseController
 		if (!User.Identity.IsAuthenticated) return Redirect("/");
 		HttpContext.SignOutAsync(
 		   CookieAuthenticationDefaults.AuthenticationScheme);
-		return Redirect("/");
+        TempData[InfoMessage] = "از حساب خارج شدید.";
+        return Redirect("/");
 	}
 
 	[HttpGet("AccessDenied")]
