@@ -1,6 +1,5 @@
 ﻿using DataLayer.Entities.Sites;
 using Microsoft.AspNetCore.Http;
-
 namespace Application.Services.Sliders;
 public interface ISliderService
 {
@@ -10,5 +9,7 @@ public interface ISliderService
     bool Delete(int id);
 
     List<Slider> GetSliders();
+
+    List<Slider> GetSlidersForSite(int take);
 
 }

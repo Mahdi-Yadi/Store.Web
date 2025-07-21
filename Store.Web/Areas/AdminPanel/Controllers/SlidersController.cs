@@ -13,9 +13,11 @@ public class SlidersController : AdminBaseController
         _sliderService = sliderService;
     }
 
+    [HttpGet("Sliders")]
     public IActionResult Sliders()
     {
-        return View();
+        var sliders = _sliderService.GetSliders();
+        return View(sliders);
     }
 
     [HttpGet("Create-Slider")]
@@ -25,7 +27,7 @@ public class SlidersController : AdminBaseController
     }
 
     [ValidateAntiForgeryToken]
-    [HttpPost]
+    [HttpPost("Create-Slider")]
     public IActionResult CreateSlider(Slider s,IFormFile imageFile)
     {
         if (ModelState.IsValid)
@@ -45,10 +47,20 @@ public class SlidersController : AdminBaseController
     }
 
 
-    [HttpGet("{id}")]
+    [HttpGet("DeleteSlider/{id}")]
     public IActionResult DeleteSlider(int id)
     {
-        return View();
+        var res = _sliderService.Delete(id);
+        if (!res)
+        {
+            ViewBag.Mes = "مقدار را خالی وارد کرده اید";
+            return RedirectToAction(nameof(Sliders));
+        }
+        else
+        {
+            ViewBag.Mes = "حذف با موفقیت انجام شد";
+            return RedirectToAction(nameof(Sliders));
+        }
     }
 
 }

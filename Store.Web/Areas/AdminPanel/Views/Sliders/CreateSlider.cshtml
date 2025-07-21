@@ -1,0 +1,13 @@
+﻿@model DataLayer.Entities.Sites.Slider
+@{
+    ViewData["Title"] = "افزودن اسلایدر";
+}
+<form method="post" asp-area="AdminPanel" asp-controller="Sliders" asp-action="CreateSlider" enctype="multipart/form-data">
+
+    <input type="text" asp-for="Title" placeholder="Title" />
+    <input type="url" asp-for="ImageUrl" placeholder="ImageUrl" />
+    <br />
+    <input type="file" name="imageFile" />
+    <button type="submit" class="btn btn-success">ثبت</button>
+
+</form>

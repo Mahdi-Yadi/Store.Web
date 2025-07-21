@@ -37,6 +37,7 @@ public class SliderService : ISliderService
 
             _db.Sliders.Add(slider);
             _db.SaveChanges();
+
             return true;
         }
         catch (Exception)
@@ -78,4 +79,10 @@ public class SliderService : ISliderService
     {
         return _db.Sliders.ToList();
     }
+
+    public List<Slider> GetSlidersForSite(int take)
+    {
+        return _db.Sliders.Take(take).ToList();
+    }
+
 }

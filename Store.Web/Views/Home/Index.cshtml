@@ -1,57 +1,34 @@
 ﻿@using Domain.Products
 @using NuGet.Protocol
+@using DataLayer.Entities.Sites
 
 @{
     ViewData["Title"] = "صفحه اصلی";
     List<ProductDto> specialProducts = ViewBag.special as List<ProductDto>;
+    List<Slider> sliders = ViewBag.sliders as List<Slider>;
 }
 
 
 <section class="slider_section mb-70">
     <div class="slider_area owl-carousel">
-        <div class="single_slider d-flex align-items-center" data-bgimg="/site/img/slider/slider1.jpg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="slider_content">
-                            <h1> طراحی زیبا</h1>
-                            <h2>تلویزیون 85 اینچ</h2>
-                            <p>پیشنهاد ویژه <span> 20% تخفیف </span> این هفته</p>
-                            <a class="button" href="shop.html">اکنون بخرید</a>
+        @if (sliders != null)
+        {
+            @foreach (var item in sliders)
+            {
+                <div class="single_slider d-flex align-items-center" data-bgimg="/images/sliders/@item.ImageName">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="slider_content">
+                                    <h1> @item.Title</h1>
+                                    <a class="button" href="@item.ImageUrl">مشاهده</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-        </div>
-        <div class="single_slider d-flex align-items-center" data-bgimg="/site/img/slider/slider2.jpg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="slider_content">
-                            <h1>دوربین دوگانه</h1>
-                            <h2>کیفیت 20MP</h2>
-                            <p>پیشنهاد ویژه <span> 20% تخفیف </span> این هفته</p>
-                            <a class="button" href="shop.html">اکنون بخرید</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="single_slider d-flex align-items-center" data-bgimg="/site/img/slider/slider3.jpg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="slider_content">
-                            <h1>عجله کنید!</h1>
-                            <h2>محصولات برتر سال</h2>
-                            <p>پیشنهاد ویژه <span> 20% تخفیف </span> این هفته</p>
-                            <a class="button" href="shop.html">اکنون بخرید</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+            }
+        }
     </div>
 </section>
 
@@ -170,7 +147,7 @@
                                         </li>
                                         <li class="quick_button">
                                             <a href="#" data-toggle="modal" data-target="#modal_box" title="مشاهده سریع">
-                                                 <span class="ion-ios-search-strong"></span>
+                                                <span class="ion-ios-search-strong"></span>
                                             </a>
                                         </li>
                                     </ul>
