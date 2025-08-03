@@ -1,10 +1,10 @@
 ﻿@using DataLayer.Entities.Categories;
-@using DataLayer.Entities.Discounts
 @using DataLayer.Entities.Orders
-@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using DataLayer.Entities.Sites
 
 @{
     var cat = ViewBag.cat as List<Category>;
+    var site = ViewBag.site as Setting;
 }
 
 <div class="Offcanvas_menu">
@@ -19,7 +19,7 @@
                         <a href="javascript:void(0)"><i class="ion-android-close"></i></a>
                     </div>
                     <div class="support_info">
-                        <p>تلفن تماس: <a class="ltr-text" href="tel:+989123456789">+(98) 123 456 789</a></p>
+                        <p>تلفن تماس: <a class="ltr-text" href="tel:@site.PhoneNumber">@site.PhoneNumber</a></p>
                     </div>
                     <div class="top_right text-right">
                         <ul>
@@ -247,7 +247,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6 col-md-6">
                         <div class="support_info">
-                            <p>تلفن تماس: <a class="ltr-text" href="tel:+989123456789">+(98) 123 456 789</a></p>
+                            <p>تلفن تماس: <a class="ltr-text" href="tel:@site.PhoneNumber">@site.PhoneNumber</a></p>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6">
@@ -283,7 +283,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-6">
                         <div class="logo">
-                            <a href="/"><img src="~/site/img/logo/logo.png" alt=""></a>
+                            <a href="/"><img src="~/images/Site/@site.LogoImageName" alt=""></a>
                         </div>
                     </div>
                     <div class="col-lg-9 col-md-6">
@@ -538,7 +538,7 @@
         <div class="row align-items-center">
             <div class="col-lg-3">
                 <div class="logo">
-                    <a href="/"><img src="~/site/img/logo/logo.png" alt=""></a>
+                    <a href="/"><img src="~/images/Site/@site.LogoImageName" alt=""></a>
                 </div>
             </div>
             <div class="col-lg-9">

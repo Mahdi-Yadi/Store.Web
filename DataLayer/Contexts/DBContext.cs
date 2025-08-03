@@ -37,6 +37,8 @@ public class DBContext : DbContext
 
 	public DbSet<Slider> Sliders { get; set; }
 
+	public DbSet<Setting> Settings { get; set; }
+
     #region on model creating
     protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{

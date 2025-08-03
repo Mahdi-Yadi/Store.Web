@@ -1,17 +1,23 @@
-﻿<footer class="footer_widgets">
+﻿@using DataLayer.Entities.Sites
+@{
+    var site = ViewBag.site as Setting;
+}
+<footer class="footer_widgets">
 	<div class="footer_top">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-4 col-md-6">
 					<div class="widgets_container contact_us">
 						<div class="footer_logo">
-							<a href="#"><img src="~/site/img/logo/logo.png" alt=""></a>
+							<a href="#"><img src="~/images/Site/@site.LogoImageName" alt=""></a>
 						</div>
 						<div class="footer_contact">
-							<p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
-							<p><span>آدرس: </span> تبریز، چهارراه آبرسان، فلکه دانشگاه، برج بلور، طبقه 678، واحد 85</p>
-							<p><span>موبایل: </span><a class="ltr-text" href="tel:+989123456789">+(98) 123 456 789</a> ، <a class="ltr-text" href="tel:+989123456789">+(98) 123 456 789</a> </p>
-							<p><span>پشتیبانی: </span><a target="_blank" href="#">support@sample.com</a></p>
+                            <p>
+								@site.FooterText
+                            </p>
+							<p><span>آدرس: </span>@site.Address</p>
+							<p><span>موبایل: </span><a class="ltr-text" href="tel:@site.PhoneNumber">@site.PhoneNumber</a> </p>
+							<p><span>پشتیبانی: </span><a target="_blank" href="mailto:@site.Email">@site.Email</a></p>
 						</div>
 					</div>
 				</div>

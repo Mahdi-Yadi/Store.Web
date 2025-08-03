@@ -1,0 +1,22 @@
+﻿@model DataLayer.Entities.Sites.Setting
+@{
+    ViewData["Title"] = "تنظیمات سایت";
+}
+<form method="post" asp-area="AdminPanel" asp-controller="Settings" asp-action="SiteSetting" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="LogoImageName" />
+    
+    <input type="text" asp-for="Address" placeholder="ادرس"/>
+    <input type="tel" asp-for="PhoneNumber" placeholder ="شماره تلفن"/>
+    <input type="email" asp-for="Email" placeholder="ایمیل" />
+
+    <textarea asp-for="FooterText" placeholder="des" style="width: 100px; height: 100px;">
+    </textarea>
+
+    <img src="/images/site/@Model.LogoImageName" style="width: 50px; height:50px;" />
+
+    <input type="file" name="imageFile" />
+
+    <button type="submit" class="btn btn-primary">ثبت</button>
+
+</form>
