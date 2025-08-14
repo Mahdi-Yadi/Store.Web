@@ -15,4 +15,6 @@ public class Setting
 
     public string Address { get; set; }
 
+    public string AboutUs { get; set; }
+
 }

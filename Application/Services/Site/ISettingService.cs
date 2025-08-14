@@ -56,6 +56,7 @@ public class SettingService : ISettingService
             siteSetting.Address = setting.Address;
             siteSetting.Email = setting.Email;
             siteSetting.PhoneNumber = setting.PhoneNumber;
+            siteSetting.AboutUs = setting.AboutUs;
 
             if (imageFile != null)
             {

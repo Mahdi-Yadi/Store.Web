@@ -1,0 +1,8 @@
+﻿@using DataLayer.Entities.Sites
+
+@{
+    ViewData["Title"] = "درباره ما";
+    var site = ViewBag.site as Setting;
+}
+
+@Html.Raw(site.AboutUs)

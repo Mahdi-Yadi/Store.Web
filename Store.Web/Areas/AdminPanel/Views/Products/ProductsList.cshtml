@@ -15,33 +15,38 @@
                         </div>
                     }
                     <thead>
-                    <tr role="row">
-                        <th class="sorting_asc" tabindex="0" aria-controls="editabledatatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="
+                        <tr role="row">
+                            <th class="sorting_asc" tabindex="0" aria-controls="editabledatatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="
                                                     Username
                                                 : activate to sort column descending" style="width: 181.667px;">
-                            تصویر محصول
-                        </th>
-                        <th class="sorting_asc" tabindex="0" aria-controls="editabledatatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="
+                                تصویر محصول
+                            </th>
+                            <th class="sorting_asc" tabindex="0" aria-controls="editabledatatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="
                                                     Username
                                                 : activate to sort column descending" style="width: 181.667px;">
-                            نام محصول
-                        </th>
-                        <th class="sorting" tabindex="0" aria-controls="editabledatatable" rowspan="1" colspan="1" aria-label="
+                                نام محصول
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="editabledatatable" rowspan="1" colspan="1" aria-label="
                                                     Full Name
                                                 : activate to sort column ascending" style="width: 270.667px;">
-                            قیمت
-                        </th>
-                        <th class="sorting" tabindex="0" aria-controls="editabledatatable" rowspan="1" colspan="1" aria-label="
+                                قیمت
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="editabledatatable" rowspan="1" colspan="1" aria-label="
                                                     Full Name
                                                 : activate to sort column ascending" style="width: 270.667px;">
-                            تاریخ ثبت
-                        </th>
-                        <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="
+                                تاریخ ثبت
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="editabledatatable" rowspan="1" colspan="1" aria-label="
+                                                    Full Name
+                                                : activate to sort column ascending" style="width: 270.667px;">
+                                تعداد بازدید
+                            </th>
+                            <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="
 
                                                 " style="width: 342.667px;">
-                            دستورات
-                        </th>
-                    </tr>
+                                دستورات
+                            </th>
+                        </tr>
                     </thead>
 
                     <tbody>
@@ -50,13 +55,18 @@
                             @foreach (var item in Model)
                             {
                                 <tr role="row" class="odd">
-                                    <td class="sorting_1"><img src="/images/@item.ImageName" width="50" height="50"/></td>
-                                    <td class="sorting_1">@item.Title</td>
+                                    <td class="sorting_1"><img src="/images/@item.ImageName" width="50" height="50" /></td>
+                                    <td class="sorting_1">
+                                        <a asp-controller="Products" asp-action="ProductDetail" asp-route-id="@item.Id">@item.Title</a>
+                                    </td>
                                     <td>
                                         @item.Price.ToString("#,0") تومان
                                     </td>
                                     <td>
                                         @item.CreateDate
+                                    </td>
+                                    <td>
+                                        @item.TotalVisit
                                     </td>
                                     <td>
                                         <a asp-area="AdminPanel" asp-controller="Products" asp-action="EditProduct" asp-route-id="@item.Id" class="btn btn-info btn-xs edit">

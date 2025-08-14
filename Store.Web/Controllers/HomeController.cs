@@ -1,18 +1,22 @@
 ﻿using Application.Services.Products;
+using Application.Services.Site;
 using Application.Services.Sliders;
 using Domain.Products;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 namespace Store.Web.Controllers;
 public class HomeController : BaseController
 {
 
     private readonly IProductService _productService;
     private readonly ISliderService _sliderService;
-
-    public HomeController(IProductService productService, ISliderService sliderService)
+    private readonly ISettingService _settingService;
+    public HomeController(IProductService productService, ISliderService sliderService,
+        ISettingService settingService)
     {
         _productService = productService;
         _sliderService = sliderService;
+        _settingService = settingService;
     }
 
     public IActionResult Index()
@@ -29,4 +33,12 @@ public class HomeController : BaseController
 
         return View();
     }
+
+
+    public IActionResult AboutUs()
+    {
+        ViewBag.site = _settingService.GetSetting();
+        return View();
+    }
+
 }

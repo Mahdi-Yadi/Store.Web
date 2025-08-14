@@ -353,6 +353,7 @@ public class ProductService : IProductService
         var products = _dbContext
             .Products
             .OrderByDescending(p => p.TotalVisit)
+            .ThenByDescending(p => p.OrderDetails.Count)
             .ToList();
 
         if (products.Count == 0)
