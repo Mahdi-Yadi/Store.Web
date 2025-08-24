@@ -259,11 +259,50 @@ public class ProductService : IProductService
         return false;
     }
 
+    public List<ProductDto> GetAllProducts(string title = null, string category = null)
+    {
+        var products = _dbContext
+            .Products
+            .Include(c => c.ProductsCategories)
+            .ThenInclude(c => c.Category)
+            .OrderByDescending(p => p.CreateDate)
+            .ToList();
+
+        if(title != null)
+            products = products.Where(p => p.Title.Contains(title)).ToList();
+
+        if (category != null)
+            products = products.Where(c => c.ProductsCategories.Any(a => a.Category.Name == category)).ToList();
+
+        if (products.Count == 0)
+            return new List<ProductDto>();
+
+        List<ProductDto> dtos = new List<ProductDto>();
+
+        foreach (var item in products)
+        {
+            var a = new ProductDto()
+            {
+                Id = item.Id,
+                Description = item.Description,
+                ImageName = item.ImageName,
+                Price = item.Price,
+                Title = item.Title,
+                Discount = GetDiscount(item.Id)
+            };
+            dtos.Add(a);
+        }
+
+        return dtos;
+    }
+
     public List<ProductDto> GetLastProducts()
     {
         var products = _dbContext
             .Products
             .OrderByDescending(p => p.CreateDate)
+            .Take(6)
+            .Distinct()
             .ToList();
 
         if (products.Count == 0)

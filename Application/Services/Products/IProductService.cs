@@ -17,6 +17,8 @@ public interface IProductService
 
     List<Category> GetCategories();
 
+    List<ProductDto> GetAllProducts(string title = null,string category= null);
+
     List<ProductDto> GetLastProducts();
 
     List<ProductDto> GetProductsHasDiscount();

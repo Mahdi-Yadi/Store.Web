@@ -15,10 +15,12 @@ public class ProductController : BaseController
     }
 
     [HttpGet("ProductsList")]
-	public IActionResult ProductsList()
+    public IActionResult ProductsList(string title = null,string category = null)
     {
 
-        List<ProductDto> products = _productService.GetLastProducts();
+        List<ProductDto> products = _productService.GetAllProducts(title,category);
+
+        ViewBag.title = title; ViewBag.category = category;
 
         return View(products);
     }
