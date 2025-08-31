@@ -10,6 +10,8 @@ public class OrderDetail
 
     public int? DiscountId { get; set; }
 
+    public string DiscountCode { get; set; }
+
     public int ProductId { get; set; }
 
     public int? ColorId { get; set; }

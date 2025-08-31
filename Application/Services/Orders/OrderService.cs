@@ -1,6 +1,5 @@
 ﻿using Application.Services.Emails;
 using DataLayer.Contexts;
-using DataLayer.Entities.Account;
 using DataLayer.Entities.Orders;
 using Microsoft.EntityFrameworkCore;
 namespace Application.Services.Orders;
@@ -199,25 +198,37 @@ public class OrderService : IOrderService
 
             if (activeDiscounts != null)
             {
-                price -= price * (activeDiscounts.DiscountPercentage / 100m);
+                if (activeDiscounts.IsForShow)
+                {
+                    price -= price * (activeDiscounts.DiscountPercentage / 100m);
+                }
+                else
+                {
+                    if (!string.IsNullOrEmpty(item.DiscountCode) &&
+                        !string.IsNullOrEmpty(activeDiscounts.Code) &&
+                        item.DiscountCode == activeDiscounts.Code)
+                    {
+                        price -= price * (activeDiscounts.DiscountPercentage / 100m);
+                    }
+                }
             }
 
             totalPrice += price;
         }
 
-        o.SumPrice = totalPrice;    
+        o.SumPrice = totalPrice;
         o.CodePayment = transactionCode;
         o.CreateDatePayment = DateTime.Now;
 
         _db.Orders.Update(o);
         await _db.SaveChangesAsync();
 
-        SendEmailToAdmins(o.Code,o.CodePayment);
+        SendEmailToAdmins(o.Code, o.CodePayment);
 
         return true;
     }
 
-    private void SendEmailToAdmins(string sitecode,string paymentCode)
+    private void SendEmailToAdmins(string sitecode, string paymentCode)
     {
         var users = _db.Users
             .Where(a => a.IsAdmin)
@@ -230,9 +241,40 @@ public class OrderService : IOrderService
             foreach (var user in users)
             {
                 // Send Email
-                EmailSender.SendEmail(user.Email,subject,body);
+                EmailSender.SendEmail(user.Email, subject, body);
             }
         }
+    }
+
+    public bool SetDiscountCodeForOrderDeatil(int userId, string code)
+    {
+        var dis = _db.Discounts.FirstOrDefault(a => 
+        a.IsDeleted == false
+        && a.ExpireDate > DateTime.Now 
+        && a.Code == code);
+
+        if (dis == null)
+            return false;
+
+        var order = _db.Orders.FirstOrDefault(a=>a.UserId == userId);
+
+        if(order == null) return false;
+
+        var od = _db.OrderDetails
+            .FirstOrDefault(a =>
+            a.OrderId == order.Id 
+            &&
+            a.ProductId == dis.ProductId);
+
+        if (od == null)
+            return false;
+
+        od.DiscountCode = code;
+
+        _db.OrderDetails.Update(od);
+        _db.SaveChanges();
+
+        return true;
     }
 
 }

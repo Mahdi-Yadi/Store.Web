@@ -21,4 +21,6 @@ public interface IOrderService
 
     Task<bool> UpdateOrderAfterPayment(string transactionCode, string trackingNumber);
 
+    bool SetDiscountCodeForOrderDeatil(int userId,string code);
+
 }

@@ -12,6 +12,10 @@ public class Discount
 
     public bool IsDeleted { get; set; }
 
+    public bool IsForShow { get; set; }
+
+    public string Code { get; set; }
+
     public int ProductId { get; set; }
 
     public Product Product { get; set; }

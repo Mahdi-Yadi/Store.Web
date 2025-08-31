@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Store.Web.Extentions;
 namespace Store.Web.Areas.UserPanel.Controllers;
+[AutoValidateAntiforgeryToken]
 public class OrdersController : UserPanelBaseController
 {
 
@@ -76,6 +77,26 @@ public class OrdersController : UserPanelBaseController
         }
 
         return View(o);
+    }
+
+    [ValidateAntiForgeryToken]
+    [HttpPost]
+    public IActionResult SetDiscountCodeForOrderDeatil(string code)
+    {
+        var res = _orderService.SetDiscountCodeForOrderDeatil(User.GetUserId(),code);
+
+        if(res)
+        {
+            TempData[SuccessMessage] = "تخفیف اعمال شد";
+            return Redirect($"/Panel/OpenOrder");
+        }
+        else
+        {
+            TempData[WarningMessage] = "خطا";
+
+            return Redirect($"/Panel/OpenOrder");
+        }
+
     }
 
 }

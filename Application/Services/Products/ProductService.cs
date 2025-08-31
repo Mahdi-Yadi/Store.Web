@@ -268,7 +268,7 @@ public class ProductService : IProductService
             .OrderByDescending(p => p.CreateDate)
             .ToList();
 
-        if(title != null)
+        if (title != null)
             products = products.Where(p => p.Title.Contains(title)).ToList();
 
         if (category != null)
@@ -420,7 +420,11 @@ public class ProductService : IProductService
     private Discount GetDiscount(int id)
     {
         var dis = _dbContext.Discounts
-            .FirstOrDefault(a => a.ExpireDate > DateTime.Now && a.IsDeleted == false && a.ProductId == id);
+            .FirstOrDefault(a =>
+             a.IsForShow
+             && a.ExpireDate > DateTime.Now
+            && a.IsDeleted == false
+            && a.ProductId == id);
 
         if (dis == null)
             return new Discount();
@@ -458,6 +462,8 @@ public class ProductService : IProductService
         d.DiscountPercentage = dis.DiscountPercentage;
         d.IsDeleted = false;
         d.ProductId = dis.ProductId;
+        d.Code = dis.Code;
+        d.IsForShow = dis.IsForShow;
 
         _dbContext.Discounts.Add(d);
         _dbContext.SaveChanges();
@@ -531,7 +537,7 @@ public class ProductService : IProductService
     {
         try
         {
-            var oldColor = _dbContext.ColorProducts.FirstOrDefault(a => a.ProductId == c.ProductId 
+            var oldColor = _dbContext.ColorProducts.FirstOrDefault(a => a.ProductId == c.ProductId
             && a.Id != c.Id
             && a.Name == c.Name);
 
@@ -579,7 +585,7 @@ public class ProductService : IProductService
         var colors = _dbContext.ColorProducts.Where(a => a.ProductId == productId)
             .ToList();
 
-        if(colors.Count == 0)
+        if (colors.Count == 0)
             return new List<ColorProduct>();
 
         return colors;

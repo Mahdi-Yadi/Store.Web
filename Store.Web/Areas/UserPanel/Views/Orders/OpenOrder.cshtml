@@ -31,7 +31,7 @@
                                         <th class="product_thumb">تصویر</th>
                                         <th class="product_name">محصول</th>
                                         <th class="product-price">قیمت</th>
-                                        <th class="product_quantity">تعداد</th>
+                                        <th class="product_quantity">کد تخفیف</th>
                                         <th class="product_total">جمع کل</th>
                                     </tr>
                                 </thead>
@@ -55,11 +55,12 @@
                                                     <a asp-controller="Product" asp-action="ProductDetail" asp-route-id="@item.ProductId">
                                                         @item.Product.Title
                                                     </a>
+                                                    <label>تعداد</label>
+                                                    @item.Count
                                                 </td>
                                                 <td class="product-price">
                                                     @{
                                                         decimal sumPrice = 0;
-
                                                         decimal price = item.Product.Price;
 
                                                         var activeDiscounts = item.Product.Discounts
@@ -67,18 +68,28 @@
 
                                                         if (activeDiscounts != null)
                                                         {
-                                                            price -= price * (activeDiscounts.DiscountPercentage / 100m);
+                                                            if (activeDiscounts.IsForShow)
+                                                            {
+                                                                price -= price * (activeDiscounts.DiscountPercentage / 100m);
+                                                            }
+                                                            else
+                                                            {
+                                                                if (!string.IsNullOrEmpty(item.DiscountCode) &&
+                                                                !string.IsNullOrEmpty(activeDiscounts.Code) &&
+                                                                item.DiscountCode == activeDiscounts.Code)
+                                                                {
+                                                                    price -= price * (activeDiscounts.DiscountPercentage / 100m);
+                                                                }
+                                                            }
                                                         }
 
                                                         sumPrice += price;
-
                                                         @sumPrice.ToString("#,0")
                                                     }
                                                     تومان
                                                 </td>
                                                 <td class="product_quantity">
-                                                    <label>تعداد</label>
-                                                    @item.Count
+                                                   
                                                 </td>
                                                 <td class="product_total">
                                                     @((sumPrice *= item.Count).ToString("#,0")) تومان
@@ -102,8 +113,10 @@
                             <h3>کد تخفیف</h3>
                             <div class="coupon_inner">
                                 <p>کد تخفیف خود را در صورت وجود وارد نمایید</p>
-                                <input placeholder="کد تخفیف" type="text">
-                                <button type="submit">اعمال کد تخفیف</button>
+                                <form method="post" asp-area="UserPanel" asp-controller="Orders" asp-action="SetDiscountCodeForOrderDeatil">
+                                    <input placeholder="کد تخفیف" type="text" name="code">
+                                    <button type="submit">اعمال</button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -128,8 +141,21 @@
 
                                                 if (activeDiscounts != null)
                                                 {
-                                                    totalDis += price * (activeDiscounts.DiscountPercentage / 100m) * item.Count;
-                                                    price -= price * (activeDiscounts.DiscountPercentage / 100m);
+                                                    if (activeDiscounts.IsForShow)
+                                                    {
+                                                        totalDis += price * (activeDiscounts.DiscountPercentage / 100m) * item.Count;
+                                                        price -= price * (activeDiscounts.DiscountPercentage / 100m);
+                                                    }
+                                                    else
+                                                    {
+                                                        if (!string.IsNullOrEmpty(item.DiscountCode) &&
+                                                        !string.IsNullOrEmpty(activeDiscounts.Code) &&
+                                                        item.DiscountCode == activeDiscounts.Code)
+                                                        {
+                                                            totalDis += price * (activeDiscounts.DiscountPercentage / 100m) * item.Count;
+                                                            price -= price * (activeDiscounts.DiscountPercentage / 100m);
+                                                        }
+                                                    }
                                                 }
 
                                                 total += price * item.Count;

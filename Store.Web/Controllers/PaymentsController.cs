@@ -34,11 +34,24 @@ public class PaymentsController : BaseController
             decimal price = item.Product.Price;
 
             var activeDiscounts = item.Product.Discounts
-                ?.FirstOrDefault(d => d.IsDeleted == false && d.ExpireDate > DateTime.Now);
+                ?.FirstOrDefault(d =>
+                d.IsDeleted == false && d.ExpireDate > DateTime.Now);
 
             if (activeDiscounts != null)
             {
-                price -= price * (activeDiscounts.DiscountPercentage / 100m);
+                if (activeDiscounts.IsForShow)
+                {
+                    price -= price * (activeDiscounts.DiscountPercentage / 100m);
+                }
+                else
+                {
+                    if (!string.IsNullOrEmpty(item.DiscountCode) &&
+                        !string.IsNullOrEmpty(activeDiscounts.Code) &&
+                        item.DiscountCode == activeDiscounts.Code)
+                    {
+                        price -= price * (activeDiscounts.DiscountPercentage / 100m);
+                    }
+                }
             }
 
             totalPrice += price;
